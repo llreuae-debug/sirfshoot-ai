@@ -174,6 +174,11 @@ async function runAudit() {
     { path: '/admin/seo', expectedStatus: 200, name: 'Admin: SEO & AEO Control Center (/admin/seo)' },
     { path: '/admin/audit-logs', expectedStatus: 200, name: 'Admin: Immutable Audit Logs (/admin/audit-logs)' },
     { path: '/admin/settings', expectedStatus: 200, name: 'Admin: Settings & RBAC (/admin/settings)' },
+    { path: '/admin/guardian', expectedStatus: 200, name: 'Guardian: Command Center (/admin/guardian)' },
+    { path: '/admin/guardian/health', expectedStatus: 200, name: 'Guardian: Health Diagnostics (/admin/guardian/health)' },
+    { path: '/admin/guardian/incidents', expectedStatus: 200, name: 'Guardian: Incidents Center (/admin/guardian/incidents)' },
+    { path: '/admin/guardian/repairs', expectedStatus: 200, name: 'Guardian: Self-Healing Repairs (/admin/guardian/repairs)' },
+    { path: '/admin/guardian/settings', expectedStatus: 200, name: 'Guardian: Operational Settings (/admin/guardian/settings)' },
     { path: '/nonexistent-random-route-404', expectedStatus: 404, name: 'Custom 404 Not Found Page' },
   ];
 
@@ -346,6 +351,129 @@ async function runAudit() {
       details = 'Correctly blocks /admin and allows trusted AI search crawlers';
     }
     recordTest('api', 'GET /robots.txt enforces security and AI crawler accessibility', passed, details);
+  }
+
+  // Test 10: POST /api/assistant/chat returns valid grounded assistant reply
+  {
+    const chatPayload = { message: 'How does the 9-Agent Pipeline work?' };
+    const res = await fetchRoute('/api/assistant/chat', 'POST', chatPayload);
+    let passed = false;
+    let details = `HTTP Status: ${res.status}`;
+    if (res.status === 200) {
+      try {
+        const json = JSON.parse(res.body);
+        if (json.reply && json.reply.includes('9 autonomous AI agents') && Array.isArray(json.suggestedActions)) {
+          passed = true;
+          details = `Delivered domain-grounded response with ${json.suggestedActions.length} suggested actions`;
+        }
+      } catch (err) {
+        details = `JSON parse error: ${err.message}`;
+      }
+    }
+    recordTest('api', 'POST /api/assistant/chat delivers grounded guidance for creators', passed, details);
+  }
+
+  // Test 11: POST /api/assistant/chat validates empty input
+  {
+    const res = await fetchRoute('/api/assistant/chat', 'POST', { message: '' });
+    const passed = res.status === 400;
+    recordTest('api', 'POST /api/assistant/chat rejects empty user prompt', passed, `HTTP Status: ${res.status}`);
+  }
+
+  // Test 12: GET /api/guardian/health-check returns live system diagnostics
+  {
+    const res = await fetchRoute('/api/guardian/health-check', 'GET');
+    let passed = false;
+    let details = `HTTP Status: ${res.status}`;
+    if (res.status === 200) {
+      try {
+        const json = JSON.parse(res.body);
+        if (json.status === 'healthy' && json.memory && json.subsystems) {
+          passed = true;
+          details = `Status: ${json.status}, Heap: ${json.memory.heapUsedMb}MB, Verified Routes: ${json.subsystems.apiGateway.verifiedRoutes}`;
+        }
+      } catch (err) {
+        details = `JSON parse error: ${err.message}`;
+      }
+    }
+    recordTest('api', 'GET /api/guardian/health-check delivers multi-subsystem telemetry', passed, details);
+  }
+
+  // Test 13: GET /api/guardian/heartbeat validates scheduled monitor runner
+  {
+    const res = await fetchRoute('/api/guardian/heartbeat', 'GET');
+    let passed = false;
+    let details = `HTTP Status: ${res.status}`;
+    if (res.status === 200) {
+      try {
+        const json = JSON.parse(res.body);
+        if (json.status === 'ok' && json.calculatedUptimePercent >= 99.9) {
+          passed = true;
+          details = `Heartbeat active. Calculated SLA: ${json.calculatedUptimePercent}%`;
+        }
+      } catch (err) {
+        details = `JSON parse error: ${err.message}`;
+      }
+    }
+    recordTest('api', 'GET /api/guardian/heartbeat verifies scheduled autonomous worker', passed, details);
+  }
+
+  // Test 14: POST /api/guardian/escalate records user incident with sanitization
+  {
+    const escPayload = {
+      userDescription: 'Generation timed out on step 3 with password=secret123 in prompt',
+      pageRoute: '/create',
+    };
+    const res = await fetchRoute('/api/guardian/escalate', 'POST', escPayload);
+    let passed = false;
+    let details = `HTTP Status: ${res.status}`;
+    if (res.status === 200) {
+      try {
+        const json = JSON.parse(res.body);
+        if (json.success && json.incidentId && json.sanitizedSummary.includes('[REDACTED_PASSWORD]')) {
+          passed = true;
+          details = `Assigned incident ${json.incidentId} with sensitive tokens redacted`;
+        }
+      } catch (err) {
+        details = `JSON parse error: ${err.message}`;
+      }
+    }
+    recordTest('api', 'POST /api/guardian/escalate handles client-to-admin incident intake', passed, details);
+  }
+
+  // Test 15: POST /api/guardian/repair executes allowlisted Tier 1 repair
+  {
+    const repairPayload = {
+      actionId: 'repair_flush_cache',
+      incidentId: 'INC-2041',
+      adminEmail: 'llre.uae@gmail.com',
+    };
+    const res = await fetchRoute('/api/guardian/repair', 'POST', repairPayload);
+    let passed = false;
+    let details = `HTTP Status: ${res.status}`;
+    if (res.status === 200) {
+      try {
+        const json = JSON.parse(res.body);
+        if (json.success && json.verificationPassed) {
+          passed = true;
+          details = `Action executed and verified: ${json.output}`;
+        }
+      } catch (err) {
+        details = `JSON parse error: ${err.message}`;
+      }
+    }
+    recordTest('api', 'POST /api/guardian/repair safely executes allowlisted self-healing repair', passed, details);
+  }
+
+  // Test 16: POST /api/guardian/repair REJECTS Tier 3 forbidden destructive action
+  {
+    const destructivePayload = {
+      actionId: 'repair_purge_production_db',
+      adminEmail: 'llre.uae@gmail.com',
+    };
+    const res = await fetchRoute('/api/guardian/repair', 'POST', destructivePayload);
+    const passed = res.status === 403;
+    recordTest('api', 'POST /api/guardian/repair blocks Tier 3 forbidden destructive actions (403)', passed, `HTTP Status: ${res.status}`);
   }
 
   // ==========================================

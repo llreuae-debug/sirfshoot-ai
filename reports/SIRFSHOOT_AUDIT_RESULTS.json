@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-10-12T10:32:38.563Z",
+  "timestamp": "2026-10-12T10:48:01.772Z",
   "environment": "Local / Development Server Next.js 16.4.0 (Turbopack)",
   "summary": {
-    "totalTests": 70,
-    "passed": 70,
+    "totalTests": 82,
+    "passed": 82,
     "failed": 0,
     "passRate": "100.0%"
   },
   "routesAudit": {
     "totalDiscovered": 27,
-    "tested": 47,
-    "passed": 47,
+    "tested": 52,
+    "passed": 52,
     "failed": 0,
     "coverage": "100%",
     "details": [
@@ -245,6 +245,31 @@
         "details": "HTTP Status: 200 (expected 200)"
       },
       {
+        "name": "Route /admin/guardian (Guardian: Command Center (/admin/guardian))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin/guardian/health (Guardian: Health Diagnostics (/admin/guardian/health))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin/guardian/incidents (Guardian: Incidents Center (/admin/guardian/incidents))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin/guardian/repairs (Guardian: Self-Healing Repairs (/admin/guardian/repairs))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin/guardian/settings (Guardian: Operational Settings (/admin/guardian/settings))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
         "name": "Route /nonexistent-random-route-404 (Custom 404 Not Found Page)",
         "passed": true,
         "details": "HTTP Status: 404 (expected 404)"
@@ -253,8 +278,8 @@
   },
   "apiAudit": {
     "totalEndpoints": 2,
-    "testedCases": 9,
-    "passed": 9,
+    "testedCases": 16,
+    "passed": 16,
     "failed": 0,
     "details": [
       {
@@ -301,6 +326,41 @@
         "name": "GET /robots.txt enforces security and AI crawler accessibility",
         "passed": true,
         "details": "Correctly blocks /admin and allows trusted AI search crawlers"
+      },
+      {
+        "name": "POST /api/assistant/chat delivers grounded guidance for creators",
+        "passed": true,
+        "details": "Delivered domain-grounded response with 2 suggested actions"
+      },
+      {
+        "name": "POST /api/assistant/chat rejects empty user prompt",
+        "passed": true,
+        "details": "HTTP Status: 400"
+      },
+      {
+        "name": "GET /api/guardian/health-check delivers multi-subsystem telemetry",
+        "passed": true,
+        "details": "Status: healthy, Heap: 1230MB, Verified Routes: 50"
+      },
+      {
+        "name": "GET /api/guardian/heartbeat verifies scheduled autonomous worker",
+        "passed": true,
+        "details": "Heartbeat active. Calculated SLA: 99.98%"
+      },
+      {
+        "name": "POST /api/guardian/escalate handles client-to-admin incident intake",
+        "passed": true,
+        "details": "Assigned incident INC-9148 with sensitive tokens redacted"
+      },
+      {
+        "name": "POST /api/guardian/repair safely executes allowlisted self-healing repair",
+        "passed": true,
+        "details": "Action executed and verified: Purged stale memory cache and refreshed client store hydration state."
+      },
+      {
+        "name": "POST /api/guardian/repair blocks Tier 3 forbidden destructive actions (403)",
+        "passed": true,
+        "details": "HTTP Status: 403"
       }
     ]
   },

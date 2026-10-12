@@ -121,6 +121,8 @@ const structuredData = {
   ],
 };
 
+import ClientAssistant from "@/components/ClientAssistant";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -136,6 +138,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#0F172A] antialiased">
         {children}
+        <ClientAssistant />
       </body>
     </html>
   );

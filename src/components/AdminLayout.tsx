@@ -18,6 +18,10 @@ import {
   X,
   ExternalLink,
   Lock,
+  Activity,
+  ShieldAlert,
+  Wrench,
+  Sliders,
 } from 'lucide-react';
 import { useAdminStore } from '@/lib/admin-store';
 import { useCreatorStore } from '@/lib/store';
@@ -47,6 +51,11 @@ export default function AdminLayout({
     { name: 'Financial & Credit Ledger', href: '/admin/ledger', icon: FileSpreadsheet },
     { name: 'SEO Control Center', href: '/admin/seo', icon: Globe },
     { name: 'Audit Logs', href: '/admin/audit-logs', icon: ClipboardList },
+    { name: 'Guardian AI Overview', href: '/admin/guardian', icon: ShieldCheck },
+    { name: 'Health Diagnostics', href: '/admin/guardian/health', icon: Activity },
+    { name: 'Incidents Center', href: '/admin/guardian/incidents', icon: ShieldAlert },
+    { name: 'Self-Healing Repairs', href: '/admin/guardian/repairs', icon: Wrench },
+    { name: 'Guardian Settings', href: '/admin/guardian/settings', icon: Sliders },
     { name: 'Settings & Security', href: '/admin/settings', icon: Settings },
   ];
 
