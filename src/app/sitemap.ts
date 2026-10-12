@@ -21,6 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/financiamento', priority: 0.75, changeFrequency: 'weekly' as const },
     { url: '/descricoes', priority: 0.75, changeFrequency: 'weekly' as const },
     { url: '/login', priority: 0.6, changeFrequency: 'monthly' as const },
+    { url: '/privacy', priority: 0.5, changeFrequency: 'monthly' as const },
+    { url: '/terms', priority: 0.5, changeFrequency: 'monthly' as const },
+    { url: '/refund', priority: 0.5, changeFrequency: 'monthly' as const },
     
     // 12 Micro-Tools Catalog
     { url: '/tools/ai-script-robot-score', priority: 0.7, changeFrequency: 'monthly' as const },

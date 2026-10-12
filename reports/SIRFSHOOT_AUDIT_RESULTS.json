@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-10-12T10:48:01.772Z",
+  "timestamp": "2026-10-12T15:16:24.418Z",
   "environment": "Local / Development Server Next.js 16.4.0 (Turbopack)",
   "summary": {
-    "totalTests": 82,
-    "passed": 82,
+    "totalTests": 85,
+    "passed": 85,
     "failed": 0,
     "passRate": "100.0%"
   },
   "routesAudit": {
     "totalDiscovered": 27,
-    "tested": 52,
-    "passed": 52,
+    "tested": 55,
+    "passed": 55,
     "failed": 0,
     "coverage": "100%",
     "details": [
@@ -36,6 +36,21 @@
       },
       {
         "name": "Route /login (Authentication Portal (/login))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /privacy (Privacy Policy Portal (/privacy))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /terms (Terms of Service Portal (/terms))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /refund (Refund & Cancellation Policy (/refund))",
         "passed": true,
         "details": "HTTP Status: 200 (expected 200)"
       },
@@ -320,7 +335,7 @@
       {
         "name": "GET /sitemap.xml delivers valid Search Engine XML structure",
         "passed": true,
-        "details": "Valid XML sitemap with canonical host (Body length: 4748 bytes)"
+        "details": "Valid XML sitemap with canonical host (Body length: 5243 bytes)"
       },
       {
         "name": "GET /robots.txt enforces security and AI crawler accessibility",
@@ -340,7 +355,7 @@
       {
         "name": "GET /api/guardian/health-check delivers multi-subsystem telemetry",
         "passed": true,
-        "details": "Status: healthy, Heap: 1230MB, Verified Routes: 50"
+        "details": "Status: healthy, Heap: 1218MB, Verified Routes: 50"
       },
       {
         "name": "GET /api/guardian/heartbeat verifies scheduled autonomous worker",
@@ -350,7 +365,7 @@
       {
         "name": "POST /api/guardian/escalate handles client-to-admin incident intake",
         "passed": true,
-        "details": "Assigned incident INC-9148 with sensitive tokens redacted"
+        "details": "Assigned incident INC-3266 with sensitive tokens redacted"
       },
       {
         "name": "POST /api/guardian/repair safely executes allowlisted self-healing repair",

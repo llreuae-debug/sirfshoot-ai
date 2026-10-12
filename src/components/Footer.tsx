@@ -99,9 +99,9 @@ export default function Footer() {
               <li><Link href="/dashboard" className="hover:text-white transition">Creator Dashboard</Link></li>
               <li><Link href="/blog" className="hover:text-white transition">Creator Playbooks</Link></li>
               <li><Link href="/settings" className="hover:text-white transition">API Keys & Settings</Link></li>
-              <li><span className="text-slate-500 cursor-not-allowed">Privacy Policy</span></li>
-              <li><span className="text-slate-500 cursor-not-allowed">Terms of Service</span></li>
-              <li><span className="text-slate-500 cursor-not-allowed">Refund & Cancellation</span></li>
+              <li><Link href="/privacy" className="hover:text-white transition">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-white transition">Terms of Service</Link></li>
+              <li><Link href="/refund" className="hover:text-white transition">Refund & Cancellation</Link></li>
             </ul>
           </div>
         </div>

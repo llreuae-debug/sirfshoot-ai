@@ -25,6 +25,9 @@ export default function robots(): MetadataRoute.Robots {
           '/financiamento',
           '/descricoes',
           '/login',
+          '/privacy',
+          '/terms',
+          '/refund',
           '/llms.txt',
         ],
         disallow: [

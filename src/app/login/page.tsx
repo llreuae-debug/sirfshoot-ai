@@ -269,30 +269,48 @@ export default function LoginPage() {
               </form>
             </div>
 
-            <div className="text-center text-xs text-slate-500">
-              {isSignUp ? (
-                <span>
-                  Already have an account?{' '}
-                  <button
-                    type="button"
-                    onClick={() => setIsSignUp(false)}
-                    className="text-[#E50914] font-bold hover:underline"
-                  >
-                    Sign in
-                  </button>
-                </span>
-              ) : (
-                <span>
-                  Don&apos;t have an account yet?{' '}
-                  <button
-                    type="button"
-                    onClick={() => setIsSignUp(true)}
-                    className="text-[#E50914] font-bold hover:underline"
-                  >
-                    Start free trial
-                  </button>
-                </span>
-              )}
+            <div className="text-center text-xs text-slate-500 space-y-2">
+              <div>
+                {isSignUp ? (
+                  <span>
+                    Already have an account?{' '}
+                    <button
+                      type="button"
+                      onClick={() => setIsSignUp(false)}
+                      className="text-[#E50914] font-bold hover:underline"
+                    >
+                      Sign in
+                    </button>
+                  </span>
+                ) : (
+                  <span>
+                    Don&apos;t have an account yet?{' '}
+                    <button
+                      type="button"
+                      onClick={() => setIsSignUp(true)}
+                      className="text-[#E50914] font-bold hover:underline"
+                    >
+                      Start free trial
+                    </button>
+                  </span>
+                )}
+              </div>
+
+              <p className="text-[11px] text-slate-400">
+                By continuing, you agree to SirfShoot AI&apos;s{' '}
+                <Link href="/terms" className="text-slate-600 font-semibold hover:text-[#E50914] underline">
+                  Terms
+                </Link>
+                ,{' '}
+                <Link href="/privacy" className="text-slate-600 font-semibold hover:text-[#E50914] underline">
+                  Privacy
+                </Link>
+                , &amp;{' '}
+                <Link href="/refund" className="text-slate-600 font-semibold hover:text-[#E50914] underline">
+                  Refund Policy
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </div>
