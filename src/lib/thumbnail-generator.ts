@@ -6,7 +6,7 @@ export function generateThumbnailSvg(variant: ThumbnailVariant, title: string): 
   const textCol = variant.colorPalette[2] || '#FBBF24';
 
   const cleanTitle = title.replace(/"/g, '&quot;').slice(0, 48);
-  const cleanOverlay = (variant.textOverlay || variant.name || 'SIRFSHOOT').replace(/"/g, '&quot;');
+  const cleanOverlay = (variant.textOverlay || variant.name || 'TAMEEROS SHORTS').replace(/"/g, '&quot;');
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="100%" height="100%" style="border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
     <title>${cleanTitle}</title>
@@ -90,7 +90,7 @@ export function generateThumbnailSvg(variant: ThumbnailVariant, title: string): 
       </text>
     </g>
 
-    <!-- SirfShoot Watermark Branding Badge -->
+    <!-- Tameeros Shorts Watermark Branding Badge -->
     <g transform="translate(40, 640)">
       <rect x="0" y="0" width="170" height="42" rx="8" fill="#000000" opacity="0.75" />
       <text x="85" y="28" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">

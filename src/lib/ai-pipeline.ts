@@ -1071,7 +1071,7 @@ References & Verification Documents:
 Disclaimer:
 This video is created strictly for educational, analytical, and journalistic commentary purposes based on publicly accessible data sources.
 
-#${niche.replace(/\s+/g, '')} #Explainer #SirfShoot #GroundReality #DeepDive #${cleanTopic.slice(0, 15).replace(/\s+/g, '')}`,
+#${niche.replace(/\s+/g, '')} #Explainer #Tameeros Shorts #GroundReality #DeepDive #${cleanTopic.slice(0, 15).replace(/\s+/g, '')}`,
       tags: [
         cleanTopic.toLowerCase(),
         `${cleanTopic.toLowerCase()} explainer`,
@@ -1086,7 +1086,7 @@ This video is created strictly for educational, analytical, and journalistic com
       ],
       chapters: dynamicChapters,
       pinnedComment: `📌 Question of the day: Do you feel media headlines exaggerated this story about ${cleanTopic.slice(0, 35)}, or do you have a different take? Share your thoughts below — replying to top comments!`,
-      suggestedHashtags: [`#${niche.replace(/\s+/g, '')}`, '#Explainer', '#SirfShoot', '#FactsFirst', `#${targetRuntimeMin}MinVideo`],
+      suggestedHashtags: [`#${niche.replace(/\s+/g, '')}`, '#Explainer', '#Tameeros Shorts', '#FactsFirst', `#${targetRuntimeMin}MinVideo`],
     };
   }
 
@@ -1106,7 +1106,7 @@ This video is created strictly for educational, analytical, and journalistic com
           visualCue: `Gentle warm golden hour sunbeams over open bible with calm peaceful typography.`,
           durationSec: 32,
           igCaption: `Start your day with peace. 🙏 Type Amen and share with someone who needs encouragement today!`,
-          hashtags: ['#MorningPrayer', '#DailyEncouragement', '#PeaceInGod', '#FaithReels', '#SirfShoot'],
+          hashtags: ['#MorningPrayer', '#DailyEncouragement', '#PeaceInGod', '#FaithReels', '#Tameeros Shorts'],
           whatsAppStatusDraft: `A 30-second morning prayer for peace and strength today. Watch and be blessed! 🙏`,
           communityPostDraft: `What is one burden you are handing over to God in prayer today? Share below so we can pray together!`,
         },
@@ -1151,7 +1151,7 @@ This video is created strictly for educational, analytical, and journalistic com
           visualCue: `Cute animated little character getting cozy in bed under a starry night crescent moon.`,
           durationSec: 32,
           igCaption: `Help your little ones memorize their bedtime dua! 🌙 Share with fellow parents.`,
-          hashtags: ['#BedtimeDua', '#IslamicKids', '#MuslimParents', '#ShortsForKids', '#SirfShoot'],
+          hashtags: ['#BedtimeDua', '#IslamicKids', '#MuslimParents', '#ShortsForKids', '#Tameeros Shorts'],
           whatsAppStatusDraft: `Sweet bedtime dua for kids and families to recite together tonight! 🌙`,
           communityPostDraft: `Do your little ones know their bedtime dua by heart? Recite with us tonight!`,
         },
@@ -1205,8 +1205,8 @@ This video is created strictly for educational, analytical, and journalistic com
           durationSec: 38,
           igCaption: `Stop falling for sensational headlines about ${cleanTopic.slice(0, 30)}. 📊 Here is what verified data actually proves. Full video link in bio!`,
           hashtags: isEnglish
-            ? [`#${niche.replace(/\s+/g, '')}`, '#FactCheck', '#GroundReality', '#Documentary', '#SirfShoot']
-            : [`#${niche.replace(/\s+/g, '')}`, '#FactCheck', '#GroundReality', '#ShortsPakistan', '#SirfShoot'],
+            ? [`#${niche.replace(/\s+/g, '')}`, '#FactCheck', '#GroundReality', '#Documentary', '#Tameeros Shorts']
+            : [`#${niche.replace(/\s+/g, '')}`, '#FactCheck', '#GroundReality', '#ShortsPakistan', '#Tameeros Shorts'],
           whatsAppStatusDraft: `🚨 The real truth behind ${cleanTopic.slice(0, 30)} in 40 seconds. Watch the full breakdown on YouTube!`,
           communityPostDraft: `Did you catch the recent viral headlines about ${cleanTopic.slice(0, 35)}? We analyzed official records to uncover what’s actually happening. Watch now on our channel: [Link]`,
         },

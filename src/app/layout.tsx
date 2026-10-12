@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sirfshoot-ai.vercel.app"),
+  metadataBase: new URL("https://tameeros-shorts.vercel.app"),
   title: {
-    default: "SirfShoot AI — Just Shoot It, We Handle The Rest",
-    template: "%s | SirfShoot AI",
+    default: "Tameeros Shorts — Just Shoot It, We Handle The Rest",
+    template: "%s | Tameeros Shorts",
   },
   description:
     "The AI Content OS for video creators and real estate teams. 9-agent pipeline transforms 1 topic into research, scripts in your tone, storyboards, thumbnails, SEO, and shorts in ~3 minutes.",
@@ -26,26 +26,26 @@ export const metadata: Metadata = {
     "Tone Fingerprint",
     "YouTube thumbnail generator",
     "AI video studio",
-    "SirfShoot",
+    "Tameeros Shorts",
     "AI Content OS",
     "Pakistani creator AI",
     "Hinglish AI scriptwriter",
   ],
-  authors: [{ name: "SirfShoot AI Team" }],
+  authors: [{ name: "Tameeros Shorts Team" }],
   alternates: {
-    canonical: "https://sirfshoot-ai.vercel.app",
+    canonical: "https://tameeros-shorts.vercel.app",
   },
   openGraph: {
-    title: "SirfShoot AI — Turn Video Ideas Into Scripts That Sound Like You",
+    title: "Tameeros Shorts — Turn Video Ideas Into Scripts That Sound Like You",
     description: "9 AI agents handle research, scripts, fact-check, storyboards, thumbnails, SEO, and shorts. From PKR 499/mo.",
-    url: "https://sirfshoot-ai.vercel.app",
-    siteName: "SirfShoot AI",
+    url: "https://tameeros-shorts.vercel.app",
+    siteName: "Tameeros Shorts",
     locale: "en_PK",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SirfShoot AI — Just Shoot It, We Handle The Rest",
+    title: "Tameeros Shorts — Just Shoot It, We Handle The Rest",
     description: "The AI Content OS for video creators. Research, scripts, thumbnails, and SEO in ~3 minutes.",
   },
   robots: {
@@ -66,32 +66,32 @@ const structuredData = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://sirfshoot-ai.vercel.app/#organization",
-      "name": "SirfShoot AI",
-      "url": "https://sirfshoot-ai.vercel.app",
-      "logo": "https://sirfshoot-ai.vercel.app/favicon.ico",
+      "@id": "https://tameeros-shorts.vercel.app/#organization",
+      "name": "Tameeros Shorts",
+      "url": "https://tameeros-shorts.vercel.app",
+      "logo": "https://tameeros-shorts.vercel.app/favicon.ico",
       "description": "AI Content Operating System for video creators and real estate professionals.",
       "contactPoint": {
         "@type": "ContactPoint",
-        "email": "hello@sirfshoot.ai",
+        "email": "hello@tameeros.com",
         "contactType": "customer support",
         "availableLanguage": ["English", "Urdu"],
       },
     },
     {
       "@type": "WebSite",
-      "@id": "https://sirfshoot-ai.vercel.app/#website",
-      "url": "https://sirfshoot-ai.vercel.app",
-      "name": "SirfShoot AI",
+      "@id": "https://tameeros-shorts.vercel.app/#website",
+      "url": "https://tameeros-shorts.vercel.app",
+      "name": "Tameeros Shorts",
       "description": "Turn your ideas into scripts that sound like you. 9 AI agents in one unified workflow.",
       "publisher": {
-        "@id": "https://sirfshoot-ai.vercel.app/#organization",
+        "@id": "https://tameeros-shorts.vercel.app/#organization",
       },
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://sirfshoot-ai.vercel.app/#application",
-      "name": "SirfShoot AI Content OS",
+      "@id": "https://tameeros-shorts.vercel.app/#application",
+      "name": "Tameeros Shorts Content OS",
       "operatingSystem": "Web Browser",
       "applicationCategory": "MultimediaApplication",
       "offers": [

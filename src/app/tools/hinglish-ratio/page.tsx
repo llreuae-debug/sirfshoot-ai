@@ -128,7 +128,7 @@ export default function HinglishRatioPage() {
 
               <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                 <span className="text-xs text-slate-400">
-                  Tune your channel blend ratio automatically in SirfShoot Studio.
+                  Tune your channel blend ratio automatically in Tameeros Shorts Studio.
                 </span>
                 <Link
                   href="/create"

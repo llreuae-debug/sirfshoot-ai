@@ -71,7 +71,7 @@ Benchmarking numbers dekhne mein acche lagte hain, par daily camera aur battery 
               <h1 className="text-3xl font-black text-white">Hinglish Script Template Pack</h1>
             </div>
             <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-              Tested high-retention frameworks crafted specifically for Indian audiences. Copy, customize, or generate automatically in SirfShoot Studio.
+              Tested high-retention frameworks crafted specifically for Indian audiences. Copy, customize, or generate automatically in Tameeros Shorts Studio.
             </p>
           </div>
 

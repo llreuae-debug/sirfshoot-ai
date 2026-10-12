@@ -660,7 +660,7 @@ This video is created strictly for educational and analytical purposes based on 
         visualCue: 'Cargo ship routing animated lines from Mumbai to Dubai to Karachi.',
         durationSec: 45,
         igCaption: 'The economics behind foreign policy nobody teaches in school. 🚢 Link in bio.',
-        hashtags: ['#TradeSecrets', '#EconomicsExplained', '#Geopolitics101', '#SirfShoot'],
+        hashtags: ['#TradeSecrets', '#EconomicsExplained', '#Geopolitics101', '#Tameeros Shorts'],
         whatsAppStatusDraft: 'How foreign trade routes really work behind closed doors. Must-watch snippet!',
         communityPostDraft:
           'Economics always moves faster than politics. We broke down the covert cargo routes connecting South Asia today. Link above!',
@@ -820,7 +820,7 @@ export const DEFAULT_SAVED_DESCRIPTIONS: SavedDescription[] = [
     tone: 'Elegant & Sophisticated',
     shortCopy: '✨ Breathtaking duplex penthouse in Gulberg III! 4 bedrooms, private pool, and 360° panoramic views. Book your private walkthrough via WhatsApp!',
     detailedCopy: '🏡 ABSOLUTE LUXURY & PRIVACY IN GULBERG III\n\nExperience premier elegance at the most prestigious address in town. This magnificent duplex penthouse blends contemporary architecture with world-class imported finishes.\n\n📍 Property Highlights:\n• 4 spacious en-suite bedrooms with walk-in dressing areas\n• Double-height open-concept living lounge\n• Rooftop terrace with private heated plunge pool\n• 4 covered parking spots and private storage\n• 24/7 biometric security and smart home controls\n\nDirect owner purchase terms available. Schedule your exclusive private tour via WhatsApp.',
-    hashtags: ['#LuxuryRealEstate', '#PenthouseLiving', '#PrimeLocation', '#SirfShootAI', '#ExclusiveListing'],
+    hashtags: ['#LuxuryRealEstate', '#PenthouseLiving', '#PrimeLocation', '#Tameeros ShortsAI', '#ExclusiveListing'],
     createdAt: '2026-10-11T12:00:00Z',
   },
 ];
@@ -878,7 +878,7 @@ export const ADMIN_USER_STATE: UserState = {
 export const INITIAL_USER_STATE: UserState = {
   id: 'user-creator-01',
   name: 'Hamza Khan',
-  email: 'creator@sirfshoot.ai',
+  email: 'creator@tameeros.com',
   role: 'creator',
   avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
   channelName: 'Tech & Geopolitics PK',

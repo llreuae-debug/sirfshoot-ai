@@ -14,7 +14,7 @@ import {
 } from './guardian-types';
 import { useCreatorStore } from './store';
 
-const GUARDIAN_STORAGE_KEY = 'sirfshoot_guardian_v1';
+const GUARDIAN_STORAGE_KEY = (typeof window !== 'undefined' && localStorage.getItem('tameeros_guardian_v1') ? 'tameeros_guardian_v1' : (typeof window !== 'undefined' && localStorage.getItem('sirfshoot_guardian_v1') ? 'sirfshoot_guardian_v1' : 'tameeros_guardian_v1'));
 
 export const INITIAL_HEALTH_COMPONENTS: HealthComponent[] = [
   {

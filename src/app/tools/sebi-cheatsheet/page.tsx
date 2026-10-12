@@ -118,7 +118,7 @@ export default function SebiCheatsheetPage() {
           <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-center space-y-3">
             <h3 className="font-bold text-base text-white">Automatic Financial Safety Audits</h3>
             <p className="text-xs text-slate-400 max-w-md mx-auto">
-              SirfShoot&apos;s Legal & Policy Agent 4 automatically audits every finance script for SECP compliance and injects appropriate disclaimers.
+              Tameeros Shorts&apos;s Legal & Policy Agent 4 automatically audits every finance script for SECP compliance and injects appropriate disclaimers.
             </p>
             <Link
               href="/create"

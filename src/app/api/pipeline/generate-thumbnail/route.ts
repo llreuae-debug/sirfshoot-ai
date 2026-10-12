@@ -5,7 +5,7 @@ import { ThumbnailVariant } from '@/lib/types';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { variant, title = 'SirfShoot Video' }: { variant: ThumbnailVariant; title: string } = body;
+    const { variant, title = 'Tameeros Shorts Video' }: { variant: ThumbnailVariant; title: string } = body;
 
     if (!variant) {
       return NextResponse.json({ error: 'Thumbnail variant configuration is required' }, { status: 400 });

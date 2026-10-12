@@ -64,7 +64,7 @@ export default function PlanosPage() {
         'AI Property Valuation Engine',
         'Multi-Bank Mortgage Simulator',
         'Unlimited Leads CRM & WhatsApp Integration',
-        'Full Access to SirfShoot Academy',
+        'Full Access to Tameeros Academy',
       ],
       cta: 'Upgrade to PRO',
     },

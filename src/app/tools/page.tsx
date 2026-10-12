@@ -137,7 +137,7 @@ export default function ToolsDirectoryPage() {
               Free YouTube tools <span className="gradient-text">built for Indian creators</span>.
             </h1>
             <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
-              Powered by the exact same 9-agent intelligence engine that writes SirfShoot scripts. Hinglish-first, fast, and engineered for high retention.
+              Powered by the exact same 9-agent intelligence engine that writes Tameeros Shorts scripts. Hinglish-first, fast, and engineered for high retention.
             </p>
           </div>
 
@@ -186,7 +186,7 @@ export default function ToolsDirectoryPage() {
                 Want all 9 agents running automatically on every video?
               </h3>
               <p className="text-xs sm:text-sm text-slate-400">
-                Start your 7-day free trial on SirfShoot. 2 full scripts included, no credit card required.
+                Start your 7-day free trial on Tameeros Shorts. 2 full scripts included, no credit card required.
               </p>
             </div>
             <Link

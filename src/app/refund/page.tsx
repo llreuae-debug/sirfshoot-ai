@@ -64,16 +64,16 @@ export default function RefundPolicyPage() {
                 <span>14-Day 100% Money-Back Creator Guarantee</span>
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
-                SirfShoot AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">Refund & Cancellation</span> Policy
+                Tameeros Shorts <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">Refund & Cancellation</span> Policy
               </h1>
               <p className="mt-3 text-base text-slate-300 max-w-2xl leading-relaxed">
-                Fair, transparent, and hassle-free cancellation and refund guidelines for all SirfShoot AI creators.
+                Fair, transparent, and hassle-free cancellation and refund guidelines for all Tameeros Shorts creators.
               </p>
             </div>
 
             <div className="flex items-center gap-3 shrink-0">
               <a
-                href="mailto:refunds@sirfshoot.ai"
+                href="mailto:refunds@tameeros.com"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] border border-white/10 text-xs font-bold text-white transition"
               >
                 <RotateCcw className="h-4 w-4 text-[#E50914]" />
@@ -127,7 +127,7 @@ export default function RefundPolicyPage() {
             How Subscription Cancellation Works
           </h2>
           <p>
-            At SirfShoot AI, we believe in creator freedom. You are never locked into long-term contracts.
+            At Tameeros Shorts, we believe in creator freedom. You are never locked into long-term contracts.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2">
@@ -169,7 +169,7 @@ export default function RefundPolicyPage() {
             14-Day Money-Back Creator Guarantee Terms
           </h2>
           <p>
-            We stand behind the quality of our autonomous 9-agent pipeline. If you are a first-time subscriber and test SirfShoot AI, you can request a 100% refund under the following conditions:
+            We stand behind the quality of our autonomous 9-agent pipeline. If you are a first-time subscriber and test Tameeros Shorts, you can request a 100% refund under the following conditions:
           </p>
           <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs space-y-2">
             <p className="font-bold text-sm text-emerald-200">Eligibility Criteria:</p>
@@ -252,7 +252,7 @@ export default function RefundPolicyPage() {
               To request a refund under the 14-Day Guarantee or report a billing anomaly, follow these simple steps:
             </p>
             <ol className="space-y-2 text-slate-300 list-decimal list-inside">
-              <li>Send an email to <a href="mailto:refunds@sirfshoot.ai" className="text-[#E50914] font-bold">refunds@sirfshoot.ai</a> from your registered account email.</li>
+              <li>Send an email to <a href="mailto:refunds@tameeros.com" className="text-[#E50914] font-bold">refunds@tameeros.com</a> from your registered account email.</li>
               <li>Include your <strong>Account Email</strong> and <strong>Transaction ID / Receipt Number</strong>.</li>
               <li>Briefly mention the reason for your refund (e.g., &quot;Voice cloning tone did not match my channel dialect&quot;).</li>
             </ol>

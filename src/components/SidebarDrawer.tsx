@@ -37,7 +37,7 @@ export default function SidebarDrawer() {
   ];
 
   const academyTools = [
-    { title: 'SirfShoot Academy', url: '/cursos', icon: GraduationCap, badge: 'Growth' },
+    { title: 'Tameeros Academy', url: '/cursos', icon: GraduationCap, badge: 'Growth' },
   ];
 
   const premiumTools = [
@@ -94,7 +94,7 @@ export default function SidebarDrawer() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#E50914] to-[#B91C1C] text-white shadow-xs">
               <Sparkles className="h-4 w-4 fill-white/20" />
             </div>
-            <span>SirfShoot <span className="text-[#E50914]">AI</span></span>
+            <span>Tameeros Shorts <span className="text-[#E50914]">AI</span></span>
           </Link>
           <button
             type="button"
@@ -282,7 +282,7 @@ export default function SidebarDrawer() {
             <span>Launch 9-Agent Studio</span>
           </Link>
           <div className="text-center text-[10px] text-slate-400">
-            © 2026 SirfShoot AI • All Rights Reserved
+            © 2026 Tameeros Shorts • All Rights Reserved
           </div>
         </div>
       </aside>

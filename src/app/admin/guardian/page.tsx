@@ -48,7 +48,7 @@ export default function GuardianOverviewPage() {
 
   return (
     <AdminLayout
-      title="SirfShoot Guardian AI — Autonomous Operations"
+      title="Tameeros Guardian AI — Autonomous Operations"
       subtitle="Real-time application health monitoring, automated anomaly detection, root-cause diagnostics, and safe self-healing recovery."
       action={
         <div className="flex items-center gap-2">

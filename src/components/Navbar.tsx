@@ -25,7 +25,7 @@ export default function Navbar() {
     if (accountType === 'admin') {
       loginAsAdmin();
     } else {
-      loginWithEmail('creator@sirfshoot.ai', 'Hamza Khan');
+      loginWithEmail('creator@tameeros.com', 'Hamza Khan');
     }
     setShowAccountModal(false);
   };
@@ -39,7 +39,7 @@ export default function Navbar() {
           <Link
             href="/"
             className="group flex items-center gap-3 shrink-0"
-            aria-label="SirfShoot AI Home"
+            aria-label="Tameeros Shorts Home"
           >
             {/* 3D Red Brand Icon */}
             <div className="relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-gradient-to-b from-[#F0232D] via-[#E50914] to-[#C80711] text-white shadow-[0_3px_8px_rgba(229,9,20,0.32),inset_0_1px_0_rgba(255,255,255,0.4),inset_0_-2px_0_rgba(0,0,0,0.18)] transition-all duration-200 group-hover:scale-105 group-hover:shadow-[0_5px_12px_rgba(229,9,20,0.4),inset_0_1px_0_rgba(255,255,255,0.5)]">
@@ -48,10 +48,9 @@ export default function Navbar() {
 
             {/* Wordmark */}
             <div className="flex items-center font-black text-[20px] sm:text-[21px] tracking-tight leading-none select-none">
-              <span className="text-[#0F172A]">Sirf</span>
-              <span className="text-[#E50914]">Shoot</span>
-              <span className="ml-1.5 rounded-md bg-[#E50914]/10 border border-[#E50914]/20 px-1.5 py-0.5 text-[10px] font-extrabold tracking-wider text-[#E50914] uppercase leading-none shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-                AI
+              <span className="text-[#0F172A]">Tameeros</span>
+              <span className="ml-1.5 rounded-md bg-[#E50914] text-white px-2 py-0.5 text-[10px] font-black tracking-wider uppercase leading-none shadow-xs">
+                Shorts
               </span>
             </div>
           </Link>
@@ -319,7 +318,7 @@ export default function Navbar() {
                         Creator Plan
                       </span>
                     </div>
-                    <span className="text-xs text-slate-500">creator@sirfshoot.ai</span>
+                    <span className="text-xs text-slate-500">creator@tameeros.com</span>
                   </div>
                 </div>
                 {!isAdmin && (

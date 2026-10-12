@@ -259,7 +259,7 @@ export default function HomePage() {
     {
       id: 'academy',
       category: 'education',
-      name: 'SirfShoot Academy',
+      name: 'Tameeros Academy',
       badge: 'Masterclass',
       badgeColor: 'bg-slate-100 text-slate-800',
       desc: 'Comprehensive creator curriculum covering video scripting, AEO ranking, YouTube monetization, and AI automation.',
@@ -290,20 +290,20 @@ export default function HomePage() {
 
   const faqs = [
     {
-      q: 'Does SirfShoot AI write generic robotic content, or scripts that sound like me?',
-      a: 'SirfShoot builds a dedicated Tone Fingerprint from your past transcripts or channel — analyzing your vocabulary level, hook style, sentence rhythm, Hindi/English blend ratio, identity markers, and signature transitions. Every script generation uses this fingerprint as core system context, so the output reads like you wrote it, never like generic ChatGPT.',
+      q: 'Does Tameeros Shorts write generic robotic content, or scripts that sound like me?',
+      a: 'Tameeros Shorts builds a dedicated Tone Fingerprint from your past transcripts or channel — analyzing your vocabulary level, hook style, sentence rhythm, Hindi/English blend ratio, identity markers, and signature transitions. Every script generation uses this fingerprint as core system context, so the output reads like you wrote it, never like generic ChatGPT.',
     },
     {
       q: 'What is included in the 7-day free trial?',
       a: 'The free trial gives you 2 full video packages (including all 9 agents: research brief, script, storyboard, 3 thumbnail prompts, SEO package, and viral shorts) with zero credit card required. You get complete access to test the studio before deciding.',
     },
     {
-      q: 'How does SirfShoot AI support Pakistani & international creators?',
+      q: 'How does Tameeros Shorts support Pakistani & international creators?',
       a: 'English, Urdu, and Roman Urdu are first-class citizens. All pricing is quoted transparently in PKR, SECP-safe financial disclaimers are built in, and payment methods support local credit/debit cards and international cards with zero hidden conversion markups.',
     },
     {
-      q: 'Can I use SirfShoot AI for real estate marketing and client leads?',
-      a: 'Yes! SirfShoot includes full real estate tools: AI Property Description generator, Automated Video Creator, AI Property Valuation, Mortgage Simulator, and a full CRM Leads pipeline with WhatsApp follow-up generation.',
+      q: 'Can I use Tameeros Shorts for real estate marketing and client leads?',
+      a: 'Yes! Tameeros Shorts includes full real estate tools: AI Property Description generator, Automated Video Creator, AI Property Valuation, Mortgage Simulator, and a full CRM Leads pipeline with WhatsApp follow-up generation.',
     },
     {
       q: 'How long does a complete video package take to generate?',
@@ -348,7 +348,7 @@ export default function HomePage() {
 
             {/* Subhead */}
             <p className="mx-auto mt-6 max-w-3xl text-base sm:text-xl font-medium text-[#071B3A]/85 leading-relaxed">
-              Create, transform, and manage your creative workflow with <strong className="font-extrabold text-[#071B3A]">SirfShoot AI</strong>.
+              Create, transform, and manage your creative workflow with <strong className="font-extrabold text-[#071B3A]">Tameeros Shorts</strong>.
               From deep research and tone-matched scripts to photorealistic visuals, storyboards, voiceovers, and CRM leads — all in one unified studio.
             </p>
 
@@ -402,7 +402,7 @@ export default function HomePage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="h-3.5 w-3.5 rounded-full bg-[#FF681B]"></div>
-                      <span className="text-xs font-black tracking-wide uppercase text-white/90">SirfShoot App</span>
+                      <span className="text-xs font-black tracking-wide uppercase text-white/90">Tameeros Shorts App</span>
                     </div>
                     <div className="flex gap-1">
                       <div className="h-1.5 w-1.5 rounded-full bg-white/60"></div>
@@ -674,7 +674,7 @@ export default function HomePage() {
                 Everything You Need to Create at Scale.
               </h2>
               <p className="mt-3 text-slate-600 text-base sm:text-lg">
-                Explore every tool built into SirfShoot AI. No placeholders, no vaporware — click any card to launch its live workspace.
+                Explore every tool built into Tameeros Shorts. No placeholders, no vaporware — click any card to launch its live workspace.
               </p>
 
               {/* Category Filter Pills */}
@@ -804,7 +804,7 @@ export default function HomePage() {
                   <div className="h-3 w-3 rounded-full bg-[#FFD900]"></div>
                   <div className="h-3 w-3 rounded-full bg-emerald-400"></div>
                   <span className="ml-3 font-mono text-xs text-slate-300">
-                    sirfshoot.ai/studio/{demoTopics[activeDemoTopic].id}
+                    tameerosshorts.com/studio/{demoTopics[activeDemoTopic].id}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-bold text-[#FFD900]">
@@ -969,7 +969,7 @@ export default function HomePage() {
                 From Raw Idea to Publish-Ready in Minutes.
               </h2>
               <p className="mt-3 text-slate-600 text-base sm:text-lg">
-                Stop staring at an empty teleprompter or spending 8 hours on research. Here is how SirfShoot works.
+                Stop staring at an empty teleprompter or spending 8 hours on research. Here is how Tameeros Shorts works.
               </p>
             </div>
 
@@ -1037,7 +1037,7 @@ export default function HomePage() {
         </section>
 
         {/* ========================================================================= */}
-        {/* WHY SIRFSHOOT AI — DISTINCTIVE BENEFIT CARDS                              */}
+        {/* WHY TAMEEROS SHORTS — DISTINCTIVE BENEFIT CARDS                              */}
         {/* ========================================================================= */}
         <section className="py-20 sm:py-28 border-b-2 border-slate-200/80 bg-white">
           <div className="mx-auto max-w-[1560px] px-4 sm:px-6 lg:px-8 xl:px-10">
@@ -1052,7 +1052,7 @@ export default function HomePage() {
                 </h2>
                 <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
                   Most AI tools give you a generic 300-word essay with clichés like &quot;dive deep&quot; and &quot;unlock the power&quot;.
-                  SirfShoot is built specifically for creators who talk to a camera.
+                  Tameeros Shorts is built specifically for creators who talk to a camera.
                 </p>
 
                 <div className="space-y-4">
@@ -1092,7 +1092,7 @@ export default function HomePage() {
                     href="/create"
                     className="btn-3d-navy inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-black text-white"
                   >
-                    <span>Test SirfShoot Risk-Free</span>
+                    <span>Test Tameeros Shorts Risk-Free</span>
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -1127,7 +1127,7 @@ export default function HomePage() {
 
                 <div className="rounded-[32px] border-4 border-[#071B3A] bg-[#FFD900] p-7 text-[#071B3A] shadow-xl space-y-4">
                   <div className="flex items-center justify-between border-b border-[#071B3A]/20 pb-3">
-                    <span className="text-xs font-mono font-black text-[#071B3A]">SIRFSHOOT 9-AGENT PIPELINE (3 MINUTES)</span>
+                    <span className="text-xs font-mono font-black text-[#071B3A]">TAMEEROS SHORTS 9-AGENT PIPELINE (3 MINUTES)</span>
                     <span className="text-xs bg-[#071B3A] text-white px-2.5 py-0.5 rounded-full font-black">10x Speed</span>
                   </div>
                   <div className="space-y-2 text-xs font-extrabold text-[#071B3A]">

@@ -88,7 +88,7 @@ export default function DashboardPage() {
     },
     {
       id: 'cursos',
-      title: 'SirfShoot Academy',
+      title: 'Tameeros Academy',
       description: 'Master practical paid advertising, video creatives, and conversion funnels that close deals.',
       icon: GraduationCap,
       gradient: 'from-purple-600 to-pink-600',

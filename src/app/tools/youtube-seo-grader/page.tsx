@@ -162,7 +162,7 @@ export default function YouTubeSeoGraderPage() {
 
               <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <span className="text-xs text-slate-400">
-                  Generate complete 97+ scored SEO packages automatically with SirfShoot.
+                  Generate complete 97+ scored SEO packages automatically with Tameeros Shorts.
                 </span>
                 <Link
                   href="/create"

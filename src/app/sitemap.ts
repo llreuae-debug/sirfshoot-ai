@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://sirfshoot-ai.vercel.app';
+  const baseUrl = 'https://tameeros-shorts.vercel.app';
   const lastModified = new Date();
 
   // Public indexable routes with priorities and change frequencies

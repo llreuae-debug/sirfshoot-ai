@@ -165,7 +165,7 @@ export default function YouTubeIncomeCalculatorPage() {
                   href="/create"
                   className="btn-shadow w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#E50914] py-2.5 text-xs font-bold text-white hover:bg-[#B91C1C] transition"
                 >
-                  <span>Produce High-RPM Scripts with SirfShoot</span>
+                  <span>Produce High-RPM Scripts with Tameeros Shorts</span>
                   <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>

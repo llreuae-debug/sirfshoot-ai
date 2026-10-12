@@ -2,13 +2,13 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   return NextResponse.json({
-    product: 'SirfShoot AI',
-    productName: 'SirfShoot AI',
+    product: 'Tameeros Shorts',
+    productName: 'Tameeros Shorts',
     superAdminEmail: 'llre.uae@gmail.com',
     version: '2027.1',
     description: 'The AI Content Operating System for video creators and real estate professionals.',
-    officialUrl: 'https://sirfshoot-ai.vercel.app',
-    sitemapUrl: 'https://sirfshoot-ai.vercel.app/sitemap.xml',
+    officialUrl: 'https://tameeros-shorts.vercel.app',
+    sitemapUrl: 'https://tameeros-shorts.vercel.app/sitemap.xml',
     languages: ['English', 'Urdu', 'Roman Urdu', 'Hinglish'],
     currency: 'PKR',
     pricing: [
@@ -32,8 +32,8 @@ export async function GET() {
       '12 Instant Free Creator Micro-Tools',
     ],
     contact: {
-      email: 'hello@sirfshoot.ai',
-      support: 'support@sirfshoot.ai',
+      email: 'hello@tameeros.com',
+      support: 'support@tameeros.com',
     },
     meta: {
       timestamp: new Date().toISOString(),

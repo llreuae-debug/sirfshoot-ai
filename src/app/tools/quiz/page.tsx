@@ -114,7 +114,7 @@ export default function CreatorQuizPage() {
               <div className="rounded-xl border border-white/5 bg-white/[0.02] p-4 max-w-md mx-auto text-xs text-slate-300 space-y-1.5 text-left">
                 <div className="font-bold text-white">Recommended Production Stack:</div>
                 <div>• Tone Fingerprint: Analytical Hinglish Explainer (65% Blend)</div>
-                <div>• Ideal Plan: SirfShoot Creator Plan (7 scripts/month)</div>
+                <div>• Ideal Plan: Tameeros Shorts Creator Plan (7 scripts/month)</div>
                 <div>• Estimated Time Saved: 24+ hours per month</div>
               </div>
 

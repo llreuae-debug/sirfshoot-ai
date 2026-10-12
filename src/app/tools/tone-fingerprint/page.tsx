@@ -121,7 +121,7 @@ export default function ToneFingerprintToolPage() {
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div>
                   <h3 className="text-xl font-bold text-white">Extracted Tone Fingerprint</h3>
-                  <p className="text-xs text-slate-400">Ready to inject into SirfShoot 9-agent pipeline</p>
+                  <p className="text-xs text-slate-400">Ready to inject into Tameeros Shorts 9-agent pipeline</p>
                 </div>
                 <span className="rounded-md bg-emerald-500/20 text-emerald-400 font-mono text-xs px-2.5 py-1 font-bold">
                   Voice Score: {result.channelScore}
@@ -164,7 +164,7 @@ export default function ToneFingerprintToolPage() {
 
               <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <span className="text-xs text-slate-400">
-                  Save this voice profile directly into your SirfShoot studio account.
+                  Save this voice profile directly into your Tameeros Shorts studio account.
                 </span>
                 <Link
                   href="/create"

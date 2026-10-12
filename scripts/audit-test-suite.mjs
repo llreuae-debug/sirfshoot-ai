@@ -156,7 +156,7 @@ async function runAudit() {
     { path: '/tools/youtube-seo-grader', expectedStatus: 200, name: 'Tool: YouTube SEO & AEO Grader' },
     { path: '/imagens', expectedStatus: 200, name: 'Tool: Social Post Studio 2.0 & Enhancer (/imagens)' },
     { path: '/descricoes', expectedStatus: 200, name: 'Tool: AI Description Generator (/descricoes)' },
-    { path: '/cursos', expectedStatus: 200, name: 'Tool: SirfShoot Academy (/cursos)' },
+    { path: '/cursos', expectedStatus: 200, name: 'Tool: Tameeros Academy (/cursos)' },
     { path: '/assistente', expectedStatus: 200, name: 'Tool: AI Real Estate Copilot (/assistente)' },
     { path: '/leads', expectedStatus: 200, name: 'Tool: Leads CRM Pipeline (/leads)' },
     { path: '/narracao', expectedStatus: 200, name: 'Tool: AI Voiceover Studio (/narracao)' },
@@ -312,7 +312,7 @@ async function runAudit() {
       try {
         const json = JSON.parse(res.body);
         if (
-          json.productName === 'SirfShoot AI' &&
+          (json.productName === 'Tameeros Shorts' || json.productName === 'SirfShoot AI') &&
           Array.isArray(json.verifiedFeatures) &&
           json.verifiedFeatures.length >= 5 &&
           json.superAdminEmail === 'llre.uae@gmail.com'
@@ -332,7 +332,7 @@ async function runAudit() {
     const res = await fetchRoute('/sitemap.xml', 'GET');
     let passed = false;
     let details = `HTTP Status: ${res.status}`;
-    if (res.status === 200 && res.body.includes('<urlset') && res.body.includes('https://sirfshoot-ai.vercel.app')) {
+    if (res.status === 200 && res.body.includes('<urlset') && (res.body.includes('https://tameeros-shorts.vercel.app') || res.body.includes('https://sirfshoot-ai.vercel.app'))) {
       passed = true;
       details = `Valid XML sitemap with canonical host (Body length: ${res.body.length} bytes)`;
     }
@@ -549,7 +549,7 @@ async function runAudit() {
   const llmsTxtPath = path.join(ROOT_DIR, 'public/llms.txt');
   const llmsTxtExists = fs.existsSync(llmsTxtPath);
   const llmsTxtContent = llmsTxtExists ? fs.readFileSync(llmsTxtPath, 'utf8') : '';
-  const hasGeoFactuality = llmsTxtContent.includes('SirfShoot AI') && (llmsTxtContent.includes('9-Agent Autonomous Production Pipeline') || llmsTxtContent.includes('9 Autonomous AI Agents'));
+  const hasGeoFactuality = (llmsTxtContent.includes('Tameeros Shorts') || llmsTxtContent.includes('SirfShoot AI')) && (llmsTxtContent.includes('9-Agent Autonomous Production Pipeline') || llmsTxtContent.includes('9 Autonomous AI Agents'));
   recordTest('security', 'GEO llms.txt knowledge base deployed in public directory', llmsTxtExists && hasGeoFactuality, 'Provides factual context for LLM crawlers');
 
   // Verify Auditable Ledger Double-Entry Separation

@@ -60,16 +60,16 @@ export default function PrivacyPolicyPage() {
                 <span>Effective Date: October 12, 2026 · Version 3.4</span>
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
-                SirfShoot AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">Privacy Policy</span>
+                Tameeros Shorts <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">Privacy Policy</span>
               </h1>
               <p className="mt-3 text-base text-slate-300 max-w-2xl leading-relaxed">
-                How SirfShoot AI collects, protects, isolates, and respects your creative data, voice fingerprints, video scripts, and platform account credentials.
+                How Tameeros Shorts collects, protects, isolates, and respects your creative data, voice fingerprints, video scripts, and platform account credentials.
               </p>
             </div>
 
             <div className="flex items-center gap-3 shrink-0">
               <a
-                href="mailto:privacy@sirfshoot.ai"
+                href="mailto:privacy@tameeros.com"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] border border-white/10 text-xs font-bold text-white transition"
               >
                 <Mail className="h-4 w-4 text-[#E50914]" />
@@ -142,7 +142,7 @@ export default function PrivacyPolicyPage() {
               <div className="pt-4 border-t border-white/[0.06] text-[11px] text-slate-400 space-y-2">
                 <p>Need a signed Data Processing Addendum (DPA) for your media agency?</p>
                 <a
-                  href="mailto:legal@sirfshoot.ai"
+                  href="mailto:legal@tameeros.com"
                   className="inline-flex items-center gap-1 text-[#E50914] font-bold hover:underline"
                 >
                   Request Agency DPA →
@@ -161,10 +161,10 @@ export default function PrivacyPolicyPage() {
                 Executive Overview & Scope
               </h2>
               <p>
-                Welcome to SirfShoot AI (&quot;SirfShoot&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). SirfShoot AI operates the creative operating system for video creators, providing autonomous 9-agent workflows, tone fingerprinting, scriptwriting, teleprompter tools, thumbnail generation, and YouTube SEO optimization.
+                Welcome to Tameeros Shorts (&quot;Tameeros Shorts&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). Tameeros Shorts operates the creative operating system for video creators, providing autonomous 9-agent workflows, tone fingerprinting, scriptwriting, teleprompter tools, thumbnail generation, and YouTube SEO optimization.
               </p>
               <p>
-                This Privacy Policy applies to all services provided across <code className="text-emerald-400 bg-white/[0.05] px-1.5 py-0.5 rounded">sirfshoot-ai.vercel.app</code> and associated domain names, APIs, and client-side web applications. By accessing or using our platform, you acknowledge that you have read and understood how we handle personal data as set forth herein.
+                This Privacy Policy applies to all services provided across <code className="text-emerald-400 bg-white/[0.05] px-1.5 py-0.5 rounded">tameeros-shorts.vercel.app</code> and associated domain names, APIs, and client-side web applications. By accessing or using our platform, you acknowledge that you have read and understood how we handle personal data as set forth herein.
               </p>
               <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs space-y-1">
                 <p className="font-bold flex items-center gap-1.5">
@@ -172,7 +172,7 @@ export default function PrivacyPolicyPage() {
                   Key Commitment:
                 </p>
                 <p>
-                  You own 100% of your created scripts, audio clones, prompts, and video packages. We do not claim intellectual property rights over any creator assets processed on SirfShoot AI.
+                  You own 100% of your created scripts, audio clones, prompts, and video packages. We do not claim intellectual property rights over any creator assets processed on Tameeros Shorts.
                 </p>
               </div>
             </section>
@@ -215,7 +215,7 @@ export default function PrivacyPolicyPage() {
                 AI Processing & Zero-Training Pledge
               </h2>
               <p>
-                SirfShoot AI integrates advanced enterprise language and vision models through strictly bounded API endpoints with enterprise zero-retention agreements:
+                Tameeros Shorts integrates advanced enterprise language and vision models through strictly bounded API endpoints with enterprise zero-retention agreements:
               </p>
               <ul className="space-y-2 list-disc list-inside text-xs text-slate-300 pl-2">
                 <li><strong>No Public Model Training:</strong> Your private video concepts, teleprompter scripts, and unreleased hooks are NEVER fed into model training weights or shared across competing creators.</li>
@@ -253,13 +253,13 @@ export default function PrivacyPolicyPage() {
                 YouTube API & Third-Party Integrations
               </h2>
               <p>
-                SirfShoot AI allows optional integration with YouTube to fetch public video performance and upload drafts:
+                Tameeros Shorts allows optional integration with YouTube to fetch public video performance and upload drafts:
               </p>
               <ul className="space-y-2 list-disc list-inside text-xs text-slate-300 pl-2">
-                <li>SirfShoot AI uses YouTube API Services. By connecting your channel, you agree to the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer" className="text-[#E50914] underline inline-flex items-center gap-1">YouTube Terms of Service <ExternalLink className="h-3 w-3 inline" /></a>.</li>
+                <li>Tameeros Shorts uses YouTube API Services. By connecting your channel, you agree to the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer" className="text-[#E50914] underline inline-flex items-center gap-1">YouTube Terms of Service <ExternalLink className="h-3 w-3 inline" /></a>.</li>
                 <li>Your access to Google data is governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#E50914] underline inline-flex items-center gap-1">Google Privacy Policy <ExternalLink className="h-3 w-3 inline" /></a>.</li>
                 <li>We only request the minimum required scopes (<code className="text-emerald-400 bg-white/[0.05] px-1 rounded">youtube.readonly</code> and <code className="text-emerald-400 bg-white/[0.05] px-1 rounded">youtube.upload</code>). We never modify existing videos or delete channel content.</li>
-                <li>You may revoke SirfShoot AI&apos;s access at any moment via <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-cyan-400 underline inline-flex items-center gap-1">Google Security Settings <ExternalLink className="h-3 w-3 inline" /></a>.</li>
+                <li>You may revoke Tameeros Shorts&apos;s access at any moment via <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-cyan-400 underline inline-flex items-center gap-1">Google Security Settings <ExternalLink className="h-3 w-3 inline" /></a>.</li>
               </ul>
             </section>
 
@@ -298,12 +298,12 @@ export default function PrivacyPolicyPage() {
                 Your Privacy Rights (GDPR & PECA)
               </h2>
               <p>
-                Regardless of your geographic location, SirfShoot AI provides universal data control rights:
+                Regardless of your geographic location, Tameeros Shorts provides universal data control rights:
               </p>
               <div className="space-y-2 text-xs">
                 <p>• <strong>Right to Access & Portability:</strong> Export all your scripts, storyboards, and project packages in JSON or Markdown format at any time.</p>
                 <p>• <strong>Right to Rectification:</strong> Update your profile data, email, or connected channels immediately in your dashboard.</p>
-                <p>• <strong>Right to Erasure (&quot;Right to be Forgotten&quot;):</strong> Request full account deletion by emailing <a href="mailto:privacy@sirfshoot.ai" className="text-[#E50914] font-semibold">privacy@sirfshoot.ai</a>. All project drafts, voice vectors, and cached assets are permanently purged within 14 business days.</p>
+                <p>• <strong>Right to Erasure (&quot;Right to be Forgotten&quot;):</strong> Request full account deletion by emailing <a href="mailto:privacy@tameeros.com" className="text-[#E50914] font-semibold">privacy@tameeros.com</a>. All project drafts, voice vectors, and cached assets are permanently purged within 14 business days.</p>
                 <p>• <strong>Pakistan PECA Compliance:</strong> We adhere strictly to the Prevention of Electronic Crimes Act 2016 and local consumer protection guidelines regarding digital transaction transparency.</p>
               </div>
             </section>
@@ -331,16 +331,16 @@ export default function PrivacyPolicyPage() {
               <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] space-y-3 text-xs">
                 <div className="flex items-center gap-2 text-white font-bold text-sm">
                   <Shield className="h-4 w-4 text-[#E50914]" />
-                  <span>SirfShoot AI Legal & Compliance</span>
+                  <span>Tameeros Shorts Legal & Compliance</span>
                 </div>
                 <p className="text-slate-300">
-                  Email: <a href="mailto:privacy@sirfshoot.ai" className="text-[#E50914] font-bold">privacy@sirfshoot.ai</a> / <a href="mailto:legal@sirfshoot.ai" className="text-slate-200">legal@sirfshoot.ai</a>
+                  Email: <a href="mailto:privacy@tameeros.com" className="text-[#E50914] font-bold">privacy@tameeros.com</a> / <a href="mailto:legal@tameeros.com" className="text-slate-200">legal@tameeros.com</a>
                 </p>
                 <p className="text-slate-300">
-                  General Inquiries: <a href="mailto:hello@sirfshoot.ai" className="text-slate-200">hello@sirfshoot.ai</a>
+                  General Inquiries: <a href="mailto:hello@tameeros.com" className="text-slate-200">hello@tameeros.com</a>
                 </p>
                 <p className="text-slate-400">
-                  Headquarters: SirfShoot AI Creative Technologies, Gulberg III, Lahore, Pakistan · Dubai Silicon Oasis, UAE.
+                  Headquarters: Tameeros Shorts Creative Technologies, Gulberg III, Lahore, Pakistan · Dubai Silicon Oasis, UAE.
                 </p>
               </div>
             </section>

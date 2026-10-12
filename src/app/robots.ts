@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://sirfshoot-ai.vercel.app';
+  const baseUrl = 'https://tameeros-shorts.vercel.app';
 
   return {
     rules: [

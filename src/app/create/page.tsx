@@ -85,7 +85,7 @@ export default function CreateProjectPage() {
     setIsGenerating(true);
     setProgressPercent(5);
     setCurrentStep(1);
-    setLiveLogs([`[00:01] Initializing SirfShoot 9-Agent Pipeline for: "${topic.slice(0, 40)}..."`]);
+    setLiveLogs([`[00:01] Initializing Tameeros Shorts 9-Agent Pipeline for: "${topic.slice(0, 40)}..."`]);
 
     const chosenTone: ToneFingerprint =
       state.activeFingerprints.find((t) => t.id === selectedToneId) || state.activeFingerprints[0];

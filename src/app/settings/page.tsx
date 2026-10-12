@@ -48,7 +48,7 @@ export default function SettingsPage() {
                 <h2 className="text-lg font-bold text-slate-900">AI Model Provider Configuration</h2>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed">
-                By default, SirfShoot runs using our built-in multi-agent intelligence server. You may optionally provide your own personal Google Gemini or OpenAI API keys for direct zero-latency quota usage.
+                By default, Tameeros Shorts runs using our built-in multi-agent intelligence server. You may optionally provide your own personal Google Gemini or OpenAI API keys for direct zero-latency quota usage.
               </p>
 
               <div className="space-y-4 pt-2">

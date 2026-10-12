@@ -22,7 +22,7 @@ import {
   DEFAULT_SAVED_FINANCINGS,
 } from './mock-data';
 
-const STORAGE_KEY = 'sirfshoot_creator_state_v1';
+const STORAGE_KEY = (typeof window !== 'undefined' && localStorage.getItem('tameeros_creator_state_v1') ? 'tameeros_creator_state_v1' : (typeof window !== 'undefined' && localStorage.getItem('sirfshoot_creator_state_v1') ? 'sirfshoot_creator_state_v1' : 'tameeros_creator_state_v1'));
 
 export function getInitialState(): UserState {
   if (typeof window === 'undefined') {

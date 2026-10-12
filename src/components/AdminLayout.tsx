@@ -106,8 +106,8 @@ export default function AdminLayout({
               <Sparkles className="h-4 w-4" />
             </div>
             <div className="font-black text-lg tracking-tight leading-none">
-              <span className="text-white">Sirf</span>
-              <span className="text-[#F20D1B]">Shoot</span>
+              <span className="text-white">Tameeros</span>
+              <span className="text-[#F20D1B] ml-1">Shorts</span>
               <span className="ml-1 text-[10px] text-[#FFD900] font-mono uppercase bg-white/10 px-1 py-0.5 rounded">
                 Admin
               </span>

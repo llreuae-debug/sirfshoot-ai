@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
 
     // Intelligent domain-grounded assistant reasoning
     if (lower.includes('price') || lower.includes('cost') || lower.includes('pricing') || lower.includes('plan')) {
-      reply = `SirfShoot AI offers transparent pricing quoted in Pakistani Rupee (PKR):\n\n` +
+      reply = `Tameeros Shorts offers transparent pricing quoted in Pakistani Rupee (PKR):\n\n` +
         `• **Free Trial:** PKR 0 for 7 days (includes 2 full 9-agent video packages, no credit card required).\n` +
         `• **Starter Plan:** PKR 499 / month (3 full video packages).\n` +
         `• **Creator Plan (Most Popular):** PKR 999 / month (7 full video packages, unlimited Voice Fingerprints, 3-variant thumbnails).\n` +
@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
         { label: 'Start Studio with Free Trial', actionType: 'navigate', payload: '/create' },
       ];
     } else if (lower.includes('9 agent') || lower.includes('pipeline') || lower.includes('how it works') || lower.includes('how does')) {
-      reply = `SirfShoot AI transforms your topic into a ready-to-shoot production package in ~3 minutes using 9 autonomous AI agents:\n\n` +
+      reply = `Tameeros Shorts transforms your topic into a ready-to-shoot production package in ~3 minutes using 9 autonomous AI agents:\n\n` +
         `1. **Agent 01 (Research):** Scrapes live Google Trends & YouTube signals.\n` +
         `2. **Agent 02 (Script Engine):** Generates spoken teleprompter scripts matched to your Voice Fingerprint.\n` +
         `3. **Agent 03 (Fact Check):** Cross-checks claims with verified sources.\n` +
@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
         { label: 'High-RPM Niche Picker', actionType: 'navigate', payload: '/tools/niche-picker' },
       ];
     } else if (lower.includes('real estate') || lower.includes('property') || lower.includes('lead') || lower.includes('mortgage')) {
-      reply = `SirfShoot AI includes specialized AI real estate tools tailored for brokers and agencies:\n\n` +
+      reply = `Tameeros Shorts includes specialized AI real estate tools tailored for brokers and agencies:\n\n` +
         `• **Automated Video Generator (/video-automatico):** Turns property photos into cinematic video tours.\n` +
         `• **Property Valuation Copilot (/precificacao):** AI comparative market analysis.\n` +
         `• **Mortgage Simulator (/financiamento):** Monthly installment calculation.\n` +
@@ -122,7 +122,7 @@ export async function POST(req: NextRequest) {
       lower.includes('problem') ||
       lower.includes('timeout')
     ) {
-      reply = `I apologize that you encountered a technical issue. Our autonomous Site Reliability system (**SirfShoot Guardian AI**) continuously monitors system health and can investigate immediately.\n\n` +
+      reply = `I apologize that you encountered a technical issue. Our autonomous Site Reliability system (**Tameeros Guardian AI**) continuously monitors system health and can investigate immediately.\n\n` +
         `Would you like me to log an incident directly with the Guardian Operations team? I will include sanitized diagnostic telemetry from your session so engineers can resolve it promptly.`;
       suggestedActions = [
         { label: 'Escalate to Guardian AI Operations', actionType: 'escalate', payload: userMessage },
@@ -130,7 +130,7 @@ export async function POST(req: NextRequest) {
       ];
     } else if (lower.includes('contact') || lower.includes('support') || lower.includes('human') || lower.includes('help')) {
       reply = `Our support team is available across multiple channels:\n\n` +
-        `• **Email:** hello@sirfshoot.ai / support@sirfshoot.ai\n` +
+        `• **Email:** hello@tameeros.com / support@tameeros.com\n` +
         `• **Super Administrator:** llre.uae@gmail.com\n` +
         `• **Locations:** Karachi & Dubai\n` +
         `• **Response Time:** Typically under 2 hours for active subscribers.`;
@@ -139,7 +139,7 @@ export async function POST(req: NextRequest) {
         { label: 'Read Creator Playbooks', actionType: 'navigate', payload: '/blog' },
       ];
     } else {
-      reply = `Hello! I am the **SirfShoot AI Assistant**. I can help you with:\n\n` +
+      reply = `Hello! I am the **Tameeros Shorts Assistant**. I can help you with:\n\n` +
         `1. Using the **9-Agent Autonomous Production Pipeline** to generate video scripts.\n` +
         `2. Understanding our **PKR Pricing Plans** and credit allocations.\n` +
         `3. Setting up your unique **Tone Fingerprint**.\n` +

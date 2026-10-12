@@ -114,7 +114,7 @@ export default function PricingPage() {
     },
     {
       q: 'Are all prices quoted in PKR?',
-      a: 'Yes. All prices listed on SirfShoot are quoted in Pakistani Rupees (PKR). You will receive an official digital invoice upon subscription confirmation.',
+      a: 'Yes. All prices listed on Tameeros Shorts are quoted in Pakistani Rupees (PKR). You will receive an official digital invoice upon subscription confirmation.',
     },
     {
       q: 'Do unused scripts roll over to the next month?',

@@ -124,7 +124,7 @@ export default function TitleTesterPage() {
 
               <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <span className="text-xs text-slate-400">
-                  Generate optimized titles and complete scripts in SirfShoot Studio.
+                  Generate optimized titles and complete scripts in Tameeros Shorts Studio.
                 </span>
                 <Link
                   href="/create"

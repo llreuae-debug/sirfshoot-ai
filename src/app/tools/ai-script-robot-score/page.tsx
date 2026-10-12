@@ -132,7 +132,7 @@ export default function AiScriptRobotScorePage() {
 
               <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                 <span className="text-xs text-slate-400">
-                  SirfShoot eliminates 100% of robotic tells using channel Tone Fingerprints.
+                  Tameeros Shorts eliminates 100% of robotic tells using channel Tone Fingerprints.
                 </span>
                 <Link
                   href="/create"

@@ -44,7 +44,7 @@ function ClientAssistantInner() {
     {
       id: 'welcome-1',
       role: 'assistant',
-      content: `Hello! I am the **SirfShoot AI Assistant**.\n\nI can help you navigate the 9-agent production pipeline, understand pricing in PKR, set up your Tone Fingerprint, or report technical issues to our autonomous operations team. How can I assist you today?`,
+      content: `Hello! I am the **Tameeros Shorts Assistant**.\n\nI can help you navigate the 9-agent production pipeline, understand pricing in PKR, set up your Tone Fingerprint, or report technical issues to our autonomous operations team. How can I assist you today?`,
       timestamp: '2026-10-12T00:00:00Z',
       suggestedActions: [
         { label: 'How does 9-Agent work?', actionType: 'prefill', payload: 'How does the 9-Agent Pipeline work?' },
@@ -154,7 +154,7 @@ function ClientAssistantInner() {
         const escalationConfirmation: AssistantMessage = {
           id: nextAssistantId('msg-esc'),
           role: 'assistant',
-          content: `Incident **${data.incidentId}** has been registered with **SirfShoot Guardian AI Operations**.\n\n` +
+          content: `Incident **${data.incidentId}** has been registered with **Tameeros Guardian AI Operations**.\n\n` +
             `• **Service Target:** Client Application (${pathname})\n` +
             `• **Diagnostic Status:** Dispatched\n` +
             `• **Severity:** P2 (Investigating)\n\n` +
@@ -191,7 +191,7 @@ function ClientAssistantInner() {
       {
         id: nextAssistantId('msg-clr'),
         role: 'assistant',
-        content: 'Conversation history cleared. How can I help you with SirfShoot AI?',
+        content: 'Conversation history cleared. How can I help you with Tameeros Shorts?',
         timestamp: new Date().toISOString(),
         suggestedActions: [
           { label: 'How does 9-Agent work?', actionType: 'prefill', payload: 'How does the 9-Agent Pipeline work?' },
@@ -216,7 +216,7 @@ function ClientAssistantInner() {
               setHasUnread(false);
             }}
             className="group relative flex items-center gap-2.5 px-4 py-3 bg-[#071B3A] text-white rounded-full shadow-2xl border border-white/20 hover:scale-105 active:scale-95 transition cursor-pointer"
-            aria-label="Open SirfShoot AI Assistant"
+            aria-label="Open Tameeros Shorts Assistant"
           >
             <div className="relative h-7 w-7 rounded-full bg-gradient-to-br from-[#FFD900] to-[#E5A800] text-[#071B3A] flex items-center justify-center font-bold shadow-md">
               <Bot className="h-4 w-4" />
@@ -244,7 +244,7 @@ function ClientAssistantInner() {
                 <Sparkles className="h-4.5 w-4.5" />
               </div>
               <div>
-                <h3 className="font-black text-sm text-white leading-tight">SirfShoot AI Assistant</h3>
+                <h3 className="font-black text-sm text-white leading-tight">Tameeros Shorts Assistant</h3>
                 <div className="flex items-center gap-1.5 text-[10px] text-slate-300 font-medium">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   <span>Online · Connected to Guardian Ops</span>

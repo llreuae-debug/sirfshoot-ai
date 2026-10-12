@@ -71,7 +71,7 @@ export default function DescricoesPage() {
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedOutput, setGeneratedOutput] = useState(
-    `🌟 RARE OPPORTUNITY: LUXURY APARTMENT IN GULBERG III — LAHORE\n\nDesigned for those who demand uncompromising comfort, security, and prestige, this property offers the ultimate blend of elegance and lifestyle convenience.\n\n📍 KEY HIGHLIGHTS:\n• Living Area: 350 sq.m\n• Bedrooms: 4 spacious en-suite bedrooms\n• Bathrooms: 4 designer luxury baths\n• Parking: 3 covered parking spaces\n• Listing Price (Sale): PKR 85,000,000\n\n💎 AMENITIES & FEATURES:\n• Rooftop Swimming Pool\n• 24/7 Gated Security\n• Spacious Panoramic Balcony\n• Smart Home Automation\n\n📝 AGENT NOTES & SPECIAL HIGHLIGHTS:\nDouble-height ceiling, floor-to-ceiling glass windows, imported marble flooring, direct developer terms.\n\nFull property appraisal dossier and mortgage simulation available upon request. Send a direct message or click our WhatsApp link to book your private VIP tour.\n\n#LuxuryRealEstate #LuxuryApartment #GulbergIII #SirfShootAI #ExclusiveListing #PrimeProperty`
+    `🌟 RARE OPPORTUNITY: LUXURY APARTMENT IN GULBERG III — LAHORE\n\nDesigned for those who demand uncompromising comfort, security, and prestige, this property offers the ultimate blend of elegance and lifestyle convenience.\n\n📍 KEY HIGHLIGHTS:\n• Living Area: 350 sq.m\n• Bedrooms: 4 spacious en-suite bedrooms\n• Bathrooms: 4 designer luxury baths\n• Parking: 3 covered parking spaces\n• Listing Price (Sale): PKR 85,000,000\n\n💎 AMENITIES & FEATURES:\n• Rooftop Swimming Pool\n• 24/7 Gated Security\n• Spacious Panoramic Balcony\n• Smart Home Automation\n\n📝 AGENT NOTES & SPECIAL HIGHLIGHTS:\nDouble-height ceiling, floor-to-ceiling glass windows, imported marble flooring, direct developer terms.\n\nFull property appraisal dossier and mortgage simulation available upon request. Send a direct message or click our WhatsApp link to book your private VIP tour.\n\n#LuxuryRealEstate #LuxuryApartment #GulbergIII #Tameeros ShortsAI #ExclusiveListing #PrimeProperty`
   );
   const [isListening, setIsListening] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
@@ -154,7 +154,7 @@ export default function DescricoesPage() {
       } else if (formatLength === 'medium') {
         result = `🏡 Experience world-class sophistication and modern elegance in ${neighborhood}, ${city}.\n\nThis magnificent ${propertyType.toLowerCase()} combines architectural finesse with exceptional lifestyle amenities:\n\n${amenitiesStr}\n\n📐 Total Area: ${area} sq.m\n🛏️ Suites / Bedrooms: ${bedrooms}\n🚿 Bathrooms: ${bathrooms}\n🚗 Parking: ${parking} covered spots\n💰 Asking Price: ${price}\n\n${specialNotes}\n\n🔑 Reserve your private walkthrough today. Direct flexible purchase terms available via WhatsApp!`;
       } else {
-        result = `🌟 RARE OPPORTUNITY: LUXURY ${propertyType.toUpperCase()} IN ${neighborhood.toUpperCase()} — ${city.toUpperCase()}\n\nDesigned for those who demand uncompromising comfort, security, and prestige, this property offers the ultimate blend of elegance and lifestyle convenience.\n\n📍 KEY HIGHLIGHTS:\n• Living Area: ${area} sq.m\n• Bedrooms: ${bedrooms} spacious en-suite bedrooms\n• Bathrooms: ${bathrooms} designer luxury baths\n• Parking: ${parking} covered parking spaces\n• Listing Price (${purpose}): ${price}\n\n💎 AMENITIES & FEATURES:\n${amenitiesStr}\n\n📝 AGENT NOTES & SPECIAL HIGHLIGHTS:\n${specialNotes}\n\nFull property appraisal dossier and mortgage simulation available upon request. Send a direct message or click our WhatsApp link to book your private VIP tour.\n\n#LuxuryRealEstate #${propertyType.replace(/\s+/g, '')} #${neighborhood.replace(/\s+/g, '')} #SirfShootAI #ExclusiveListing #PrimeProperty`;
+        result = `🌟 RARE OPPORTUNITY: LUXURY ${propertyType.toUpperCase()} IN ${neighborhood.toUpperCase()} — ${city.toUpperCase()}\n\nDesigned for those who demand uncompromising comfort, security, and prestige, this property offers the ultimate blend of elegance and lifestyle convenience.\n\n📍 KEY HIGHLIGHTS:\n• Living Area: ${area} sq.m\n• Bedrooms: ${bedrooms} spacious en-suite bedrooms\n• Bathrooms: ${bathrooms} designer luxury baths\n• Parking: ${parking} covered parking spaces\n• Listing Price (${purpose}): ${price}\n\n💎 AMENITIES & FEATURES:\n${amenitiesStr}\n\n📝 AGENT NOTES & SPECIAL HIGHLIGHTS:\n${specialNotes}\n\nFull property appraisal dossier and mortgage simulation available upon request. Send a direct message or click our WhatsApp link to book your private VIP tour.\n\n#LuxuryRealEstate #${propertyType.replace(/\s+/g, '')} #${neighborhood.replace(/\s+/g, '')} #Tameeros ShortsAI #ExclusiveListing #PrimeProperty`;
       }
 
       setGeneratedOutput(result);
@@ -190,7 +190,7 @@ export default function DescricoesPage() {
       tone,
       shortCopy: generatedOutput.slice(0, 160) + '...',
       detailedCopy: generatedOutput,
-      hashtags: ['#LuxuryRealEstate', `#${propertyType.replace(/\s+/g, '')}`, '#SirfShootAI'],
+      hashtags: ['#LuxuryRealEstate', `#${propertyType.replace(/\s+/g, '')}`, '#Tameeros ShortsAI'],
       createdAt: new Date().toISOString(),
     });
     setSaveSuccess(true);

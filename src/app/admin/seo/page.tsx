@@ -184,7 +184,7 @@ export default function SeoAdminPage() {
               </span>
             </div>
             <p className="text-slate-500 text-[11px]">
-              Every page links back to canonical root <code>https://sirfshoot-ai.vercel.app</code> to prevent duplicate content dilution.
+              Every page links back to canonical root <code>https://tameeros-shorts.vercel.app</code> to prevent duplicate content dilution.
             </p>
           </div>
 
@@ -327,7 +327,7 @@ export default function SeoAdminPage() {
                   <span className="h-3.5 w-3.5 rounded-full bg-red-600 text-[8px] text-white flex items-center justify-center font-bold">
                     S
                   </span>
-                  <span>https://sirfshoot-ai.vercel.app{editingPage.path}</span>
+                  <span>https://tameeros-shorts.vercel.app{editingPage.path}</span>
                 </div>
                 <div className="text-sm font-bold text-[#1a0dab] hover:underline cursor-pointer">
                   {editingPage.seoTitle || 'Title not set'}

@@ -109,7 +109,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
-            <p>© 2026 SirfShoot AI. All rights reserved. All prices quoted in PKR.</p>
+            <p>© 2026 Tameeros Shorts. All rights reserved. All prices quoted in PKR.</p>
             <span className="inline-flex items-center gap-1 text-slate-300 font-medium bg-white/[0.04] px-2.5 py-1 rounded-full border border-white/10">
               <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500" />
               Love made in Pakistan 🇵🇰
@@ -120,7 +120,7 @@ export default function Footer() {
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               9 Agents Operational
             </span>
-            <span>hello@sirfshoot.ai</span>
+            <span>hello@tameeros.com</span>
           </div>
         </div>
       </div>

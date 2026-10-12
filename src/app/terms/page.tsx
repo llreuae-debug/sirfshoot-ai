@@ -59,16 +59,16 @@ export default function TermsOfServicePage() {
                 <span>Effective Date: October 12, 2026 · Master Terms v3.4</span>
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
-                SirfShoot AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">Terms of Service</span>
+                Tameeros Shorts <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">Terms of Service</span>
               </h1>
               <p className="mt-3 text-base text-slate-300 max-w-2xl leading-relaxed">
-                Rules, creator ownership rights, acceptable use, billing guidelines, and legal agreements governing the use of SirfShoot AI.
+                Rules, creator ownership rights, acceptable use, billing guidelines, and legal agreements governing the use of Tameeros Shorts.
               </p>
             </div>
 
             <div className="flex items-center gap-3 shrink-0">
               <a
-                href="mailto:legal@sirfshoot.ai"
+                href="mailto:legal@tameeros.com"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] border border-white/10 text-xs font-bold text-white transition"
               >
                 <Mail className="h-4 w-4 text-[#E50914]" />
@@ -157,10 +157,10 @@ export default function TermsOfServicePage() {
                 Acceptance of Terms
               </h2>
               <p>
-                These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you (&quot;Creator&quot;, &quot;User&quot;, or &quot;You&quot;) and SirfShoot AI (&quot;SirfShoot&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;).
+                These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you (&quot;Creator&quot;, &quot;User&quot;, or &quot;You&quot;) and Tameeros Shorts (&quot;Tameeros Shorts&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;).
               </p>
               <p>
-                By creating an account, initiating a project, testing our micro-tools, or subscribing to any plan on <code className="text-emerald-400 bg-white/[0.05] px-1.5 py-0.5 rounded">sirfshoot-ai.vercel.app</code>, you represent that you are at least 18 years old (or have parental/guardian consent if between 13 and 18) and possess full legal capacity to enter into this agreement.
+                By creating an account, initiating a project, testing our micro-tools, or subscribing to any plan on <code className="text-emerald-400 bg-white/[0.05] px-1.5 py-0.5 rounded">tameeros-shorts.vercel.app</code>, you represent that you are at least 18 years old (or have parental/guardian consent if between 13 and 18) and possess full legal capacity to enter into this agreement.
               </p>
             </section>
 
@@ -171,7 +171,7 @@ export default function TermsOfServicePage() {
                 Description of Service & AI OS
               </h2>
               <p>
-                SirfShoot AI provides an autonomous 9-Agent Content OS designed specifically for YouTube, Shorts, TikTok, and Reels creators:
+                Tameeros Shorts provides an autonomous 9-Agent Content OS designed specifically for YouTube, Shorts, TikTok, and Reels creators:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
@@ -205,11 +205,11 @@ export default function TermsOfServicePage() {
                   Your Creative Property:
                 </p>
                 <p>
-                  As between you and SirfShoot AI, you own all rights, title, and interest in and to your Input Prompts and Output Results (including full YouTube scripts, thumbnails, voiceover audio, and SEO descriptions).
+                  As between you and Tameeros Shorts, you own all rights, title, and interest in and to your Input Prompts and Output Results (including full YouTube scripts, thumbnails, voiceover audio, and SEO descriptions).
                 </p>
               </div>
               <p>
-                SirfShoot AI hereby grants you an irrevocable, perpetual, worldwide, royalty-free, exclusive commercial license to monetize, broadcast, publish, distribute, and license all outputs created using your account across all platforms (including YouTube AdSense, brand sponsorships, and syndication).
+                Tameeros Shorts hereby grants you an irrevocable, perpetual, worldwide, royalty-free, exclusive commercial license to monetize, broadcast, publish, distribute, and license all outputs created using your account across all platforms (including YouTube AdSense, brand sponsorships, and syndication).
               </p>
             </section>
 
@@ -220,7 +220,7 @@ export default function TermsOfServicePage() {
                 Acceptable Use Policy (AUP)
               </h2>
               <p>
-                To preserve platform integrity, you agree NOT to use SirfShoot AI to create, generate, or distribute:
+                To preserve platform integrity, you agree NOT to use Tameeros Shorts to create, generate, or distribute:
               </p>
               <ul className="space-y-2.5 text-xs text-slate-300">
                 <li className="flex items-start gap-2">
@@ -259,7 +259,7 @@ export default function TermsOfServicePage() {
                   2. Impersonating politicians, news anchors, military officials, celebrities, or private citizens without express authorization is an irremediable breach leading to immediate account termination without refund.
                 </p>
                 <p>
-                  3. SirfShoot AI reserves the right to append invisible watermarks or audio provenance metadata to synthesized tracks for auditability.
+                  3. Tameeros Shorts reserves the right to append invisible watermarks or audio provenance metadata to synthesized tracks for auditability.
                 </p>
               </div>
             </section>
@@ -271,7 +271,7 @@ export default function TermsOfServicePage() {
                 Subscription Plans, PKR Pricing & Credits
               </h2>
               <p>
-                SirfShoot AI offers transparent subscription tiers quoted in Pakistani Rupees (PKR):
+                Tameeros Shorts offers transparent subscription tiers quoted in Pakistani Rupees (PKR):
               </p>
               <ul className="space-y-2 text-xs text-slate-300 list-disc list-inside pl-2">
                 <li><strong>Free Trial:</strong> 7-day trial with 2 complete video production packages.</li>
@@ -305,7 +305,7 @@ export default function TermsOfServicePage() {
                 Limitation of Liability
               </h2>
               <p className="text-xs text-slate-400 leading-relaxed">
-                TO THE MAXIMUM EXTENT PERMITTED UNDER APPLICABLE LAW, IN NO EVENT SHALL SIRFSHOOT AI, ITS DIRECTORS, EMPLOYEES, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF YOUTUBE AD REVENUE, ALGORITHMIC PERFORMANCE FLUCTUATIONS, OR CHANNEL STRIKES ARISING OUT OF THIRD-PARTY PLATFORM POLICY CHANGES. OUR TOTAL AGGREGATE LIABILITY SHALL NOT EXCEED THE AMOUNT PAID BY YOU TO SIRFSHOOT AI IN THE THREE (3) MONTHS PRECEDING THE CLAIM.
+                TO THE MAXIMUM EXTENT PERMITTED UNDER APPLICABLE LAW, IN NO EVENT SHALL TAMEEROS SHORTS, ITS DIRECTORS, EMPLOYEES, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF YOUTUBE AD REVENUE, ALGORITHMIC PERFORMANCE FLUCTUATIONS, OR CHANNEL STRIKES ARISING OUT OF THIRD-PARTY PLATFORM POLICY CHANGES. OUR TOTAL AGGREGATE LIABILITY SHALL NOT EXCEED THE AMOUNT PAID BY YOU TO TAMEEROS SHORTS IN THE THREE (3) MONTHS PRECEDING THE CLAIM.
               </p>
             </section>
 
@@ -332,13 +332,13 @@ export default function TermsOfServicePage() {
               <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] space-y-3 text-xs">
                 <div className="flex items-center gap-2 text-white font-bold text-sm">
                   <Scale className="h-4 w-4 text-[#E50914]" />
-                  <span>SirfShoot AI Legal Desk</span>
+                  <span>Tameeros Shorts Legal Desk</span>
                 </div>
                 <p className="text-slate-300">
-                  Email: <a href="mailto:legal@sirfshoot.ai" className="text-[#E50914] font-bold">legal@sirfshoot.ai</a>
+                  Email: <a href="mailto:legal@tameeros.com" className="text-[#E50914] font-bold">legal@tameeros.com</a>
                 </p>
                 <p className="text-slate-400">
-                  Corporate Office: SirfShoot AI Creative Technologies, Gulberg III, Lahore, Pakistan.
+                  Corporate Office: Tameeros Shorts Creative Technologies, Gulberg III, Lahore, Pakistan.
                 </p>
               </div>
             </section>

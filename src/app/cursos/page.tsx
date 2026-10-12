@@ -58,7 +58,7 @@ export default function CursosPage() {
               </div>
               <div>
                 <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                  SirfShoot Academy
+                  Tameeros Academy
                 </h1>
                 <p className="text-xs text-slate-500">
                   Practical masterclass on paid advertising, high-retention video creatives, and conversion funnels for real estate.
@@ -266,7 +266,7 @@ export default function CursosPage() {
                   </h4>
                 </div>
                 <p className="text-[11px] text-amber-900 leading-relaxed">
-                  Complete all modules to unlock the official SirfShoot Creator Certification and verified campaign templates.
+                  Complete all modules to unlock the official Tameeros Shorts Creator Certification and verified campaign templates.
                 </p>
               </div>
             </div>

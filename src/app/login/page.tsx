@@ -34,7 +34,7 @@ export default function LoginPage() {
   const handleQuickDemo = () => {
     setLoading(true);
     setTimeout(() => {
-      loginWithEmail('creator@sirfshoot.ai', 'Hamza Khan');
+      loginWithEmail('creator@tameeros.com', 'Hamza Khan');
       setLoading(false);
       router.push('/dashboard');
     }, 300);
@@ -77,7 +77,7 @@ export default function LoginPage() {
                   <Sparkles className="h-4 w-4" />
                 </div>
                 <span className="font-extrabold text-xl">
-                  Sirf<span className="text-[#E50914]">Shoot</span>
+                  Tameeros <span className="text-[#E50914]">Shorts</span>
                 </span>
               </Link>
 
@@ -297,7 +297,7 @@ export default function LoginPage() {
               </div>
 
               <p className="text-[11px] text-slate-400">
-                By continuing, you agree to SirfShoot AI&apos;s{' '}
+                By continuing, you agree to Tameeros Shorts&apos;s{' '}
                 <Link href="/terms" className="text-slate-600 font-semibold hover:text-[#E50914] underline">
                   Terms
                 </Link>
@@ -353,7 +353,7 @@ export default function LoginPage() {
             </div>
 
             <p className="text-xs text-slate-500">
-              Choose a Google account to continue to <strong>SirfShoot AI</strong>:
+              Choose a Google account to continue to <strong>Tameeros Shorts</strong>:
             </p>
 
             <div className="space-y-2">
@@ -383,7 +383,7 @@ export default function LoginPage() {
               {/* Option 2: Demo Creator Account */}
               <button
                 type="button"
-                onClick={() => handleGoogleSelect('creator@sirfshoot.ai', 'Hamza Khan')}
+                onClick={() => handleGoogleSelect('creator@tameeros.com', 'Hamza Khan')}
                 className="w-full flex items-center justify-between p-3 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-left group"
               >
                 <div className="flex items-center gap-3">
@@ -392,7 +392,7 @@ export default function LoginPage() {
                   </div>
                   <div>
                     <div className="text-xs font-bold text-slate-900">Hamza Khan (Creator)</div>
-                    <div className="text-[11px] text-slate-500 font-mono">creator@sirfshoot.ai</div>
+                    <div className="text-[11px] text-slate-500 font-mono">creator@tameeros.com</div>
                   </div>
                 </div>
                 <ArrowRight className="h-4 w-4 text-slate-400 transition group-hover:translate-x-0.5" />

@@ -280,7 +280,7 @@ export default function ImagensPage() {
                       Featured Exclusive
                     </span>
                     <span className="rounded-full bg-black/60 backdrop-blur-md text-white px-2.5 py-0.5 text-[10px] font-bold border border-white/20">
-                      SirfShoot AI
+                      Tameeros Shorts
                     </span>
                   </div>
 
