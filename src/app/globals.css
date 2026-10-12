@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+:root {
+  --brand: #E50914;
+  --brand-deep: #B91C1C;
+  --brand-tint: #FEF2F2;
+  --brand-orange: #F97316;
+  --brand-rose: #FCA5A5;
+  --navy: #0C0C0F;
+  --navy-card: #141418;
+  --navy-border: rgba(255, 255, 255, 0.08);
+  
+  --page: #F8FAFC;
+  --surface: #FFFFFF;
+  --line: #E2E8F0;
+  --line-soft: #EEF2F6;
+  --ink: #0F172A;
+  --ink-2: #334155;
+  --ink-3: #64748B;
+  --ink-4: #94A3B8;
+
+  --background: #FFFFFF;
+  --foreground: #0F172A;
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-tint: var(--brand-tint);
+  --color-navy: var(--navy);
+  --color-page: var(--page);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism & Shadow Utilities */
+.card-shadow {
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05), 0 10px 25px -5px rgba(15, 23, 42, 0.04);
+}
+
+.btn-shadow {
+  box-shadow: 0 4px 14px 0 rgba(229, 9, 20, 0.35);
+}
+
+.btn-shadow:hover {
+  box-shadow: 0 6px 20px 0 rgba(229, 9, 20, 0.45);
+}
+
+.hero-grad {
+  background: linear-gradient(135deg, #F20D1B 0%, #FF681B 50%, #FFD900 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 2027 Gen Z Tactile 3D Buttons */
+.btn-3d-yellow {
+  background: linear-gradient(180deg, #FFE338 0%, #FFD900 60%, #E6C200 100%);
+  box-shadow: 0 4px 14px 0 rgba(255, 217, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.15s ease-out;
+}
+.btn-3d-yellow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(255, 217, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -2px 0 rgba(0, 0, 0, 0.18);
+}
+.btn-3d-yellow:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px 0 rgba(255, 217, 0, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d-red {
+  background: linear-gradient(180deg, #FF2633 0%, #F20D1B 60%, #C40711 100%);
+  box-shadow: 0 4px 14px 0 rgba(242, 13, 27, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -2px 0 rgba(0, 0, 0, 0.22);
+  transition: all 0.15s ease-out;
+}
+.btn-3d-red:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(242, 13, 27, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -2px 0 rgba(0, 0, 0, 0.24);
+}
+.btn-3d-red:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px 0 rgba(242, 13, 27, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d-navy {
+  background: linear-gradient(180deg, #102B52 0%, #071B3A 60%, #041024 100%);
+  box-shadow: 0 4px 14px 0 rgba(7, 27, 58, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.15s ease-out;
+}
+.btn-3d-navy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(7, 27, 58, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -2px 0 rgba(0, 0, 0, 0.35);
+}
+.btn-3d-navy:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px 0 rgba(7, 27, 58, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-3d-white {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  box-shadow: 0 3px 10px 0 rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -2px 0 rgba(226, 232, 240, 0.8);
+  transition: all 0.15s ease-out;
+}
+.btn-3d-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px 0 rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -2px 0 rgba(203, 213, 225, 0.9);
+}
+.btn-3d-white:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px 0 rgba(15, 23, 42, 0.06), inset 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #E50914 0%, #F97316 55%, #FCA5A5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-wash {
+  background: radial-gradient(circle at 50% 0%, rgba(229, 9, 20, 0.06) 0%, rgba(254, 242, 242, 0.4) 40%, rgba(255, 255, 255, 0) 70%);
+}
+
+.tone-wash {
+  background: radial-gradient(circle at 10% 50%, rgba(249, 115, 22, 0.05) 0%, rgba(255, 255, 255, 0) 60%),
+              radial-gradient(circle at 90% 50%, rgba(229, 9, 20, 0.05) 0%, rgba(255, 255, 255, 0) 60%);
+}
+
+/* Custom Teleprompter Mirror Mode */
+.teleprompter-mirrored {
+  transform: scaleX(-1);
+}
+
+/* Custom Animations */
+@keyframes soundwave {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+.animate-wave-1 { animation: soundwave 1s ease-in-out infinite; }
+.animate-wave-2 { animation: soundwave 0.8s ease-in-out infinite 0.2s; }
+.animate-wave-3 { animation: soundwave 1.2s ease-in-out infinite 0.4s; }
+.animate-wave-4 { animation: soundwave 0.9s ease-in-out infinite 0.1s; }
+.animate-wave-5 { animation: soundwave 1.1s ease-in-out infinite 0.3s; }
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
