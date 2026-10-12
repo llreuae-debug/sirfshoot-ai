@@ -15,13 +15,12 @@ export default function Footer() {
                 <Sparkles className="h-4 w-4 fill-white/20" />
               </div>
               <div className="font-extrabold text-lg tracking-tight">
-                <span className="text-white">Sirf</span>
-                <span className="text-[#E50914]">Shoot</span>
-                <span className="ml-1 text-[10px] text-red-400 font-mono">AI</span>
+                <span className="text-white">Tameeros</span>
+                <span className="text-[#E50914] ml-1">Shorts</span>
               </div>
             </Link>
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              The AI Content OS for YouTube and video creators. 9 specialized AI agents handle research, tone cloning, fact-checking, storyboards, thumbnails, SEO, and shorts — so you can just shoot.
+              The AI Content OS for YouTube, Shorts and real estate creators. 9 specialized AI agents handle research, tone cloning, fact-checking, storyboards, thumbnails, SEO, and shorts — so you can just shoot.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a

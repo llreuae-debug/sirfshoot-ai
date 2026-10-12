@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-12T15:47:44.699Z",
+  "timestamp": "2026-10-12T15:56:48.497Z",
   "environment": "Local / Development Server Next.js 16.4.0 (Turbopack)",
   "summary": {
     "totalTests": 85,
@@ -325,7 +325,7 @@
       {
         "name": "POST /api/pipeline/generate-thumbnail produces valid vector SVG",
         "passed": true,
-        "details": "Valid SVG markup returned (Length: 4311 bytes, includes <title>)"
+        "details": "Valid SVG markup returned (Length: 4315 bytes, includes <title>)"
       },
       {
         "name": "GET /api/geo-context provides accurate Generative Engine Optimization data",
@@ -355,7 +355,7 @@
       {
         "name": "GET /api/guardian/health-check delivers multi-subsystem telemetry",
         "passed": true,
-        "details": "Status: healthy, Heap: 1346MB, Verified Routes: 50"
+        "details": "Status: healthy, Heap: 1373MB, Verified Routes: 50"
       },
       {
         "name": "GET /api/guardian/heartbeat verifies scheduled autonomous worker",
@@ -365,7 +365,7 @@
       {
         "name": "POST /api/guardian/escalate handles client-to-admin incident intake",
         "passed": true,
-        "details": "Assigned incident INC-8166 with sensitive tokens redacted"
+        "details": "Assigned incident INC-9799 with sensitive tokens redacted"
       },
       {
         "name": "POST /api/guardian/repair safely executes allowlisted self-healing repair",

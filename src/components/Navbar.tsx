@@ -123,14 +123,14 @@ export default function Navbar() {
 
           {/* Right Action Cluster */}
           <div className="flex items-center gap-2.5 sm:gap-3 2xl:gap-3.5 shrink-0">
-            {/* Secondary 3D Button — Admin Studio */}
+            {/* Secondary 3D Button — Creator & Real Estate */}
             <Link
               href="/dashboard"
               className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-purple-200/90 bg-gradient-to-b from-purple-50/90 via-purple-50/60 to-purple-100/70 px-3.5 py-1.5 text-[12.5px] 2xl:text-[13px] font-extrabold text-purple-700 shadow-[0_2px_6px_rgba(147,51,234,0.12),inset_0_1px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(147,51,234,0.1)] hover:border-purple-300 hover:shadow-[0_4px_12px_rgba(147,51,234,0.22),inset_0_1px_0_rgba(255,255,255,1)] hover:-translate-y-0.5 active:translate-y-0.5 whitespace-nowrap transition-all duration-150"
-              title="Admin Studio (Quick Access)"
+              title="Creator & Real Estate (Quick Access)"
             >
               <ShieldCheck className="h-3.5 w-3.5 text-purple-600 shrink-0" />
-              <span>Admin Studio</span>
+              <span>Creator & Real Estate</span>
             </Link>
 
             {/* Switch Account Action */}
@@ -248,7 +248,7 @@ export default function Navbar() {
                   className="flex items-center justify-center gap-2 rounded-xl border border-purple-200 bg-purple-50/80 px-4 py-2.5 text-sm font-bold text-purple-700 shadow-sm"
                 >
                   <ShieldCheck className="h-4 w-4 text-purple-600" />
-                  <span>Admin Studio</span>
+                  <span>Creator & Real Estate</span>
                 </Link>
                 <Link
                   href="/create"

@@ -92,9 +92,9 @@ export function generateThumbnailSvg(variant: ThumbnailVariant, title: string): 
 
     <!-- Tameeros Shorts Watermark Branding Badge -->
     <g transform="translate(40, 640)">
-      <rect x="0" y="0" width="170" height="42" rx="8" fill="#000000" opacity="0.75" />
-      <text x="85" y="28" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">
-        Sirf<tspan fill="#E50914">Shoot</tspan> AI
+      <rect x="0" y="0" width="200" height="42" rx="8" fill="#000000" opacity="0.75" />
+      <text x="100" y="28" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">
+        Tameeros <tspan fill="#E50914">Shorts</tspan>
       </text>
     </g>
   </svg>`;

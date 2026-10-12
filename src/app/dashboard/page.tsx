@@ -199,7 +199,7 @@ export default function DashboardPage() {
                 {isAdmin ? (
                   <span className="rounded-full bg-purple-100 border border-purple-200 px-3 py-1 text-xs font-bold text-purple-700 uppercase flex items-center gap-1 shadow-2xs">
                     <ShieldCheck className="h-3.5 w-3.5" />
-                    SUPER ADMIN STUDIO
+                    CREATOR &amp; REAL ESTATE ADMIN
                   </span>
                 ) : (
                   <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-bold text-[#E50914] uppercase">

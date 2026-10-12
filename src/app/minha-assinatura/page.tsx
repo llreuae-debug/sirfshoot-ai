@@ -129,7 +129,7 @@ export default function MinhaAssinaturaPage() {
                     Need more production credits to render video projects?
                   </div>
                   <div className="text-[11px] text-slate-500">
-                    Refill immediately or activate Super-Admin Studio mode.
+                    Refill immediately or activate Creator &amp; Real Estate mode.
                   </div>
                 </div>
               </div>
