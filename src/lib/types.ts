@@ -300,3 +300,96 @@ export interface UserState {
   savedFinancings?: SavedFinancing[];
   completedLessonIds?: string[];
 }
+
+export type MembershipStatus = 'trial' | 'active' | 'past_due' | 'suspended' | 'cancelled' | 'expired';
+
+export type AdminRole = 'super_admin' | 'admin' | 'support' | 'analyst' | 'creator';
+
+export interface AdminMember {
+  id: string;
+  name: string;
+  email: string;
+  role: AdminRole;
+  plan: PlanType;
+  membershipStatus: MembershipStatus;
+  creditsRemaining: number;
+  creditsTotal: number;
+  totalSpentPKR: number;
+  billingInterval: 'monthly' | 'annual' | 'trial';
+  subscriptionStartedAt: string;
+  subscriptionExpiresAt: string;
+  createdAt: string;
+  lastActiveAt: string;
+  notes?: string;
+}
+
+export type LedgerTransactionType =
+  | 'purchase'
+  | 'credit_grant'
+  | 'credit_usage'
+  | 'refund'
+  | 'promotional_credit'
+  | 'admin_adjustment'
+  | 'subscription_payment';
+
+export type LedgerCategory = 'financial' | 'credit';
+
+export interface LedgerTransaction {
+  id: string;
+  memberId: string;
+  memberName: string;
+  memberEmail: string;
+  timestamp: string;
+  type: LedgerTransactionType;
+  category: LedgerCategory;
+  description: string;
+  amountPKR?: number;
+  amountCredits?: number;
+  balanceAfterCredits?: number;
+  currency: 'PKR';
+  paymentReference?: string;
+  status: 'completed' | 'pending' | 'failed' | 'reversed';
+  initiatedBy: string; // Admin email or 'system'
+  reason?: string;
+}
+
+export interface MembershipPlan {
+  id: PlanType;
+  name: string;
+  pricePKR: number;
+  billingInterval: 'monthly' | 'annual';
+  includedScripts: number;
+  includedCredits: number;
+  activeSubscribers: number;
+  status: 'active' | 'inactive';
+  features: string[];
+}
+
+export interface AdminAuditLog {
+  id: string;
+  timestamp: string;
+  adminEmail: string;
+  action: string;
+  targetType: 'member' | 'membership' | 'credit' | 'seo' | 'security' | 'system';
+  targetId: string;
+  details: string;
+  beforeValue?: string;
+  afterValue?: string;
+  reason?: string;
+}
+
+export interface PageSeoConfig {
+  path: string;
+  title: string;
+  seoTitle: string;
+  metaDescription: string;
+  canonicalUrl: string;
+  ogTitle: string;
+  ogDescription: string;
+  indexable: boolean;
+  schemaType: 'SoftwareApplication' | 'WebPage' | 'FAQPage' | 'Article';
+  lastAudited: string;
+  issuesCount: number;
+  issues?: string[];
+}
+

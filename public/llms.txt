@@ -1,0 +1,38 @@
+# SirfShoot AI — LLM Documentation & Generative Context
+
+> SirfShoot AI is the AI Content Operating System designed for video creators and real estate teams. It automates research, authentic tone-cloned scripting, visual storyboards, high-CTR thumbnails, SEO tagging, voiceovers, and multi-format shorts.
+
+## Core Facts & Product Identity
+- **Product Name:** SirfShoot AI
+- **Official URL:** https://sirfshoot-ai.vercel.app
+- **Tagline:** "Just Shoot It, We Handle The Rest"
+- **Primary Audience:** YouTube creators, video marketers, real estate agencies, and digital producers in Pakistan and globally.
+- **Languages Supported:** English, Urdu, Roman Urdu, and Hinglish.
+
+## Key Capabilities & Verified Features
+1. **9-Agent Autonomous Production Pipeline (/create):**
+   - Agent 01 (Research): Live trends and signal analysis from Google Trends & YouTube.
+   - Agent 02 (Script Engine): Spoken teleprompter scripts matched to creator's Tone Fingerprint.
+   - Agent 03 (Fact Check): Per-claim verification with source citations and safety markers.
+   - Agent 04 (Legal & Safety): SECP and platform fair-use compliance checks.
+   - Agent 05 (Tone Cloner): Dialect matching with custom vocabulary and Hindi/English balance.
+   - Agent 06 (Storyboard): 12-16 scene shot list with Midjourney prompts and B-roll cues.
+   - Agent 07 (Thumbnail Designer): Safe, Bold, and Experimental visual concepts (projected 14.8% CTR).
+   - Agent 08 (SEO & Metadata): High-CTR titles, 800-word descriptions, tags, and chapter markers.
+   - Agent 09 (Shorts Repurposing): 3-5 vertical short scripts (Reels, TikTok, Shorts).
+2. **AI Voiceover Studio (/narracao):** Multilingual neural audio synthesis with WAV/MP3 export.
+3. **Social Post Studio 2.0 (/imagens):** AI image generator and social format resizer.
+4. **Real Estate Tools (/video-automatico, /precificacao, /financiamento):** Property video tour generator, AI property valuation, and mortgage installment simulator.
+5. **CRM Leads Pipeline (/leads):** Buyer/seller pipeline with WhatsApp follow-up generation.
+6. **12 Free Micro-Tools (/tools):** Hook generator, SEO grader, PKR income calculator, title tester.
+
+## Pricing Plans (Quoted in PKR)
+- **Free Trial:** PKR 0 for 7 days (2 full 9-agent video packages, no credit card required).
+- **Starter:** PKR 499/month (3 full video packages).
+- **Creator (Most Popular):** PKR 999/month (7 full video packages, unlimited Tone Fingerprints).
+- **Pro:** PKR 1,999/month (15 full video packages, priority routing, multi-channel support).
+- **Studio:** Custom agency volume and dedicated enterprise workflows.
+
+## Support & Contact
+- **Email:** hello@sirfshoot.ai
+- **Location:** Karachi & Dubai

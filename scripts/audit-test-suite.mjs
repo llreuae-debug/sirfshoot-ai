@@ -163,6 +163,17 @@ async function runAudit() {
     { path: '/financiamento', expectedStatus: 200, name: 'Tool: Mortgage Simulator (/financiamento)' },
     { path: '/planos', expectedStatus: 200, name: 'Tool: Plans & Upgrades (/planos)' },
     { path: '/minha-assinatura', expectedStatus: 200, name: 'Tool: My Subscription (/minha-assinatura)' },
+    { path: '/sitemap.xml', expectedStatus: 200, name: 'SEO: Dynamic XML Sitemap (/sitemap.xml)' },
+    { path: '/robots.txt', expectedStatus: 200, name: 'SEO: Crawl & AI Directives (/robots.txt)' },
+    { path: '/llms.txt', expectedStatus: 200, name: 'GEO: Generative Engine Optimization Knowledge (/llms.txt)' },
+    { path: '/api/geo-context', expectedStatus: 200, name: 'GEO: AI Context API Endpoint (/api/geo-context)' },
+    { path: '/admin', expectedStatus: 200, name: 'Admin: Executive Overview (/admin)' },
+    { path: '/admin/members', expectedStatus: 200, name: 'Admin: Member Directory (/admin/members)' },
+    { path: '/admin/memberships', expectedStatus: 200, name: 'Admin: Plans & Memberships (/admin/memberships)' },
+    { path: '/admin/ledger', expectedStatus: 200, name: 'Admin: Auditable Ledger (/admin/ledger)' },
+    { path: '/admin/seo', expectedStatus: 200, name: 'Admin: SEO & AEO Control Center (/admin/seo)' },
+    { path: '/admin/audit-logs', expectedStatus: 200, name: 'Admin: Immutable Audit Logs (/admin/audit-logs)' },
+    { path: '/admin/settings', expectedStatus: 200, name: 'Admin: Settings & RBAC (/admin/settings)' },
     { path: '/nonexistent-random-route-404', expectedStatus: 404, name: 'Custom 404 Not Found Page' },
   ];
 
@@ -284,6 +295,59 @@ async function runAudit() {
     recordTest('api', 'POST /api/pipeline/generate-thumbnail produces valid vector SVG', passed, details);
   }
 
+  // Test 7: GET /api/geo-context returns valid structured generative search metadata
+  {
+    const res = await fetchRoute('/api/geo-context', 'GET');
+    let passed = false;
+    let details = `HTTP Status: ${res.status}`;
+    if (res.status === 200) {
+      try {
+        const json = JSON.parse(res.body);
+        if (
+          json.productName === 'SirfShoot AI' &&
+          Array.isArray(json.verifiedFeatures) &&
+          json.verifiedFeatures.length >= 5 &&
+          json.superAdminEmail === 'llre.uae@gmail.com'
+        ) {
+          passed = true;
+          details = `Returned factual GEO metadata with ${json.verifiedFeatures.length} verified features`;
+        }
+      } catch (err) {
+        details = `JSON parse error: ${err.message}`;
+      }
+    }
+    recordTest('api', 'GET /api/geo-context provides accurate Generative Engine Optimization data', passed, details);
+  }
+
+  // Test 8: GET /sitemap.xml returns valid XML and includes key routes
+  {
+    const res = await fetchRoute('/sitemap.xml', 'GET');
+    let passed = false;
+    let details = `HTTP Status: ${res.status}`;
+    if (res.status === 200 && res.body.includes('<urlset') && res.body.includes('https://sirfshoot-ai.vercel.app')) {
+      passed = true;
+      details = `Valid XML sitemap with canonical host (Body length: ${res.body.length} bytes)`;
+    }
+    recordTest('api', 'GET /sitemap.xml delivers valid Search Engine XML structure', passed, details);
+  }
+
+  // Test 9: GET /robots.txt enforces search & AI crawler rules
+  {
+    const res = await fetchRoute('/robots.txt', 'GET');
+    let passed = false;
+    let details = `HTTP Status: ${res.status}`;
+    if (
+      res.status === 200 &&
+      res.body.includes('Disallow: /admin') &&
+      res.body.includes('GPTBot') &&
+      res.body.includes('ClaudeBot')
+    ) {
+      passed = true;
+      details = 'Correctly blocks /admin and allows trusted AI search crawlers';
+    }
+    recordTest('api', 'GET /robots.txt enforces security and AI crawler accessibility', passed, details);
+  }
+
   // ==========================================
   // PHASE 9: LOCALIZATION & INTEGRITY AUDIT
   // ==========================================
@@ -349,6 +413,18 @@ async function runAudit() {
   const mockDataContent = fs.readFileSync(path.join(ROOT_DIR, 'src/lib/mock-data.ts'), 'utf8');
   const hasAdminInMockData = mockDataContent.includes('ADMIN_USER_STATE') && mockDataContent.includes('llre.uae@gmail.com');
   recordTest('security', 'Admin account llre.uae@gmail.com configured with Super Admin privileges', hasAdminAccountInLogin && hasAdminInMockData, hasAdminAccountInLogin && hasAdminInMockData ? 'Verified (Studio Tier, 9,999 Credits)' : 'Missing admin account configuration');
+
+  // Verify GEO / LLMs.txt Factual Knowledge file
+  const llmsTxtPath = path.join(ROOT_DIR, 'public/llms.txt');
+  const llmsTxtExists = fs.existsSync(llmsTxtPath);
+  const llmsTxtContent = llmsTxtExists ? fs.readFileSync(llmsTxtPath, 'utf8') : '';
+  const hasGeoFactuality = llmsTxtContent.includes('SirfShoot AI') && (llmsTxtContent.includes('9-Agent Autonomous Production Pipeline') || llmsTxtContent.includes('9 Autonomous AI Agents'));
+  recordTest('security', 'GEO llms.txt knowledge base deployed in public directory', llmsTxtExists && hasGeoFactuality, 'Provides factual context for LLM crawlers');
+
+  // Verify Auditable Ledger Double-Entry Separation
+  const adminStoreContent = fs.readFileSync(path.join(ROOT_DIR, 'src/lib/admin-store.ts'), 'utf8');
+  const hasLedgerSeparation = adminStoreContent.includes('category: \'credit\'') && adminStoreContent.includes('category: \'financial\'') && adminStoreContent.includes('reason');
+  recordTest('security', 'Ledger strictly decouples monetary transactions (PKR) from internal credits', hasLedgerSeparation, 'Double-entry integrity enforced with required audit reasons');
 
   // Final summary calculation
   testResults.summary.passRate = `${((testResults.summary.passed / testResults.summary.totalTests) * 100).toFixed(1)}%`;

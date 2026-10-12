@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-10-12T09:33:40.213Z",
+  "timestamp": "2026-10-12T10:32:38.563Z",
   "environment": "Local / Development Server Next.js 16.4.0 (Turbopack)",
   "summary": {
-    "totalTests": 54,
-    "passed": 54,
+    "totalTests": 70,
+    "passed": 70,
     "failed": 0,
     "passRate": "100.0%"
   },
   "routesAudit": {
     "totalDiscovered": 27,
-    "tested": 36,
-    "passed": 36,
+    "tested": 47,
+    "passed": 47,
     "failed": 0,
     "coverage": "100%",
     "details": [
@@ -190,6 +190,61 @@
         "details": "HTTP Status: 200 (expected 200)"
       },
       {
+        "name": "Route /sitemap.xml (SEO: Dynamic XML Sitemap (/sitemap.xml))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /robots.txt (SEO: Crawl & AI Directives (/robots.txt))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /llms.txt (GEO: Generative Engine Optimization Knowledge (/llms.txt))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /api/geo-context (GEO: AI Context API Endpoint (/api/geo-context))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin (Admin: Executive Overview (/admin))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin/members (Admin: Member Directory (/admin/members))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin/memberships (Admin: Plans & Memberships (/admin/memberships))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin/ledger (Admin: Auditable Ledger (/admin/ledger))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin/seo (Admin: SEO & AEO Control Center (/admin/seo))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin/audit-logs (Admin: Immutable Audit Logs (/admin/audit-logs))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
+        "name": "Route /admin/settings (Admin: Settings & RBAC (/admin/settings))",
+        "passed": true,
+        "details": "HTTP Status: 200 (expected 200)"
+      },
+      {
         "name": "Route /nonexistent-random-route-404 (Custom 404 Not Found Page)",
         "passed": true,
         "details": "HTTP Status: 404 (expected 404)"
@@ -198,8 +253,8 @@
   },
   "apiAudit": {
     "totalEndpoints": 2,
-    "testedCases": 6,
-    "passed": 6,
+    "testedCases": 9,
+    "passed": 9,
     "failed": 0,
     "details": [
       {
@@ -231,6 +286,21 @@
         "name": "POST /api/pipeline/generate-thumbnail produces valid vector SVG",
         "passed": true,
         "details": "Valid SVG markup returned (Length: 4305 bytes, includes <title>)"
+      },
+      {
+        "name": "GET /api/geo-context provides accurate Generative Engine Optimization data",
+        "passed": true,
+        "details": "Returned factual GEO metadata with 12 verified features"
+      },
+      {
+        "name": "GET /sitemap.xml delivers valid Search Engine XML structure",
+        "passed": true,
+        "details": "Valid XML sitemap with canonical host (Body length: 4748 bytes)"
+      },
+      {
+        "name": "GET /robots.txt enforces security and AI crawler accessibility",
+        "passed": true,
+        "details": "Correctly blocks /admin and allows trusted AI search crawlers"
       }
     ]
   },
@@ -282,8 +352,8 @@
     ]
   },
   "securityAndIntegrityAudit": {
-    "testedChecks": 4,
-    "passed": 4,
+    "testedChecks": 6,
+    "passed": 6,
     "failed": 0,
     "details": [
       {
@@ -305,6 +375,16 @@
         "name": "Admin account llre.uae@gmail.com configured with Super Admin privileges",
         "passed": true,
         "details": "Verified (Studio Tier, 9,999 Credits)"
+      },
+      {
+        "name": "GEO llms.txt knowledge base deployed in public directory",
+        "passed": true,
+        "details": "Provides factual context for LLM crawlers"
+      },
+      {
+        "name": "Ledger strictly decouples monetary transactions (PKR) from internal credits",
+        "passed": true,
+        "details": "Double-entry integrity enforced with required audit reasons"
       }
     ]
   }
