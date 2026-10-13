@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { runFullPipeline } from '@/lib/ai-pipeline';
+import { getDecryptedKeysFromCookie } from '@/lib/crypto';
 import { DEFAULT_TONE_FINGERPRINTS } from '@/lib/mock-data';
 
 export const SYSTEM_ENGLISH_POLICY_INSTRUCTION =
@@ -19,12 +20,16 @@ export async function POST(req: NextRequest) {
       DEFAULT_TONE_FINGERPRINTS.find((t) => t.language === 'english') ||
       DEFAULT_TONE_FINGERPRINTS[0];
 
+    const cookieHeader = req.cookies.get('ss_byok')?.value;
+    const decryptedKeys = getDecryptedKeysFromCookie(cookieHeader);
+
     const projectData = await runFullPipeline({
       topic,
       niche,
       language: language as 'english' | 'hinglish' | 'hindi',
       targetRuntimeMin: Number(targetRuntimeMin) || 10,
       toneFingerprint,
+      keys: decryptedKeys,
     });
 
     return NextResponse.json({

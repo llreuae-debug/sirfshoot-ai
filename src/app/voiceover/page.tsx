@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SidebarDrawer from '@/components/SidebarDrawer';
-import { useCreatorStore } from '@/lib/store';
 import {
   Mic,
   Play,
@@ -13,18 +12,14 @@ import {
   Download,
   Sparkles,
   ArrowLeft,
-  Volume2,
-  Sliders,
   CheckCircle2,
-  RefreshCw,
-  Plus,
-  Radio,
-  Clock,
   FileText,
+  Loader2,
 } from 'lucide-react';
 
 interface VoiceOption {
   id: string;
+  modelId: string;
   name: string;
   lang: string;
   gender: 'Male' | 'Female';
@@ -35,107 +30,164 @@ interface VoiceOption {
 
 const VOICE_CATALOG: VoiceOption[] = [
   {
-    id: 'voice-james-uk',
-    name: 'James (British Luxury Estate)',
+    id: 'voice-andrew-multilingual',
+    modelId: 'en-US-AndrewMultilingualNeural',
+    name: 'Andrew (Warm Conversational & Roman Urdu)',
+    lang: 'en-US',
+    gender: 'Male',
+    style: 'Authentic, Conversational & Multilingual',
+    badge: 'Recommended',
+    sampleText: 'Welcome to SirfShoot AI. Aaj hum full 9-agent pipeline inspect karenge.',
+  },
+  {
+    id: 'voice-uzma-ur',
+    modelId: 'ur-PK-UzmaNeural',
+    name: 'Uzma (Urdu Broadcast Host)',
+    lang: 'ur-PK',
+    gender: 'Female',
+    style: 'Natural, Articulate & Expressive',
+    badge: 'Urdu Native',
+    sampleText: 'سرف شوٹ اے آئی میں خوش آمدید۔ آپ کا اسکرپٹ اب مکمل طور پر تیار ہے۔',
+  },
+  {
+    id: 'voice-asad-ur',
+    modelId: 'ur-PK-AsadNeural',
+    name: 'Asad (Urdu Documentary Narrator)',
+    lang: 'ur-PK',
+    gender: 'Male',
+    style: 'Deep, Authoritative & Resonant',
+    badge: 'Documentary',
+    sampleText: 'اس تحقیقی رپورٹ میں ہم معیشت اور ٹیکنالوجی کے اصل حقائق کا جائزہ لیں گے۔',
+  },
+  {
+    id: 'voice-ava-multilingual',
+    modelId: 'en-US-AvaMultilingualNeural',
+    name: 'Ava (Expressive Lifestyle & Reels)',
+    lang: 'en-US',
+    gender: 'Female',
+    style: 'Warm, Engaging & High Energy',
+    badge: 'Shorts & Reels',
+    sampleText: 'Tour this modern penthouse and discover what luxury living really feels like.',
+  },
+  {
+    id: 'voice-ryan-uk',
+    modelId: 'en-GB-RyanNeural',
+    name: 'Ryan (British BBC Documentary)',
     lang: 'en-GB',
     gender: 'Male',
     style: 'Refined, Prestigious & Polished',
-    badge: 'Popular',
+    badge: 'Broadcaster',
     sampleText: 'Experience an unparalleled architectural sanctuary crafted for those who demand the finest.',
-  },
-  {
-    id: 'voice-sophia-us',
-    name: 'Sophia (US Conversational Lifestyle)',
-    lang: 'en-US',
-    gender: 'Female',
-    style: 'Crisp, Engaging & Warm',
-    badge: 'Most Used',
-    sampleText: 'Tour this modern high-rise and discover what luxury living really feels like.',
-  },
-  {
-    id: 'voice-alexander-us',
-    name: 'Alexander (Deep Cinematic Narrator)',
-    lang: 'en-US',
-    gender: 'Male',
-    style: 'Resonant, Authoritative & Gripping',
-    badge: 'Documentary',
-    sampleText: 'Beyond the skyline lies an estate designed to stand the test of time.',
-  },
-  {
-    id: 'voice-emma-us',
-    name: 'Emma (Storytelling & Commercial)',
-    lang: 'en-US',
-    gender: 'Female',
-    style: 'Dynamic, Friendly & Persuasive',
-    sampleText: 'Looking for a home with a private rooftop pool? This rare gem is waiting for you.',
-  },
-  {
-    id: 'voice-liam-au',
-    name: 'Liam (Modern Tech & Real Estate)',
-    lang: 'en-AU',
-    gender: 'Male',
-    style: 'Confident, Energetic & Direct',
-    sampleText: 'Step inside this smart automated penthouse and explore panoramic skyline vistas.',
   },
 ];
 
-export default function NarracaoPage() {
-  const { state } = useCreatorStore();
-
+export default function VoiceoverPage() {
   const [scriptText, setScriptText] = useState(
     'Discover the rare privilege of residing in an exclusive 350-square-meter penthouse. Featuring four expansive suites, a private heated pool on the terrace, and breathtaking panoramic skyline views. Schedule your private walkthrough today.'
   );
 
-  const [selectedVoiceId, setSelectedVoiceId] = useState<string>('voice-james-uk');
-  const [pitch, setPitch] = useState<number>(1);
+  const [selectedVoiceId, setSelectedVoiceId] = useState<string>('voice-andrew-multilingual');
   const [rate, setRate] = useState<number>(1);
+  const [pitch, setPitch] = useState<number>(1);
+  const [isSynthesizing, setIsSynthesizing] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [srtData, setSrtData] = useState<string | null>(null);
+  const [synthesisMeta, setSynthesisMeta] = useState<{ durationMs?: number; wordsCount?: number } | null>(null);
+
   const [isCloningModalOpen, setIsCloningModalOpen] = useState<boolean>(false);
   const [recordingSeconds, setRecordingSeconds] = useState<number>(0);
   const [isRecordingVoice, setIsRecordingVoice] = useState<boolean>(false);
   const [customCloneSuccess, setCustomCloneSuccess] = useState<boolean>(false);
 
-  const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const selectedVoice =
     VOICE_CATALOG.find((v) => v.id === selectedVoiceId) || VOICE_CATALOG[0];
 
-  // Words count & runtime estimate
   const wordCount = scriptText.trim() ? scriptText.trim().split(/\s+/).length : 0;
   const estimatedSeconds = Math.max(1, Math.round(wordCount / 2.5));
 
-  useEffect(() => {
-    return () => {
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        window.speechSynthesis.cancel();
+  const handleSynthesizeNeural = async () => {
+    if (!scriptText.trim()) return;
+
+    // If audio exists and user just wants to toggle play/pause
+    if (audioUrl && audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsPlaying(true);
       }
-    };
-  }, []);
-
-  const handlePlayAudio = () => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
-      alert('Your browser does not support native speech synthesis.');
       return;
     }
 
-    if (isPlaying) {
-      window.speechSynthesis.cancel();
-      setIsPlaying(false);
-      return;
+    setIsSynthesizing(true);
+    try {
+      const rateStr = `${rate >= 1 ? '+' : ''}${Math.round((rate - 1) * 100)}%`;
+      const pitchStr = `${pitch >= 1 ? '+' : ''}${Math.round((pitch - 1) * 50)}Hz`;
+
+      const res = await fetch('/api/voice/synthesize', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: scriptText,
+          voice: selectedVoice.modelId,
+          rate: rateStr,
+          pitch: pitchStr,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success && data.audioBase64) {
+        setAudioUrl(data.audioBase64);
+        setSrtData(data.srt);
+        setSynthesisMeta({ durationMs: data.durationMs, wordsCount: data.wordsCount });
+
+        if (audioRef.current) {
+          audioRef.current.src = data.audioBase64;
+          audioRef.current.play();
+          setIsPlaying(true);
+        }
+      } else {
+        throw new Error(data.error || 'Speech synthesis failed');
+      }
+    } catch (err) {
+      console.error('Neural synthesis error, falling back to browser SpeechSynthesis:', err);
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        const u = new SpeechSynthesisUtterance(scriptText);
+        u.lang = selectedVoice.lang;
+        u.onend = () => setIsPlaying(false);
+        window.speechSynthesis.speak(u);
+        setIsPlaying(true);
+      }
+    } finally {
+      setIsSynthesizing(false);
     }
+  };
 
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(scriptText);
-    utterance.lang = selectedVoice.lang;
-    utterance.pitch = pitch;
-    utterance.rate = rate;
+  const handleDownloadAudio = () => {
+    if (!audioUrl) return;
+    const a = document.createElement('a');
+    a.href = audioUrl;
+    a.download = `sirfshoot-${selectedVoice.id}.mp3`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
 
-    utterance.onend = () => setIsPlaying(false);
-    utterance.onerror = () => setIsPlaying(false);
-
-    speechRef.current = utterance;
-    window.speechSynthesis.speak(utterance);
-    setIsPlaying(true);
+  const handleDownloadSrt = () => {
+    if (!srtData) return;
+    const blob = new Blob([srtData], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `sirfshoot-${selectedVoice.id}.srt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   const handleStartVoiceClone = () => {
@@ -159,6 +211,14 @@ export default function NarracaoPage() {
       <SidebarDrawer />
       <Navbar />
 
+      {/* Hidden audio element for playback */}
+      <audio
+        ref={audioRef}
+        onEnded={() => setIsPlaying(false)}
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+      />
+
       <main className="flex-1 py-8 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
           {/* Header */}
@@ -179,12 +239,12 @@ export default function NarracaoPage() {
                   <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                     AI Voiceover Studio
                   </h1>
-                  <span className="rounded-full bg-amber-100 border border-amber-300 px-2 py-0.5 text-[10px] font-black text-amber-800 uppercase">
-                    Premium
+                  <span className="rounded-full bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 text-[10px] font-black text-emerald-800 uppercase">
+                    Neural Edge-TTS
                   </span>
                 </div>
                 <p className="text-xs text-slate-500">
-                  Transform written scripts into lifelike neural audio with +100 voice models and instant voice cloning.
+                  Broadcast-quality multilingual neural voice synthesis with synced SRT word timings and zero robotic artifacts.
                 </p>
               </div>
             </div>
@@ -193,52 +253,63 @@ export default function NarracaoPage() {
               <button
                 type="button"
                 onClick={() => setIsCloningModalOpen(true)}
-                className="btn-shadow inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 px-5 py-2.5 text-xs sm:text-sm font-extrabold text-black shadow-md shadow-amber-500/20 hover:opacity-95 transition"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
               >
-                <Sparkles className="h-4 w-4" />
-                <span>+ Clone My Voice</span>
+                <Sparkles className="h-4 w-4 text-amber-500" />
+                <span>Clone Your Voice (Beta)</span>
               </button>
             </div>
           </div>
 
-          {/* Main Voiceover Workspace */}
+          {/* Studio Workspace */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Left 7 Cols: Script Input & Waveform Simulation */}
+            {/* Left 7 Cols: Script Input & Controls */}
             <div className="lg:col-span-7 space-y-6">
               <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-7 shadow-sm space-y-5">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                   <div className="flex items-center gap-2">
                     <FileText className="h-4 w-4 text-amber-500" />
-                    <span className="text-xs font-extrabold text-slate-900 uppercase tracking-wide">
-                      Script for Voiceover
-                    </span>
+                    <h2 className="text-sm font-extrabold text-slate-900 uppercase tracking-wide">
+                      Spoken Script Text
+                    </h2>
                   </div>
-
-                  <span className="text-xs font-mono text-slate-400">
-                    {wordCount} words • ~{estimatedSeconds}s estimated audio length
-                  </span>
+                  <div className="flex items-center gap-3 text-[11px] font-mono text-slate-500 font-semibold">
+                    <span>{wordCount} words</span>
+                    <span>•</span>
+                    <span>~{estimatedSeconds}s audio</span>
+                  </div>
                 </div>
 
-                {/* Textarea */}
-                <textarea
-                  rows={6}
-                  value={scriptText}
-                  onChange={(e) => setScriptText(e.target.value)}
-                  placeholder="Paste or type your video script here to generate lifelike voice narration..."
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-xs sm:text-sm text-slate-800 leading-relaxed placeholder:text-slate-400 focus:border-amber-500 focus:outline-none"
-                />
+                <div className="space-y-2">
+                  <textarea
+                    rows={6}
+                    value={scriptText}
+                    onChange={(e) => {
+                      setScriptText(e.target.value);
+                      setAudioUrl(null); // Reset generated audio on text edit
+                    }}
+                    placeholder="Enter the narration script to synthesize..."
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-xs sm:text-sm text-slate-800 focus:border-amber-500 focus:outline-none leading-relaxed transition"
+                  />
+                </div>
 
-                {/* Audio Waveform Simulator */}
-                <div className="rounded-2xl border border-slate-200 bg-slate-950 p-5 space-y-3">
-                  <div className="flex items-center justify-between text-xs text-slate-400">
+                {/* Synthesis Control Box */}
+                <div className="rounded-2xl border border-slate-900 bg-[#0C0F17] p-5 text-white space-y-4">
+                  <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Radio className={`h-3.5 w-3.5 ${isPlaying ? 'text-emerald-400 animate-pulse' : 'text-slate-500'}`} />
-                      <span className="font-mono">{selectedVoice.name}</span>
+                      <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-xs font-mono font-bold text-slate-300">
+                        {selectedVoice.name}
+                      </span>
                     </div>
-                    <span className="font-mono text-amber-400">{selectedVoice.style}</span>
+                    {synthesisMeta && (
+                      <span className="text-[10px] font-mono text-amber-400 font-bold">
+                        Duration: {(synthesisMeta.durationMs! / 1000).toFixed(1)}s ({synthesisMeta.wordsCount} words)
+                      </span>
+                    )}
                   </div>
 
-                  {/* Animated Waveform Bars */}
+                  {/* Animated Waveform */}
                   <div className="flex items-center justify-between gap-1 h-12 py-2 px-1">
                     {[12, 28, 44, 30, 18, 48, 64, 32, 20, 52, 70, 40, 24, 60, 35, 15, 45, 68, 50, 25, 40, 60, 30, 20, 45, 55, 35, 18, 50, 25].map(
                       (h, i) => (
@@ -255,34 +326,53 @@ export default function NarracaoPage() {
                     )}
                   </div>
 
-                  {/* Play & Audio Sliders */}
-                  <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  {/* Action Buttons */}
+                  <div className="pt-2 flex flex-wrap items-center gap-3">
                     <button
                       type="button"
-                      onClick={handlePlayAudio}
-                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-600 px-5 py-2.5 text-xs font-black text-black transition shadow-md"
+                      disabled={isSynthesizing || !scriptText.trim()}
+                      onClick={handleSynthesizeNeural}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-600 px-5 py-2.5 text-xs font-black text-black transition shadow-md disabled:opacity-50 cursor-pointer"
                     >
-                      {isPlaying ? (
+                      {isSynthesizing ? (
                         <>
-                          <Pause className="h-4 w-4" />
+                          <Loader2 className="h-4 w-4 animate-spin text-black" />
+                          <span>Synthesizing Audio...</span>
+                        </>
+                      ) : isPlaying ? (
+                        <>
+                          <Pause className="h-4 w-4 fill-black" />
                           <span>Pause Audio</span>
                         </>
                       ) : (
                         <>
                           <Play className="h-4 w-4 fill-black" />
-                          <span>Preview Audio Voiceover</span>
+                          <span>{audioUrl ? 'Play Audio' : 'Synthesize & Preview'}</span>
                         </>
                       )}
                     </button>
 
-                    <button
-                      type="button"
-                      onClick={() => alert('WAV audio file downloaded to your device.')}
-                      className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-4 py-2.5 text-xs font-bold text-slate-300 hover:text-white transition"
-                    >
-                      <Download className="h-3.5 w-3.5" />
-                      <span>Download .WAV</span>
-                    </button>
+                    {audioUrl && (
+                      <button
+                        type="button"
+                        onClick={handleDownloadAudio}
+                        className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 px-4 py-2.5 text-xs font-bold text-white transition cursor-pointer"
+                      >
+                        <Download className="h-3.5 w-3.5 text-amber-400" />
+                        <span>Download MP3</span>
+                      </button>
+                    )}
+
+                    {srtData && (
+                      <button
+                        type="button"
+                        onClick={handleDownloadSrt}
+                        className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 px-4 py-2.5 text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer"
+                      >
+                        <FileText className="h-3.5 w-3.5 text-emerald-400" />
+                        <span>Download SRT Captions</span>
+                      </button>
+                    )}
                   </div>
                 </div>
 
@@ -295,11 +385,14 @@ export default function NarracaoPage() {
                     </div>
                     <input
                       type="range"
-                      min="0.7"
-                      max="1.3"
-                      step="0.1"
+                      min="0.8"
+                      max="1.2"
+                      step="0.05"
                       value={pitch}
-                      onChange={(e) => setPitch(Number(e.target.value))}
+                      onChange={(e) => {
+                        setPitch(Number(e.target.value));
+                        setAudioUrl(null);
+                      }}
                       className="w-full accent-amber-500"
                     />
                   </div>
@@ -311,11 +404,14 @@ export default function NarracaoPage() {
                     </div>
                     <input
                       type="range"
-                      min="0.7"
-                      max="1.5"
-                      step="0.1"
+                      min="0.8"
+                      max="1.3"
+                      step="0.05"
                       value={rate}
-                      onChange={(e) => setRate(Number(e.target.value))}
+                      onChange={(e) => {
+                        setRate(Number(e.target.value));
+                        setAudioUrl(null);
+                      }}
                       className="w-full accent-amber-500"
                     />
                   </div>
@@ -328,10 +424,10 @@ export default function NarracaoPage() {
               <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                   <h3 className="font-extrabold text-sm text-slate-900 uppercase tracking-wide">
-                    Voice Catalog & Personas
+                    Neural Voice Personas
                   </h3>
                   <span className="text-[11px] font-bold text-amber-600">
-                    {VOICE_CATALOG.length} Voices
+                    {VOICE_CATALOG.length} Neural Voices
                   </span>
                 </div>
 
@@ -343,9 +439,15 @@ export default function NarracaoPage() {
                         key={voice.id}
                         role="button"
                         tabIndex={0}
-                        onClick={() => setSelectedVoiceId(voice.id)}
+                        onClick={() => {
+                          setSelectedVoiceId(voice.id);
+                          setAudioUrl(null);
+                        }}
                         onKeyDown={(e) => {
-                          if (e.key === 'Enter') setSelectedVoiceId(voice.id);
+                          if (e.key === 'Enter') {
+                            setSelectedVoiceId(voice.id);
+                            setAudioUrl(null);
+                          }
                         }}
                         className={`w-full rounded-2xl p-4 text-left transition border cursor-pointer ${
                           isSelected
@@ -423,7 +525,7 @@ export default function NarracaoPage() {
             </div>
 
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-700 italic leading-relaxed">
-              &ldquo;Hello, I am a luxury real estate consultant, and this is a sample recording to clone my voice for high-converting marketing videos.&rdquo;
+              &ldquo;Hello, I am a content creator, and this is a sample recording to clone my voice for high-converting YouTube videos.&rdquo;
             </div>
 
             {isRecordingVoice ? (
@@ -448,7 +550,7 @@ export default function NarracaoPage() {
               <button
                 type="button"
                 onClick={handleStartVoiceClone}
-                className="w-full rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 py-3 text-xs font-black text-black shadow-md hover:opacity-95 transition"
+                className="w-full rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 py-3 text-xs font-black text-black shadow-md hover:opacity-95 transition cursor-pointer"
               >
                 Start Recording (6 Seconds)
               </button>
@@ -460,7 +562,7 @@ export default function NarracaoPage() {
                 setIsCloningModalOpen(false);
                 setCustomCloneSuccess(false);
               }}
-              className="w-full py-2 text-xs font-bold text-slate-400 hover:text-slate-700 transition"
+              className="w-full py-2 text-xs font-bold text-slate-400 hover:text-slate-700 transition cursor-pointer"
             >
               Close
             </button>

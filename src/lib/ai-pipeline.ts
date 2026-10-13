@@ -1,3 +1,4 @@
+import { generateWithFallbackChain } from './llm-chain';
 import {
   ProjectData,
   LanguageMode,
@@ -17,6 +18,10 @@ export interface PipelineGenerationInput {
   toneFingerprint: ToneFingerprint;
   channelName?: string;
   customApiKey?: string;
+  keys?: {
+    geminiKey?: string;
+    openAiKey?: string;
+  };
 }
 
 function formatMinutesSeconds(totalSeconds: number): string {
@@ -1438,6 +1443,23 @@ This video is created strictly for educational, analytical, and journalistic com
         durationSec: 30,
       },
     ];
+  }
+
+  if (input.keys?.geminiKey || input.keys?.openAiKey || process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY) {
+    try {
+      const promptText = 'You are an elite YouTube director and scriptwriter in the ' + niche + ' niche. Write an authentic spoken script opening for the video topic: "' + cleanTopic + '". Tone profile: ' + toneFingerprint.name + '. Language: ' + language + '. Include [SCENE] and [B-ROLL] visual cues. Format as natural spoken sentences.';
+      const llmResult = await generateWithFallbackChain({
+        prompt: promptText,
+        systemInstruction: 'Write captivating, conversational spoken words. Do not use generic filler words like "In today\'s video" or "Let\'s delve".',
+        keys: input.keys,
+      });
+
+      if (llmResult?.text && sections.length > 0) {
+        sections[0].content = llmResult.text;
+      }
+    } catch (e) {
+      console.warn('LLM enhancement failed, retaining deterministic script blueprint:', e);
+    }
   }
 
   return {
