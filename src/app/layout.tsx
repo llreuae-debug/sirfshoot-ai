@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ClientAssistant from "@/components/ClientAssistant";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,41 +13,46 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const CANONICAL_DOMAIN = "https://sirfshoot-ai.vercel.app";
+const APP_TITLE = "SirfShoot AI — Just Shoot It, We Handle The Rest";
+const APP_DESCRIPTION =
+  "The AI Content OS for video creators and real estate teams. 9 autonomous AI tools turn 1 topic into research, tone-matched scripts, storyboards, thumbnails, SEO, and shorts in ~3 minutes.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tameeros-shorts.vercel.app"),
+  metadataBase: new URL(CANONICAL_DOMAIN),
   title: {
-    default: "Tameeros Shorts — Just Shoot It, We Handle The Rest",
-    template: "%s | Tameeros Shorts",
+    default: APP_TITLE,
+    template: "%s | SirfShoot AI",
   },
-  description:
-    "The AI Content OS for video creators and real estate teams. 9-agent pipeline transforms 1 topic into research, scripts in your tone, storyboards, thumbnails, SEO, and shorts in ~3 minutes.",
+  description: APP_DESCRIPTION,
   keywords: [
     "YouTube script generator",
     "AI YouTube scripts",
     "Tone Fingerprint",
     "YouTube thumbnail generator",
     "AI video studio",
+    "SirfShoot AI",
     "Tameeros Shorts",
     "AI Content OS",
     "Pakistani creator AI",
-    "Hinglish AI scriptwriter",
+    "Roman Urdu AI scriptwriter",
   ],
-  authors: [{ name: "Tameeros Shorts Team" }],
+  authors: [{ name: "SirfShoot AI Team" }],
   alternates: {
-    canonical: "https://tameeros-shorts.vercel.app",
+    canonical: CANONICAL_DOMAIN,
   },
   openGraph: {
-    title: "Tameeros Shorts — Turn Video Ideas Into Scripts That Sound Like You",
-    description: "9 AI agents handle research, scripts, fact-check, storyboards, thumbnails, SEO, and shorts. From PKR 499/mo.",
-    url: "https://tameeros-shorts.vercel.app",
-    siteName: "Tameeros Shorts",
+    title: APP_TITLE,
+    description: APP_DESCRIPTION,
+    url: CANONICAL_DOMAIN,
+    siteName: "SirfShoot AI",
     locale: "en_PK",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tameeros Shorts — Just Shoot It, We Handle The Rest",
-    description: "The AI Content OS for video creators. Research, scripts, thumbnails, and SEO in ~3 minutes.",
+    title: APP_TITLE,
+    description: APP_DESCRIPTION,
   },
   robots: {
     index: true,
@@ -66,10 +72,10 @@ const structuredData = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://tameeros-shorts.vercel.app/#organization",
-      "name": "Tameeros Shorts",
-      "url": "https://tameeros-shorts.vercel.app",
-      "logo": "https://tameeros-shorts.vercel.app/favicon.ico",
+      "@id": `${CANONICAL_DOMAIN}/#organization`,
+      "name": "SirfShoot AI",
+      "url": CANONICAL_DOMAIN,
+      "logo": `${CANONICAL_DOMAIN}/favicon.ico`,
       "description": "AI Content Operating System for video creators and real estate professionals.",
       "contactPoint": {
         "@type": "ContactPoint",
@@ -80,18 +86,18 @@ const structuredData = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://tameeros-shorts.vercel.app/#website",
-      "url": "https://tameeros-shorts.vercel.app",
-      "name": "Tameeros Shorts",
-      "description": "Turn your ideas into scripts that sound like you. 9 AI agents in one unified workflow.",
+      "@id": `${CANONICAL_DOMAIN}/#website`,
+      "url": CANONICAL_DOMAIN,
+      "name": "SirfShoot AI",
+      "description": APP_DESCRIPTION,
       "publisher": {
-        "@id": "https://tameeros-shorts.vercel.app/#organization",
+        "@id": `${CANONICAL_DOMAIN}/#organization`,
       },
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://tameeros-shorts.vercel.app/#application",
-      "name": "Tameeros Shorts Content OS",
+      "@id": `${CANONICAL_DOMAIN}/#application`,
+      "name": "SirfShoot AI Content OS",
       "operatingSystem": "Web Browser",
       "applicationCategory": "MultimediaApplication",
       "offers": [
@@ -120,8 +126,6 @@ const structuredData = {
     },
   ],
 };
-
-import ClientAssistant from "@/components/ClientAssistant";
 
 export default function RootLayout({
   children,

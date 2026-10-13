@@ -105,13 +105,13 @@ export async function POST(req: NextRequest) {
       ];
     } else if (lower.includes('real estate') || lower.includes('property') || lower.includes('lead') || lower.includes('mortgage')) {
       reply = `Tameeros Shorts includes specialized AI real estate tools tailored for brokers and agencies:\n\n` +
-        `• **Automated Video Generator (/video-automatico):** Turns property photos into cinematic video tours.\n` +
-        `• **Property Valuation Copilot (/precificacao):** AI comparative market analysis.\n` +
-        `• **Mortgage Simulator (/financiamento):** Monthly installment calculation.\n` +
+        `• **Automated Video Generator (/video-creator):** Turns property photos into cinematic video tours.\n` +
+        `• **Property Valuation Copilot (/valuation):** AI comparative market analysis.\n` +
+        `• **Mortgage Simulator (/mortgage):** Monthly installment calculation.\n` +
         `• **CRM Leads Pipeline (/leads):** Lead tracking with 1-click WhatsApp follow-up generation.`;
       suggestedActions = [
         { label: 'Open CRM Leads Pipeline', actionType: 'navigate', payload: '/leads' },
-        { label: 'Property Video Generator', actionType: 'navigate', payload: '/video-automatico' },
+        { label: 'Property Video Generator', actionType: 'navigate', payload: '/video-creator' },
       ];
     } else if (
       lower.includes('error') ||
@@ -135,7 +135,7 @@ export async function POST(req: NextRequest) {
         `• **Locations:** Karachi & Dubai\n` +
         `• **Response Time:** Typically under 2 hours for active subscribers.`;
       suggestedActions = [
-        { label: 'Visit Creator Academy', actionType: 'navigate', payload: '/cursos' },
+        { label: 'Visit Creator Academy', actionType: 'navigate', payload: '/academy' },
         { label: 'Read Creator Playbooks', actionType: 'navigate', payload: '/blog' },
       ];
     } else {

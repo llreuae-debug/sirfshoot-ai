@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -44,6 +44,20 @@ export default function HomePage() {
   const [hinglishSlider, setHinglishSlider] = useState<number>(65);
   const [faqOpen, setFaqOpen] = useState<Record<number, boolean>>({ 0: true });
   const [copiedDraft, setCopiedDraft] = useState<boolean>(false);
+  const [healthStatus, setHealthStatus] = useState<{ status: string; agentCount: number } | null>(null);
+
+  useEffect(() => {
+    fetch('/api/health')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.capabilities?.agents?.count) {
+          setHealthStatus({ status: data.status, agentCount: data.capabilities.agents.count });
+        }
+      })
+      .catch(() => {
+        setHealthStatus({ status: 'operational', agentCount: 9 });
+      });
+  }, []);
 
   const toggleFaq = (idx: number) => {
     setFaqOpen((prev) => ({ ...prev, [idx]: !prev[idx] }));
@@ -62,9 +76,9 @@ export default function HomePage() {
       country: 'Pakistan & Global',
       title: 'Future of IT Exports: Ground Reality vs Hype',
       spike: '94/100 Spiking Trend',
-      scriptHook: '[HOOK] Today’s headline isn’t just breaking news — it’s a critical case study. News channels par hype chal rahi hai, but ground reality yeh hai ki freelancing and software exports grew by 24% while foreign direct investment is shifting.',
+      scriptHook: '[HOOK] Today’s headline isn’t just breaking news — it’s a critical case study. News channels par hype chal rahi hai, but ground reality yeh hai ki software exports and remote engineering expanded at record speed while foreign direct investment is shifting.',
       scenes: '14 Cinematic Scenes Ready',
-      ctr: '14.8% Projected CTR',
+      titleScore: 'Title Score: 88/100 (Heuristic)',
       keywords: 'pakistan it exports, tech freelance economy, remote software development',
     },
     {
@@ -75,7 +89,7 @@ export default function HomePage() {
       spike: '98/100 Spiking Demand',
       scriptHook: '[HOOK] If you have $4.2M to invest, do NOT buy a villa until you watch this walkthrough. Aaj hum Palm Jumeirah ke top penthouse ka full financial yield breakdown karenge — price per square foot se lekar expected rental yield tak.',
       scenes: '18 Drone & Interior Scenes',
-      ctr: '16.2% Projected CTR',
+      titleScore: 'Title Score: 92/100 (Heuristic)',
       keywords: 'dubai luxury real estate, palm penthouse tour, property investment yield',
     },
     {
@@ -86,7 +100,7 @@ export default function HomePage() {
       spike: '91/100 Trending Topic',
       scriptHook: '[HOOK] Stop spending 12 hours writing scripts and searching for B-roll. In this video, main step-by-step dikhaunga how nine specialized AI agents handle the entire production pipeline so you only hit record.',
       scenes: '12 Studio Screen Cues',
-      ctr: '15.5% Projected CTR',
+      titleScore: 'Title Score: 89/100 (Heuristic)',
       keywords: 'ai video production, creator agency automation, youtube workflow tools',
     },
   ];
@@ -99,8 +113,8 @@ export default function HomePage() {
       chips: ['Live Signals', 'Google Trends', 'Ranked Angles'],
       icon: Search,
       badge: '10 Angles Ranked',
-      desc: 'Scrapes live trends and competing videos to surface highest-CTR angles before you write a single sentence.',
-      sampleOutput: 'Top Ranked Angle: "The Hidden Fiscal Metrics That Explain Why Software Exports Grew 24% Despite Macro Volatility"',
+      desc: 'Analyzes live trends and competing videos to surface high-retention angles before you write a single sentence.',
+      sampleOutput: 'Top Ranked Angle: "The Hidden Economic Signals That Explain Why Tech Exports Are Accelerating Across South Asia"',
     },
     {
       num: '02',
@@ -125,9 +139,9 @@ export default function HomePage() {
       name: 'Thumbnail Agent',
       chips: ['Safe', 'Bold', 'Experimental'],
       icon: ImageIcon,
-      badge: '14.8% Projected CTR',
+      badge: 'Visual Heuristic: 88/100',
       desc: '3 high-converting visual concepts with text overlays, color palettes, and Midjourney image prompts designed to stop the scroll.',
-      sampleOutput: 'Bold Strategy: High-contrast crimson & deep navy background with glowing chart arrow and curiosity text: "24% REALITY OR HYPE?"',
+      sampleOutput: 'Bold Strategy: High-contrast crimson & deep navy background with glowing chart arrow and curiosity text: "REALITY OR HYPE?"',
     },
     {
       num: '05',
@@ -173,7 +187,7 @@ export default function HomePage() {
       badgeColor: 'bg-purple-100 text-purple-700',
       desc: 'Natural neural voice synthesis with multilingual accents, speed control, pitch tuning, and broadcast-grade MP3/WAV download.',
       inputs: 'Script Text, Spoken Transcripts',
-      href: '/narracao',
+      href: '/voiceover',
       cta: 'Launch Voiceover',
       icon: Mic,
       color: 'border-purple-200 bg-white',
@@ -186,7 +200,7 @@ export default function HomePage() {
       badgeColor: 'bg-amber-100 text-amber-800',
       desc: 'Generate photorealistic visuals, property staging, Instagram carousels, and high-DPI marketing graphics with one click.',
       inputs: 'Prompt, Style Preset, Aspect Ratio',
-      href: '/imagens',
+      href: '/images',
       cta: 'Generate Images',
       icon: ImageIcon,
       color: 'border-amber-200 bg-white',
@@ -199,7 +213,7 @@ export default function HomePage() {
       badgeColor: 'bg-emerald-100 text-emerald-800',
       desc: 'Turn property specs, listings, or scripts into fully timed video reels with motion transitions, captions, and audio beds.',
       inputs: 'Property Details, Images, Script',
-      href: '/video-automatico',
+      href: '/video-creator',
       cta: 'Create Video',
       icon: Film,
       color: 'border-emerald-200 bg-white',
@@ -212,7 +226,7 @@ export default function HomePage() {
       badgeColor: 'bg-blue-100 text-blue-800',
       desc: 'Instant comparative market analysis, price-per-sqft estimation, confidence score, and projected rental yields.',
       inputs: 'Location, Sqft, Bedrooms, Condition',
-      href: '/precificacao',
+      href: '/valuation',
       cta: 'Calculate Value',
       icon: Calculator,
       color: 'border-blue-200 bg-white',
@@ -225,7 +239,7 @@ export default function HomePage() {
       badgeColor: 'bg-indigo-100 text-indigo-800',
       desc: 'Simulate down payments, amortization curves, interest scenarios, and generate customer-ready financing proposals.',
       inputs: 'Property Price, Down Payment, Term',
-      href: '/financiamento',
+      href: '/mortgage',
       cta: 'Simulate Loan',
       icon: Building2,
       color: 'border-indigo-200 bg-white',
@@ -264,7 +278,7 @@ export default function HomePage() {
       badgeColor: 'bg-slate-100 text-slate-800',
       desc: 'Comprehensive creator curriculum covering video scripting, AEO ranking, YouTube monetization, and AI automation.',
       inputs: 'Video Modules, Practical Frameworks',
-      href: '/cursos',
+      href: '/academy',
       cta: 'Explore Academy',
       icon: GraduationCap,
       color: 'border-slate-200 bg-white',
@@ -275,7 +289,7 @@ export default function HomePage() {
       name: '12 Free Creator Micro-Tools',
       badge: '12 Free Tools',
       badgeColor: 'bg-emerald-500 text-white font-extrabold',
-      desc: 'Free instant tools: 3-Second Hook Generator, Title CTR Predictor, YouTube SEO Grader, PKR Income Calculator, and more.',
+      desc: 'Free instant tools: 3-Second Hook Generator, Title Score & Linter, YouTube SEO Grader, PKR Income Calculator, and more.',
       inputs: 'Zero Signup Required',
       href: '/tools',
       cta: 'View All 12 Tools',
@@ -389,9 +403,15 @@ export default function HomePage() {
             </div>
 
             {/* ===================================================================== */}
-            {/* 3 APP MOCKUPS SHOWCASE (DIRECTLY INSPIRED BY ATTACHED VISUAL REFERENCE) */}
+            {/* 3 APP MOCKUPS SHOWCASE (INTERACTIVE DEMO / SAMPLE SIMULATION) */}
             {/* ===================================================================== */}
             <div className="mt-14 mx-auto max-w-6xl">
+              <div className="mb-6 flex justify-center">
+                <div className="inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-4 py-1.5 text-xs font-bold text-amber-900 shadow-xs">
+                  <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse"></span>
+                  <span>Interactive Demo Preview · Sample Simulation Benchmark</span>
+                </div>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch text-left">
                 
                 {/* ----------------------------------------------------------------- */}
@@ -455,7 +475,7 @@ export default function HomePage() {
                       <span className="text-xs font-black tracking-wide text-slate-800">Studio Workspace</span>
                     </div>
                     <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-extrabold text-emerald-800">
-                      ⚡ 9 Agents In Sync
+                      ⚡ {healthStatus?.agentCount ?? 9} Agents Operational
                     </span>
                   </div>
 
@@ -466,10 +486,10 @@ export default function HomePage() {
                       <Share2 className="h-3.5 w-3.5" />
                     </div>
                     <div className="mt-1 text-2xl sm:text-3xl font-black tracking-tight">
-                      9,999 Credits
+                      9,999 Credits (Sample)
                     </div>
                     <div className="mt-1 font-mono text-[10px] font-bold opacity-75">
-                      TIER: STUDIO PRO · NO EXPIRATION
+                      TIER: STUDIO PRO (SAMPLE BENCHMARK)
                     </div>
                   </div>
 
@@ -519,7 +539,7 @@ export default function HomePage() {
                             <div className="text-[10px] text-slate-500">Safe, Bold, Experimental</div>
                           </div>
                         </div>
-                        <span className="text-xs font-black text-emerald-600">14.8% CTR</span>
+                        <span className="text-xs font-black text-emerald-600">Score 88/100</span>
                       </div>
                     </div>
                   </div>
@@ -548,14 +568,14 @@ export default function HomePage() {
                     <div className="absolute -top-6 -right-6 h-20 w-20 rounded-full bg-[#FF681B] opacity-90"></div>
                     <div className="relative z-10">
                       <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-slate-300">
-                        <span>Projected Video Revenue</span>
+                        <span>Sample Video Revenue Model</span>
                         <span className="font-extrabold text-[#FFD900]">PKR TIER</span>
                       </div>
                       <div className="mt-1 text-2xl font-black text-white">
-                        PKR 284,500
+                        PKR 284,500 (Sample)
                       </div>
                       <div className="text-[10px] text-slate-300 font-mono mt-0.5">
-                        High-RPM Pakistan + Diaspora Audience
+                        Pakistan + Diaspora Audience Benchmark Model
                       </div>
                     </div>
                   </div>
@@ -570,7 +590,7 @@ export default function HomePage() {
                   {/* Spline Graph Canvas Simulation (Matching Reference's Yellow Curve) */}
                   <div className="relative rounded-2xl border border-slate-100 bg-gradient-to-b from-[#FFFBE6] via-white to-white p-3 text-center">
                     <div className="inline-flex items-center gap-1 rounded-md bg-[#071B3A] text-[#FFD900] px-2 py-0.5 text-[11px] font-black">
-                      $3,322.1 Estimated RPM
+                      $3,322.1 Sample RPM Benchmark
                     </div>
                     {/* SVG Spline curve matching the mockup */}
                     <div className="my-2 h-16 w-full">
@@ -633,7 +653,7 @@ export default function HomePage() {
                   <Languages className="h-6 w-6 stroke-[2.2]" />
                 </div>
                 <div>
-                  <div className="text-base font-black text-[#071B3A]">11 Languages</div>
+                  <div className="text-base font-black text-[#071B3A]">Urdu, Roman Urdu & English</div>
                   <div className="text-xs font-semibold text-slate-500">English, Urdu & Roman Urdu</div>
                 </div>
               </div>
@@ -674,7 +694,7 @@ export default function HomePage() {
                 Everything You Need to Create at Scale.
               </h2>
               <p className="mt-3 text-slate-600 text-base sm:text-lg">
-                Explore every tool built into Tameeros Shorts. No placeholders, no vaporware — click any card to launch its live workspace.
+                Explore the complete suite of creative and real estate tools in SirfShoot AI. Each card connects to a dedicated tool workspace.
               </p>
 
               {/* Category Filter Pills */}
@@ -933,7 +953,7 @@ export default function HomePage() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-300 font-mono pt-1">
-                          <div>⚡ Projected CTR: <span className="text-[#FFD900] font-bold">{demoTopics[activeDemoTopic].ctr}</span></div>
+                          <div>⚡ Title Score: <span className="text-[#FFD900] font-bold">{demoTopics[activeDemoTopic].titleScore}</span></div>
                           <div>🎬 Scenes: <span className="text-emerald-400 font-bold">{demoTopics[activeDemoTopic].scenes}</span></div>
                         </div>
                       </div>
@@ -1061,7 +1081,7 @@ export default function HomePage() {
                       ✓
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-slate-900">Zero Robotic Hallucinations</h4>
+                      <h4 className="text-base font-bold text-slate-900">Fact-Check & Sourced Claim Audit</h4>
                       <p className="text-sm text-slate-500">Every script runs through a dedicated Fact-Check agent that flags uncorroborated claims before you record.</p>
                     </div>
                   </div>
@@ -1144,7 +1164,7 @@ export default function HomePage() {
                       <span className="font-mono text-emerald-800">Done (25s)</span>
                     </div>
                     <div className="flex items-center justify-between p-2.5 rounded-xl bg-white/80 border border-[#071B3A]/10">
-                      <span>✓ 3 High-CTR Thumbnails + SEO Package + 3 Shorts</span>
+                      <span>✓ 3 Visual Concept Thumbnails + SEO Package + 3 Shorts</span>
                       <span className="font-mono text-emerald-800">Done (30s)</span>
                     </div>
                   </div>

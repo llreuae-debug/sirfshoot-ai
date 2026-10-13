@@ -29,26 +29,26 @@ export default function SidebarDrawer() {
 
   const mainTools = [
     { title: 'Dashboard', url: '/dashboard', icon: LayoutDashboard },
-    { title: 'Social Post Studio 2.0', url: '/imagens', icon: ImageIcon, badge: 'New' },
-    { title: 'Automated Videos', url: '/video-automatico', icon: Video },
-    { title: 'AI Listing Descriptions', url: '/descricoes', icon: Sparkles, badge: 'AI' },
+    { title: 'Social Post Studio 2.0', url: '/images', icon: ImageIcon, badge: 'New' },
+    { title: 'Automated Videos', url: '/video-creator', icon: Video },
+    { title: 'AI Listing Descriptions', url: '/descriptions', icon: Sparkles, badge: 'AI' },
     { title: 'AI Copilot Assistant', url: '/assistente', icon: MessageSquare },
     { title: 'Leads CRM Pipeline', url: '/leads', icon: Users, badge: 'CRM' },
   ];
 
   const academyTools = [
-    { title: 'Tameeros Academy', url: '/cursos', icon: GraduationCap, badge: 'Growth' },
+    { title: 'Tameeros Academy', url: '/academy', icon: GraduationCap, badge: 'Growth' },
   ];
 
   const premiumTools = [
-    { title: 'AI Property Valuation', url: '/precificacao', icon: Calculator, badge: 'Valuation' },
-    { title: 'AI Voiceover Studio', url: '/narracao', icon: Mic, badge: 'Voices' },
-    { title: 'Mortgage Simulator', url: '/financiamento', icon: Building, badge: 'Banks' },
+    { title: 'AI Property Valuation', url: '/valuation', icon: Calculator, badge: 'Valuation' },
+    { title: 'AI Voiceover Studio', url: '/voiceover', icon: Mic, badge: 'Voices' },
+    { title: 'Mortgage Simulator', url: '/mortgage', icon: Building, badge: 'Banks' },
   ];
 
   const accountTools = [
-    { title: 'My Subscription', url: '/minha-assinatura', icon: CreditCard },
-    { title: 'Plans & Upgrades', url: '/planos', icon: Settings },
+    { title: 'My Subscription', url: '/subscription', icon: CreditCard },
+    { title: 'Plans & Upgrades', url: '/pricing', icon: Settings },
   ];
 
   return (

@@ -225,6 +225,13 @@ export function useCreatorStore() {
     });
   };
 
+  const updateChannelName = (channelName: string) => {
+    updateState((prev) => ({
+      ...prev,
+      channelName,
+    }));
+  };
+
   const resetToSampleData = () => {
     setState(INITIAL_USER_STATE);
     saveState(INITIAL_USER_STATE);
@@ -247,6 +254,7 @@ export function useCreatorStore() {
     saveValuation,
     saveFinancing,
     toggleLessonCompleted,
+    updateChannelName,
     resetToSampleData,
     loginAsUser,
     loginAsAdmin,

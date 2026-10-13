@@ -82,7 +82,7 @@ export default function UpgradeModal({ isOpen, onClose, toolName }: UpgradeModal
         {/* Actions */}
         <div className="space-y-2.5">
           <Link
-            href="/planos"
+            href="/pricing"
             onClick={onClose}
             className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 text-sm font-extrabold text-white shadow-lg shadow-amber-500/25 hover:opacity-95 transition"
           >

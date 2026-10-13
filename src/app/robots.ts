@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://tameeros-shorts.vercel.app';
+  const baseUrl = 'https://sirfshoot-ai.vercel.app';
 
   return {
     rules: [
@@ -15,15 +15,15 @@ export default function robots(): MetadataRoute.Robots {
           '/pricing',
           '/blog',
           '/blog/*',
-          '/cursos',
+          '/academy',
           '/leads',
           '/demo',
-          '/narracao',
-          '/imagens',
-          '/video-automatico',
-          '/precificacao',
-          '/financiamento',
-          '/descricoes',
+          '/voiceover',
+          '/images',
+          '/video-creator',
+          '/valuation',
+          '/mortgage',
+          '/descriptions',
           '/login',
           '/privacy',
           '/terms',
@@ -40,8 +40,7 @@ export default function robots(): MetadataRoute.Robots {
           '/settings',
           '/settings/*',
           '/api/*',
-          '/minha-assinatura',
-          '/planos',
+          '/subscription',
         ],
       },
       {

@@ -4,10 +4,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Check, Sparkles, ArrowRight, ChevronDown, ShieldCheck, Zap } from 'lucide-react';
+import { Check, Sparkles, ArrowRight, ChevronDown, ShieldCheck, Zap, X, Lock } from 'lucide-react';
 
 export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [selectedPrice, setSelectedPrice] = useState<string>('');
+  const [reserveEmail, setReserveEmail] = useState<string>('');
+  const [reservedSuccess, setReservedSuccess] = useState<boolean>(false);
 
   const toggleFaq = (idx: number) => {
     setOpenFaq(openFaq === idx ? null : idx);
@@ -281,6 +285,92 @@ export default function PricingPage() {
             </div>
           </div>
         </div>
+        {/* Honest Early Access Reservation Modal */}
+        {selectedPlan && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedPlan(null)}
+              className="fixed inset-0 bg-slate-950/70 backdrop-blur-xs transition-opacity"
+              aria-label="Close dialog"
+            />
+
+            <div className="relative w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-2xl z-10 space-y-5 animate-in zoom-in-95 duration-200">
+              <button
+                type="button"
+                onClick={() => setSelectedPlan(null)}
+                className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              <div className="text-center space-y-2">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-red-100 text-[#E50914]">
+                  <Lock className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-black text-slate-900 tracking-tight">
+                  Reserve {selectedPlan} Plan
+                </h3>
+                <p className="text-xs text-slate-500 font-mono">
+                  Price: {selectedPrice} / month · Guaranteed Launch Rate
+                </p>
+              </div>
+
+              {reservedSuccess ? (
+                <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-center space-y-3">
+                  <div className="text-sm font-bold text-emerald-800">
+                    ✓ Tier Reserved for {reserveEmail}!
+                  </div>
+                  <p className="text-xs text-emerald-700 leading-relaxed">
+                    You have locked in this launch rate. While automated payment gateway verification finishes, enjoy immediate full studio access to create your first scripts.
+                  </p>
+                  <Link
+                    href="/create"
+                    className="btn-shadow inline-flex items-center gap-1.5 rounded-full bg-[#E50914] px-6 py-2.5 text-xs font-bold text-white hover:bg-[#B91C1C] transition"
+                  >
+                    <span>Launch Studio Workspace</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              ) : (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (reserveEmail) setReservedSuccess(true);
+                  }}
+                  className="space-y-4"
+                >
+                  <div className="rounded-xl bg-slate-50 border border-slate-100 p-3 text-xs text-slate-600 leading-relaxed">
+                    <strong>Honest Early Access Notice:</strong> Online card processing is currently configured in sandbox mode. Enter your email to reserve your tier discount without any upfront charge today.
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                      Account Email Address
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={reserveEmail}
+                      onChange={(e) => setReserveEmail(e.target.value)}
+                      placeholder="creator@example.com"
+                      className="w-full rounded-xl border border-slate-300 p-3 text-xs text-slate-900 placeholder:text-slate-400 focus:border-[#E50914] focus:outline-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="btn-shadow w-full flex items-center justify-center gap-2 rounded-full bg-[#E50914] py-3 text-xs font-bold text-white hover:bg-[#B91C1C] transition cursor-pointer"
+                  >
+                    <Zap className="h-3.5 w-3.5" />
+                    <span>Reserve Tier & Enter Studio</span>
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />

@@ -59,7 +59,7 @@ export default function FinanciamentoPage() {
   const [propertyValue, setPropertyValue] = useState<number>(85000000); // PKR 85M
   const [downPaymentPercent, setDownPaymentPercent] = useState<number>(20); // 20%
   const [termYears, setTermYears] = useState<number>(20); // 20 years
-  const [amortizationSystem, setAmortizationSystem] = useState<'SAC' | 'PRICE'>('SAC');
+  const [amortizationSystem, setAmortizationSystem] = useState<'DIMINISHING_MUSHARAKAH' | 'EQUAL_INSTALLMENT'>('DIMINISHING_MUSHARAKAH');
   const [savedSuccess, setSavedSuccess] = useState(false);
 
   // Calculations
@@ -73,12 +73,12 @@ export default function FinanciamentoPage() {
     let firstPayment = 0;
     let lastPayment = 0;
 
-    if (amortizationSystem === 'SAC') {
+    if (amortizationSystem === 'DIMINISHING_MUSHARAKAH') {
       const principalAmortization = financedAmount / totalMonths;
       firstPayment = Math.round(principalAmortization + financedAmount * monthlyRate);
       lastPayment = Math.round(principalAmortization + (financedAmount / totalMonths) * monthlyRate);
     } else {
-      // PRICE table
+      // Conventional Equal Monthly Installment (EMI)
       const factor = Math.pow(1 + monthlyRate, totalMonths);
       firstPayment = Math.round((financedAmount * monthlyRate * factor) / (factor - 1));
       lastPayment = firstPayment;
@@ -110,7 +110,7 @@ export default function FinanciamentoPage() {
       bestBank: bestBank?.name || 'Meezan Bank',
       firstInstallment: bestBank?.firstPayment || 0,
       lastInstallment: bestBank?.lastPayment || 0,
-      system: amortizationSystem,
+      system: amortizationSystem === 'DIMINISHING_MUSHARAKAH' ? 'Islamic Diminishing Musharakah' : 'Conventional Reducing EMI',
       createdAt: '2026-10-12T12:00:00Z',
     });
     setSavedSuccess(true);
@@ -237,28 +237,28 @@ export default function FinanciamentoPage() {
                     <div className="grid grid-cols-2 gap-2">
                       <button
                         type="button"
-                        onClick={() => setAmortizationSystem('SAC')}
+                        onClick={() => setAmortizationSystem('DIMINISHING_MUSHARAKAH')}
                         className={`rounded-xl p-3 text-left transition border ${
-                          amortizationSystem === 'SAC'
+                          amortizationSystem === 'DIMINISHING_MUSHARAKAH'
                             ? 'bg-amber-50 border-amber-300 ring-1 ring-amber-400'
                             : 'bg-slate-50 border-slate-200 text-slate-600'
                         }`}
                       >
-                        <div className="font-extrabold text-xs text-slate-900">SAC Schedule</div>
-                        <div className="text-[10px] text-slate-500 mt-0.5">Decreasing monthly installments</div>
+                        <div className="font-extrabold text-xs text-slate-900">Islamic Musharakah</div>
+                        <div className="text-[10px] text-slate-500 mt-0.5">Shariah reducing rent schedule</div>
                       </button>
 
                       <button
                         type="button"
-                        onClick={() => setAmortizationSystem('PRICE')}
+                        onClick={() => setAmortizationSystem('EQUAL_INSTALLMENT')}
                         className={`rounded-xl p-3 text-left transition border ${
-                          amortizationSystem === 'PRICE'
+                          amortizationSystem === 'EQUAL_INSTALLMENT'
                             ? 'bg-amber-50 border-amber-300 ring-1 ring-amber-400'
                             : 'bg-slate-50 border-slate-200 text-slate-600'
                         }`}
                       >
-                        <div className="font-extrabold text-xs text-slate-900">Fixed Table</div>
-                        <div className="text-[10px] text-slate-500 mt-0.5">Constant installment throughout</div>
+                        <div className="font-extrabold text-xs text-slate-900">Conventional EMI</div>
+                        <div className="text-[10px] text-slate-500 mt-0.5">Equal monthly installments</div>
                       </button>
                     </div>
                   </div>
@@ -287,7 +287,7 @@ export default function FinanciamentoPage() {
                     <div className="text-xl sm:text-2xl font-black text-slate-900 font-mono">
                       {formatPKR(bestBank.firstPayment)} / mo
                     </div>
-                    {amortizationSystem === 'SAC' && (
+                    {amortizationSystem === 'DIMINISHING_MUSHARAKAH' && (
                       <p className="text-[10px] text-slate-400">
                         Final payment decreases to {formatPKR(bestBank.lastPayment)}
                       </p>
@@ -347,6 +347,17 @@ export default function FinanciamentoPage() {
                       </div>
                     </div>
                   ))}
+                </div>
+
+                {/* Regulatory Disclaimer */}
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 space-y-1.5 text-xs text-slate-500 mt-4">
+                  <div className="flex items-center gap-1.5 font-bold text-slate-700 uppercase text-[11px]">
+                    <Info className="h-3.5 w-3.5 text-amber-600" />
+                    <span>Mortgage Financing Disclosure</span>
+                  </div>
+                  <p className="leading-relaxed">
+                    Financing rates and profit margins are indicative benchmarks based on prevailing KIBOR spreads. Final loan approval, processing fees, and debt-burden ratios (DBR) are subject to bank risk underwriting under State Bank of Pakistan (SBP) prudential guidelines.
+                  </p>
                 </div>
               </div>
             </div>

@@ -290,6 +290,17 @@ export default function PrecificacaoPage() {
                     </label>
                   </div>
                 </div>
+
+                {/* Truthful Regulatory Disclaimer */}
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 space-y-1.5 text-xs text-slate-500">
+                  <div className="flex items-center gap-1.5 font-bold text-slate-700 uppercase text-[11px]">
+                    <Info className="h-3.5 w-3.5 text-amber-600" />
+                    <span>Important Valuation Notice</span>
+                  </div>
+                  <p className="leading-relaxed">
+                    This algorithmic valuation is an indicative estimate based on user parameters and localized portal listing medians. It does not constitute a certified property appraisal or structural survey under Pakistan Engineering Council (PEC) or State Bank of Pakistan valuation regulations.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -355,10 +366,21 @@ export default function PrecificacaoPage() {
                       <span className="font-mono text-emerald-700 font-bold">+12% vs Older Stock</span>
                     </div>
                     <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-                      <span className="font-bold text-slate-800">Algorithm Confidence Score</span>
-                      <span className="font-mono text-purple-700 font-bold">96.4% High Reliability</span>
+                      <span className="font-bold text-slate-800">Heuristic Confidence Interval</span>
+                      <span className="font-mono text-purple-700 font-bold">±8% (Preliminary Model)</span>
                     </div>
                   </div>
+                </div>
+
+                {/* Truthful Regulatory Disclaimer */}
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 space-y-1.5 text-xs text-slate-500">
+                  <div className="flex items-center gap-1.5 font-bold text-slate-700 uppercase text-[11px]">
+                    <Info className="h-3.5 w-3.5 text-amber-600" />
+                    <span>Important Valuation Notice</span>
+                  </div>
+                  <p className="leading-relaxed">
+                    This algorithmic valuation is an indicative estimate based on user parameters and localized portal listing medians. It does not constitute a certified property appraisal or structural survey under Pakistan Engineering Council (PEC) or State Bank of Pakistan valuation regulations.
+                  </p>
                 </div>
               </div>
             </div>

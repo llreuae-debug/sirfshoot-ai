@@ -255,7 +255,7 @@ export interface SavedFinancing {
   bestBank: string;
   firstInstallment: number;
   lastInstallment: number;
-  system: 'SAC' | 'PRICE';
+  system: 'SAC' | 'PRICE' | 'DIMINISHING_MUSHARAKAH' | 'EQUAL_INSTALLMENT' | string;
   createdAt: string;
 }
 

@@ -1,23 +1,83 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useCreatorStore } from '@/lib/store';
-import { Key, Shield, Sliders, CheckCircle2, User, Zap, Save } from 'lucide-react';
+import { Key, Shield, Sliders, CheckCircle2, User, Zap, Save, Lock } from 'lucide-react';
 
 export default function SettingsPage() {
-  const { state } = useCreatorStore();
+  const { state, updateChannelName } = useCreatorStore();
 
   const [geminiKey, setGeminiKey] = useState('');
   const [openAiKey, setOpenAiKey] = useState('');
+  const [pexelsKey, setPexelsKey] = useState('');
   const [channelName, setChannelName] = useState(state.channelName);
+  const [saving, setSaving] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
+  const [keyStatus, setKeyStatus] = useState<{
+    hasGemini: boolean;
+    geminiSource: string;
+    hasOpenAI: boolean;
+    openAiSource: string;
+    hasPexels: boolean;
+    pexelsSource: string;
+  }>({
+    hasGemini: false,
+    geminiSource: 'none',
+    hasOpenAI: false,
+    openAiSource: 'none',
+    hasPexels: false,
+    pexelsSource: 'none',
+  });
 
-  const handleSave = (e: React.FormEvent) => {
+  useEffect(() => {
+    fetch('/api/user/keys')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) setKeyStatus(data);
+      })
+      .catch(() => {});
+  }, []);
+
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSavedSuccess(true);
-    setTimeout(() => setSavedSuccess(false), 3000);
+    setSaving(true);
+
+    try {
+      if (channelName !== state.channelName) {
+        updateChannelName(channelName);
+      }
+
+      const res = await fetch('/api/user/keys', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          geminiKey: geminiKey.trim() || undefined,
+          openAiKey: openAiKey.trim() || undefined,
+          pexelsKey: pexelsKey.trim() || undefined,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setGeminiKey('');
+        setOpenAiKey('');
+        setPexelsKey('');
+        setSavedSuccess(true);
+        setTimeout(() => setSavedSuccess(false), 4000);
+
+        // Refresh key status
+        fetch('/api/user/keys')
+          .then((r) => r.json())
+          .then((d) => setKeyStatus(d))
+          .catch(() => {});
+      }
+    } catch (err) {
+      console.error('Failed to save keys:', err);
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -29,136 +89,140 @@ export default function SettingsPage() {
           <div>
             <h1 className="text-3xl font-black text-slate-900">Creator Settings & API Keys</h1>
             <p className="mt-1 text-sm text-slate-600">
-              Manage your channel preferences, modular AI provider keys, and subscription details.
+              Manage your channel preferences, modular AI provider keys, and security credentials.
             </p>
           </div>
 
           {savedSuccess && (
             <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-xs font-bold text-emerald-800 flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-              <span>Settings and credentials updated successfully!</span>
+              <span>Settings and credentials encrypted and updated successfully!</span>
             </div>
           )}
 
           <form onSubmit={handleSave} className="space-y-6">
             {/* Modular AI Providers */}
             <div className="rounded-2xl border border-slate-200 bg-white p-6 card-shadow space-y-4">
-              <div className="flex items-center gap-2">
-                <Key className="h-4 w-4 text-[#E50914]" />
-                <h2 className="text-lg font-bold text-slate-900">AI Model Provider Configuration</h2>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Key className="h-4 w-4 text-[#E50914]" />
+                  <h2 className="text-lg font-bold text-slate-900">AI Model Provider Configuration (BYOK)</h2>
+                </div>
+                <span className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                  <Lock className="h-3 w-3" />
+                  AES-256 Encrypted at Rest
+                </span>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed">
-                By default, Tameeros Shorts runs using our built-in multi-agent intelligence server. You may optionally provide your own personal Google Gemini or OpenAI API keys for direct zero-latency quota usage.
+                By default, SirfShoot AI runs using our built-in multi-agent intelligence server and deterministic tools. You may optionally bring your own personal Google Gemini, OpenAI, or Pexels API keys for zero-latency dedicated quota.
               </p>
 
               <div className="space-y-4 pt-2">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                    Google Gemini API Key (Optional)
-                  </label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                      Google Gemini API Key (Optional)
+                    </label>
+                    {keyStatus.hasGemini && (
+                      <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
+                        Active ({keyStatus.geminiSource === 'user_byok' ? 'Custom BYOK' : 'Server Default'})
+                      </span>
+                    )}
+                  </div>
                   <input
                     type="password"
                     value={geminiKey}
                     onChange={(e) => setGeminiKey(e.target.value)}
-                    placeholder="AIzaSy..."
+                    placeholder={keyStatus.hasGemini ? "•••••••••••••••••••••••• (Configured — enter new key to overwrite)" : "AIzaSy..."}
                     className="w-full rounded-xl border border-slate-300 p-2.5 font-mono text-xs text-slate-900 focus:border-[#E50914] focus:outline-none"
                   />
-                  <span className="text-[10px] text-slate-400">Used for fast multimodal thumbnail and script processing</span>
+                  <span className="text-[10px] text-slate-400">Used for Gemini 2.5 Flash research & scriptwriting fallback chain</span>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                    OpenAI API Key (Optional)
-                  </label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                      OpenAI API Key (Optional)
+                    </label>
+                    {keyStatus.hasOpenAI && (
+                      <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
+                        Active ({keyStatus.openAiSource === 'user_byok' ? 'Custom BYOK' : 'Server Default'})
+                      </span>
+                    )}
+                  </div>
                   <input
                     type="password"
                     value={openAiKey}
                     onChange={(e) => setOpenAiKey(e.target.value)}
-                    placeholder="sk-proj-..."
+                    placeholder={keyStatus.hasOpenAI ? "•••••••••••••••••••••••• (Configured — enter new key to overwrite)" : "sk-proj-..."}
                     className="w-full rounded-xl border border-slate-300 p-2.5 font-mono text-xs text-slate-900 focus:border-[#E50914] focus:outline-none"
                   />
-                  <span className="text-[10px] text-slate-400">Used for DALL-E thumbnail prompts & GPT-4o synthesis</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Channel Profile */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 card-shadow space-y-4">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4 text-[#E50914]" />
-                <h2 className="text-lg font-bold text-slate-900">Channel & Creator Profile</h2>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                    Creator Name
-                  </label>
-                  <input
-                    type="text"
-                    defaultValue={state.name}
-                    className="w-full rounded-xl border border-slate-300 p-2.5 text-xs text-slate-900 focus:border-[#E50914] focus:outline-none"
-                  />
+                  <span className="text-[10px] text-slate-400">Used for GPT-4o synthesis and visual storyboard scenes</span>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                    Account Email
-                  </label>
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="text"
-                      disabled
-                      value={state.email}
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 p-2.5 text-xs text-slate-600 font-mono"
-                    />
-                    {state.role === 'admin' && (
-                      <span className="rounded bg-purple-100 border border-purple-200 px-2 py-1 text-[10px] font-bold text-purple-700 uppercase">
-                        Admin
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                      Pexels API Key (Optional)
+                    </label>
+                    {keyStatus.hasPexels && (
+                      <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
+                        Active ({keyStatus.pexelsSource === 'user_byok' ? 'Custom BYOK' : 'Server Default'})
                       </span>
                     )}
                   </div>
-                </div>
-
-                <div className="sm:col-span-2">
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                    Primary YouTube Channel
-                  </label>
                   <input
-                    type="text"
-                    value={channelName}
-                    onChange={(e) => setChannelName(e.target.value)}
-                    className="w-full rounded-xl border border-slate-300 p-2.5 text-xs text-slate-900 focus:border-[#E50914] focus:outline-none"
+                    type="password"
+                    value={pexelsKey}
+                    onChange={(e) => setPexelsKey(e.target.value)}
+                    placeholder={keyStatus.hasPexels ? "•••••••••••••••••••••••• (Configured — enter new key to overwrite)" : "Enter Pexels API Key..."}
+                    className="w-full rounded-xl border border-slate-300 p-2.5 font-mono text-xs text-slate-900 focus:border-[#E50914] focus:outline-none"
                   />
+                  <span className="text-[10px] text-slate-400">Used for automatic stock image downloads per script section</span>
                 </div>
+              </div>
+
+              <div className="rounded-xl bg-slate-50 border border-slate-200 p-3 text-[11px] text-slate-500 flex items-start gap-2">
+                <Shield className="h-4 w-4 text-slate-400 shrink-0 mt-0.5" />
+                <span>
+                  <strong>Zero Client Exposure:</strong> Your credentials are encrypted on the server with AES-256-GCM. They are never stored in plain text, never saved in localStorage, never logged, and never transmitted back to the browser.
+                </span>
               </div>
             </div>
 
-            {/* Subscription Info */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 card-shadow space-y-3">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="font-bold text-base text-slate-900">Current Plan: {state.plan.toUpperCase()}</h3>
-                  <p className="text-xs text-slate-500">
-                    {state.creditsRemaining} of {state.creditsTotal} video generation credits remaining.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  className="rounded-lg border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-100"
-                >
-                  Manage Billing
-                </button>
+            {/* Channel Preferences */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 card-shadow space-y-4">
+              <div className="flex items-center gap-2">
+                <Sliders className="h-4 w-4 text-[#E50914]" />
+                <h2 className="text-lg font-bold text-slate-900">Channel Identity & Attribution</h2>
+              </div>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                These settings personalize your title branding, video intros, and exported metadata.
+              </p>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  Default Channel Name
+                </label>
+                <input
+                  type="text"
+                  value={channelName}
+                  onChange={(e) => setChannelName(e.target.value)}
+                  placeholder="e.g. Daily Tech Pakistan"
+                  className="w-full rounded-xl border border-slate-300 p-2.5 text-xs text-slate-900 focus:border-[#E50914] focus:outline-none"
+                />
               </div>
             </div>
 
-            <div className="flex justify-end">
+            {/* Actions */}
+            <div className="flex items-center justify-end gap-3 pt-2">
               <button
                 type="submit"
-                className="btn-shadow inline-flex items-center gap-2 rounded-full bg-[#E50914] px-6 py-2.5 text-xs font-bold text-white hover:bg-[#B91C1C] transition"
+                disabled={saving}
+                className="inline-flex items-center gap-2 rounded-xl bg-[#E50914] hover:bg-[#c90812] px-6 py-2.5 text-xs font-bold text-white shadow-sm transition disabled:opacity-50"
               >
                 <Save className="h-4 w-4" />
-                <span>Save Settings</span>
+                <span>{saving ? 'Encrypting & Saving...' : 'Save Settings'}</span>
               </button>
             </div>
           </form>

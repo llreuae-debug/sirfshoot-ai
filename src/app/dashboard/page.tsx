@@ -58,7 +58,7 @@ export default function DashboardPage() {
       badge: 'Available',
       features: ['Automatic high-res filters', 'AI-generated captions & hashtags', 'Direct WhatsApp & agent branding'],
       cta: 'Create Posts',
-      link: '/imagens',
+      link: '/images',
     },
     {
       id: 'imagens-1',
@@ -71,7 +71,7 @@ export default function DashboardPage() {
       badge: 'Classic Mode',
       features: ['Automatic photo enhancement', 'HDR clarity presets', 'Sharpening & brightness controls'],
       cta: 'Launch Enhancer',
-      link: '/imagens',
+      link: '/images',
     },
     {
       id: 'descricoes',
@@ -84,7 +84,7 @@ export default function DashboardPage() {
       badge: 'New',
       features: ['Conversion-optimized listing copy', 'Multi-platform formatting', 'Strategic real estate hashtags included'],
       cta: 'Generate Copy',
-      link: '/descricoes',
+      link: '/descriptions',
     },
     {
       id: 'cursos',
@@ -97,7 +97,7 @@ export default function DashboardPage() {
       badge: 'New',
       features: ['Step-by-step video playbooks', 'High-retention video formulas', 'Paid advertising blueprints'],
       cta: 'Access Academy',
-      link: '/cursos',
+      link: '/academy',
     },
     {
       id: 'assistente',
@@ -139,7 +139,7 @@ export default function DashboardPage() {
       badge: 'Premium',
       features: ['+100 natural voices in multiple accents', 'Clone your voice in seconds', 'Optimized for Reels, Shorts & YouTube'],
       cta: 'Create Voiceover',
-      link: '/narracao',
+      link: '/voiceover',
     },
     {
       id: 'videos-automaticos',
@@ -152,7 +152,7 @@ export default function DashboardPage() {
       badge: 'Premium',
       features: ['100% automated multi-scene rendering', 'Cinematic zoom & pan transitions', 'Royalty-free soundtracks & 4K export'],
       cta: 'Generate Video',
-      link: '/video-automatico',
+      link: '/video-creator',
     },
     {
       id: 'precificacao',
@@ -165,7 +165,7 @@ export default function DashboardPage() {
       badge: 'Premium',
       features: ['Comparative market data analysis', 'Square-meter benchmark valuation', 'Printable PDF appraisal dossier'],
       cta: 'Calculate Value',
-      link: '/precificacao',
+      link: '/valuation',
     },
     {
       id: 'financiamento',
@@ -178,7 +178,7 @@ export default function DashboardPage() {
       badge: 'Premium',
       features: ['Multi-bank interest rate comparison', 'SAC and fixed installment schedules', 'Income eligibility qualification checks'],
       cta: 'Simulate Loan',
-      link: '/financiamento',
+      link: '/mortgage',
     },
   ];
 
@@ -259,7 +259,7 @@ export default function DashboardPage() {
                 </div>
 
                 <Link
-                  href="/minha-assinatura"
+                  href="/subscription"
                   className="rounded-xl bg-white px-4 py-2 text-xs font-black text-emerald-800 hover:bg-emerald-50 transition shrink-0 shadow-md text-center"
                 >
                   Manage Subscription

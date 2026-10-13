@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Reference & Dev Only
+/reference/
+client_secret*.json
+*.pickle
+*.token
+token.json
+
