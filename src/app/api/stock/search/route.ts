@@ -1,4 +1,3 @@
-export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { getDecryptedKeysFromCookie } from '@/lib/crypto';
 
@@ -79,7 +78,7 @@ const CURATED_FALLBACK_PHOTOS: Record<string, StockPhotoResult[]> = {
 
 export async function GET(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url);
+    const searchParams = req.nextUrl.searchParams;
     const query = searchParams.get('query') || 'architecture luxury modern';
     const orientation = searchParams.get('orientation') || 'landscape';
     const perPage = Math.min(Number(searchParams.get('per_page')) || 6, 20);
@@ -126,6 +125,9 @@ export async function GET(req: NextRequest) {
       notice: pexelsKey ? 'Query returned 0 direct hits; curated library served.' : 'Add Pexels API key in Settings to unlock unlimited live stock search.',
     });
   } catch (err: unknown) {
+    if ((err as { digest?: string })?.digest === 'NEXT_PRERENDER_INTERRUPTED') {
+      throw err;
+    }
     console.error('Stock search route error:', err);
     return NextResponse.json({ error: 'Failed to search stock assets' }, { status: 500 });
   }
