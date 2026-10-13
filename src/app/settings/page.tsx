@@ -12,6 +12,7 @@ export default function SettingsPage() {
   const [geminiKey, setGeminiKey] = useState('');
   const [openAiKey, setOpenAiKey] = useState('');
   const [pexelsKey, setPexelsKey] = useState('');
+  const [youtubeKey, setYoutubeKey] = useState('');
   const [channelName, setChannelName] = useState(state.channelName);
   const [saving, setSaving] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
@@ -22,6 +23,8 @@ export default function SettingsPage() {
     openAiSource: string;
     hasPexels: boolean;
     pexelsSource: string;
+    hasYouTube?: boolean;
+    youtubeSource?: string;
   }>({
     hasGemini: false,
     geminiSource: 'none',
@@ -29,6 +32,8 @@ export default function SettingsPage() {
     openAiSource: 'none',
     hasPexels: false,
     pexelsSource: 'none',
+    hasYouTube: false,
+    youtubeSource: 'none',
   });
 
   useEffect(() => {
@@ -56,6 +61,7 @@ export default function SettingsPage() {
           geminiKey: geminiKey.trim() || undefined,
           openAiKey: openAiKey.trim() || undefined,
           pexelsKey: pexelsKey.trim() || undefined,
+          youtubeKey: youtubeKey.trim() || undefined,
         }),
       });
 
@@ -64,6 +70,7 @@ export default function SettingsPage() {
         setGeminiKey('');
         setOpenAiKey('');
         setPexelsKey('');
+        setYoutubeKey('');
         setSavedSuccess(true);
         setTimeout(() => setSavedSuccess(false), 4000);
 

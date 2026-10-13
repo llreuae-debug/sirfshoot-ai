@@ -197,6 +197,19 @@ export interface ProjectData {
     clips: ShortClip[];
     postingSchedule: string;
   };
+
+  // Human Review & YouTube Approval Gate (Phase 3)
+  reviewStatus?: 'pending' | 'approved' | 'rejected' | 'changes_requested';
+  reviewNotes?: string;
+  reviewedAt?: string;
+  youtubeUpload?: {
+    status: 'idle' | 'uploading' | 'published' | 'simulated' | 'failed';
+    videoUrl?: string;
+    videoId?: string;
+    uploadedAt?: string;
+    privacy?: 'private' | 'unlisted' | 'public';
+    lastError?: string;
+  };
 }
 
 export interface LeadItem {

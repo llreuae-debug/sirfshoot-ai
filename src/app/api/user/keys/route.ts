@@ -25,7 +25,7 @@ function maskKey(key: string): string {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { geminiKey, openAiKey, pexelsKey } = body;
+    const { geminiKey, openAiKey, pexelsKey, youtubeKey } = body;
 
     const res = NextResponse.json({
       success: true,
@@ -37,6 +37,8 @@ export async function POST(req: NextRequest) {
         openAiPreview: openAiKey ? maskKey(openAiKey) : process.env.OPENAI_API_KEY ? '••••Server Configured••••' : null,
         hasPexels: Boolean(pexelsKey || process.env.PEXELS_API_KEY),
         pexelsPreview: pexelsKey ? maskKey(pexelsKey) : process.env.PEXELS_API_KEY ? '••••Server Configured••••' : null,
+        hasYouTube: Boolean(youtubeKey || process.env.YOUTUBE_ACCESS_TOKEN),
+        youtubePreview: youtubeKey ? maskKey(youtubeKey) : process.env.YOUTUBE_ACCESS_TOKEN ? '••••Server Configured••••' : null,
       },
     });
 
@@ -45,6 +47,7 @@ export async function POST(req: NextRequest) {
     if (geminiKey) keyData.gemini = encrypt(geminiKey);
     if (openAiKey) keyData.openai = encrypt(openAiKey);
     if (pexelsKey) keyData.pexels = encrypt(pexelsKey);
+    if (youtubeKey) keyData.youtube = encrypt(youtubeKey);
 
     if (Object.keys(keyData).length > 0) {
       res.cookies.set('ss_byok', JSON.stringify(keyData), {
@@ -68,6 +71,7 @@ export async function GET(req: NextRequest) {
   let hasUserGemini = false;
   let hasUserOpenAI = false;
   let hasUserPexels = false;
+  let hasUserYouTube = false;
 
   if (cookie) {
     try {
@@ -75,6 +79,7 @@ export async function GET(req: NextRequest) {
       hasUserGemini = Boolean(parsed.gemini);
       hasUserOpenAI = Boolean(parsed.openai);
       hasUserPexels = Boolean(parsed.pexels);
+      hasUserYouTube = Boolean(parsed.youtube);
     } catch {
       // Ignore invalid cookie
     }
@@ -87,5 +92,7 @@ export async function GET(req: NextRequest) {
     openAiSource: hasUserOpenAI ? 'user_byok' : process.env.OPENAI_API_KEY ? 'server_env' : 'none',
     hasPexels: hasUserPexels || Boolean(process.env.PEXELS_API_KEY),
     pexelsSource: hasUserPexels ? 'user_byok' : process.env.PEXELS_API_KEY ? 'server_env' : 'none',
+    hasYouTube: hasUserYouTube || Boolean(process.env.YOUTUBE_ACCESS_TOKEN),
+    youtubeSource: hasUserYouTube ? 'user_byok' : process.env.YOUTUBE_ACCESS_TOKEN ? 'server_env' : 'none',
   });
 }

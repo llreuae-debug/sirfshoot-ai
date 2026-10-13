@@ -9,6 +9,7 @@ import { useCreatorStore } from '@/lib/store';
 import { ProjectData, ScriptSection, StoryboardScene, ThumbnailVariant } from '@/lib/types';
 import { SAMPLE_PROJECT } from '@/lib/mock-data';
 import { generateThumbnailSvg } from '@/lib/thumbnail-generator';
+import HumanReviewGate from '@/components/HumanReviewGate';
 import {
   FileText,
   Search,
@@ -36,6 +37,7 @@ import {
   Edit3,
   Tv,
   RotateCcw,
+  ShieldCheck,
 } from 'lucide-react';
 
 function ProjectStudioContent() {
@@ -48,7 +50,7 @@ function ProjectStudioContent() {
     return getProject(projectId) || SAMPLE_PROJECT;
   });
   const [activeTab, setActiveTab] = useState<
-    'script' | 'research' | 'factcheck' | 'storyboard' | 'thumbnails' | 'seo' | 'shorts'
+    'script' | 'research' | 'factcheck' | 'storyboard' | 'thumbnails' | 'seo' | 'shorts' | 'review'
   >('script');
 
   // Script tab mode: 'editor' | 'preview' | 'teleprompter'
@@ -196,6 +198,15 @@ Tags: ${project.seo.tags.join(', ')}
 
               <button
                 type="button"
+                onClick={() => setActiveTab('review')}
+                className="btn-shadow inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-4 py-1.5 text-xs font-bold text-white hover:bg-emerald-700 transition"
+              >
+                <ShieldCheck className="h-3.5 w-3.5" />
+                <span>Review & YouTube Gate</span>
+              </button>
+
+              <button
+                type="button"
                 onClick={handleExportMarkdown}
                 className="btn-shadow inline-flex items-center gap-1.5 rounded-full bg-[#E50914] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#B91C1C] transition"
               >
@@ -215,6 +226,7 @@ Tags: ${project.seo.tags.join(', ')}
               { id: 'thumbnails', label: 'Thumbnail Designer', icon: ImageIcon, badge: '3 Concepts' },
               { id: 'seo', label: 'SEO & AEO Metadata', icon: TrendingUp, badge: 'AEO 97%' },
               { id: 'shorts', label: 'Shorts & Distribution', icon: Share2, badge: `${project.shorts.clips.length} Clips` },
+              { id: 'review', label: 'Human Review Gate', icon: ShieldCheck, badge: project.reviewStatus ? project.reviewStatus.toUpperCase() : 'GATE' },
             ] as const).map((tab) => {
               const TabIcon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -1132,6 +1144,17 @@ Tags: ${project.seo.tags.join(', ')}
                 </div>
               </div>
             </div>
+          )}
+
+          {/* TAB 8: HUMAN REVIEW & YOUTUBE APPROVAL GATE */}
+          {activeTab === 'review' && (
+            <HumanReviewGate
+              project={project}
+              onUpdateProject={(updated) => {
+                setProject(updated);
+                updateProject(updated.id, () => updated);
+              }}
+            />
           )}
         </div>
       </main>

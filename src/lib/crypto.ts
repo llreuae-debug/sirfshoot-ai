@@ -43,6 +43,7 @@ export interface DecryptedKeys {
   geminiKey?: string;
   openAiKey?: string;
   pexelsKey?: string;
+  youtubeAccessToken?: string;
 }
 
 export function getDecryptedKeysFromCookie(cookieValue?: string): DecryptedKeys {
@@ -50,6 +51,7 @@ export function getDecryptedKeysFromCookie(cookieValue?: string): DecryptedKeys 
     geminiKey: process.env.GEMINI_API_KEY,
     openAiKey: process.env.OPENAI_API_KEY,
     pexelsKey: process.env.PEXELS_API_KEY,
+    youtubeAccessToken: process.env.YOUTUBE_ACCESS_TOKEN,
   };
 
   if (!cookieValue) return keys;
@@ -67,6 +69,10 @@ export function getDecryptedKeysFromCookie(cookieValue?: string): DecryptedKeys 
     if (parsed.pexels) {
       const dec = decrypt(parsed.pexels);
       if (dec) keys.pexelsKey = dec;
+    }
+    if (parsed.youtube) {
+      const dec = decrypt(parsed.youtube);
+      if (dec) keys.youtubeAccessToken = dec;
     }
   } catch {
     // Ignore invalid cookie
