@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -13,7 +13,6 @@ import { ArrowLeft } from 'lucide-react';
 
 function StandaloneReviewContent() {
   const params = useParams();
-  const router = useRouter();
   const projectId = (params?.id as string) || 'proj-india-pakistan-border';
 
   const { getProject, updateProject, state } = useCreatorStore();
@@ -23,11 +22,13 @@ function StandaloneReviewContent() {
 
   useEffect(() => {
     const loaded = getProject(projectId);
-    if (loaded) {
-      setProject(loaded);
-    } else {
-      setProject(SAMPLE_PROJECT);
-    }
+    queueMicrotask(() => {
+      if (loaded) {
+        setProject(loaded);
+      } else {
+        setProject(SAMPLE_PROJECT);
+      }
+    });
   }, [projectId, state.projects, getProject]);
 
   const handleUpdate = (updated: ProjectData) => {

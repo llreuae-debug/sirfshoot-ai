@@ -13,17 +13,14 @@ import {
   Download,
   Sparkles,
   ArrowLeft,
-  Music,
   Layers,
   Settings2,
   CheckCircle2,
   RefreshCw,
   Plus,
   Trash2,
-  Image as ImageIcon,
   Smartphone,
   Monitor,
-  Volume2,
   AlertCircle,
   ExternalLink,
 } from 'lucide-react';
@@ -421,7 +418,7 @@ export default function VideoAutomaticoPage() {
                     </label>
                     <select
                       value={voice}
-                      onChange={(e) => setVoice(e.target.value as any)}
+                      onChange={(e) => setVoice(e.target.value as 'en-US-AndrewMultilingualNeural' | 'ur-PK-UzmaNeural' | 'ur-PK-AsadNeural')}
                       className="w-full rounded-xl border border-slate-300 p-2.5 text-xs text-slate-900 focus:border-[#E50914] focus:outline-none"
                     >
                       <option value="en-US-AndrewMultilingualNeural">Andrew (US / Multilingual)</option>

@@ -22,7 +22,6 @@ import {
   Volume2,
   Clock,
   Tag,
-  Share2,
   Download,
   Flame,
   Info,
@@ -37,7 +36,7 @@ export default function HumanReviewGate({ project, onUpdateProject }: HumanRevie
   const [reviewStatus, setReviewStatus] = useState<'pending' | 'approved' | 'rejected'>(
     (project.reviewStatus as 'pending' | 'approved' | 'rejected') || 'pending'
   );
-  const [reviewNotes, setReviewNotes] = useState(project.reviewNotes || '');
+  const [reviewNotes] = useState(project.reviewNotes || '');
   const [activeSectionId, setActiveSectionId] = useState<string | null>(
     project.script.sections?.[0]?.id || null
   );
@@ -45,7 +44,7 @@ export default function HumanReviewGate({ project, onUpdateProject }: HumanRevie
   // Editable fields in review gate
   const [editableTitle, setEditableTitle] = useState(project.title);
   const [editableSections, setEditableSections] = useState(project.script.sections || []);
-  const [selectedThumbnailIndex, setSelectedThumbnailIndex] = useState(0);
+  // selectedThumbnailIndex reserved
 
   // Audio synthesis state
   const [isSynthesizing, setIsSynthesizing] = useState(false);
@@ -577,7 +576,7 @@ export default function HumanReviewGate({ project, onUpdateProject }: HumanRevie
                 </span>
               </div>
               <p className="text-xs text-slate-600 italic bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                "{hookSection.content.slice(0, 160)}..."
+                &ldquo;{hookSection.content.slice(0, 160)}...&rdquo;
               </p>
               <div className="flex flex-wrap gap-1 text-[11px]">
                 <span className="rounded bg-emerald-50 text-emerald-700 px-2 py-0.5 font-medium border border-emerald-200">
@@ -819,7 +818,7 @@ export default function HumanReviewGate({ project, onUpdateProject }: HumanRevie
             </div>
 
             <p className="text-xs text-slate-600">
-              Provide feedback for what should be updated (e.g. "make the hook punchier", "shorten the middle explanation", "add more Roman Urdu colloquialisms").
+              Provide feedback for what should be updated (e.g. &ldquo;make the hook punchier&rdquo;, &ldquo;shorten the middle explanation&rdquo;, &ldquo;add more Roman Urdu colloquialisms&rdquo;).
             </p>
 
             <textarea
